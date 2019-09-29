@@ -18,7 +18,7 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-		lst_admin.printUsers();
+		//lst_admin.printUsers();
 		//lst_admin.DisplayList();
 		while(true) {
 			pantalla_inicio();
@@ -28,16 +28,12 @@ public class Execute {
   
   static void pantalla_inicio() {
 		EstudiantesManager em=new EstudiantesManager();
-		Scanner sc=new Scanner(System.in);
-				
 		
-		System.out.println("Escriba id a buscar");
+		/*System.out.println("Escriba id a buscar");
 		String search=sc.nextLine();
 		int idABuscar=Integer.parseInt(search);
 				
-		System.out.println(em.searchEstudiante(idABuscar).getNombre_estudiante());
-		
-		sc.close();
+		System.out.println(em.searchEstudiante(idABuscar).getNombre_estudiante());*/
 
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
