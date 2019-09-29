@@ -1,5 +1,5 @@
 package data;
-
+import business.*;
 import java.util.*;
 
 public class Estudiante {
@@ -8,7 +8,11 @@ public class Estudiante {
 	String apellido_estudiante;
 	Calendar fecha_nacimiento;
 	Integer edad;
-	DoubleLinkedList<Year> year_list;
+	public DoubleLinkedList <Nota> list_nota = new DoubleLinkedList<Nota>();
+	int curso;
+	double promedio=0;
+	
+	
 	
 	
 	
@@ -36,14 +40,6 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 	}
 
-	public Calendar getFecha_nacimiento() {
-		return fecha_nacimiento;
-	}
-
-	public void setFecha_nacimiento(Calendar fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
-	}
-
 	public Integer getEdad() {
 		return edad;
 	}
@@ -52,12 +48,21 @@ public class Estudiante {
 		this.edad = edad;
 	}
 
-	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento) {
+	public int getCurso() {
+		return curso;
+	}
+
+	public void setCurso(int curso) {
+		this.curso = curso;
+	}
+
+	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, int curso) {
 		super();
 		this.id_estudiante = id_estudiante;
 		this.nombre_estudiante = nombre_estudiante;
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
+		this.curso = curso;
 		calcEdad(fecha_nacimiento);
 	}
 
@@ -67,17 +72,14 @@ public class Estudiante {
 		int aNac=fecha_nac.get(Calendar.YEAR);
 		this.edad= aAct-aNac;	
 	}
-
+	void addNo() {
+		list_nota.PushBack(new Nota("1",1));
+	}
 	@Override
 	public String toString() {
 		return "id=" + id_estudiante + ", nombre=" + nombre_estudiante
 				+ ", apellido=" + apellido_estudiante  + ", edad="
-				+ edad ;
-
+				+ edad +", curso="+curso;
 	}
 
-
-	
-	
-	
 }
