@@ -15,9 +15,19 @@ public class ListStudent extends DoubleLinkedList<Estudiante>{
         }
         return dn.key;
     }
-
 	
+	public boolean ExistStudent(int id){
+        DoubleNode<Estudiante> dn = null;
+        DoubleNode<Estudiante> p = this.head;
+        while(p != null){
+            if(p.key.id_estudiante == id){
+                dn = p;
+                return true;
+            }
+            p = p.next;
+        }
+        return false;
+    }
 	
-	
-
+}
 }
