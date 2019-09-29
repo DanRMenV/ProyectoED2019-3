@@ -18,16 +18,16 @@ public class Execute {
 		String name=sc.nextLine();
 		System.out.println("Ingrese Apellido");
 		String last=sc.nextLine();
-		System.out.println("Ingrese dia nac");
+		System.out.println("Ingrese dia de nacimiento");
 		String dia=sc.nextLine();
 		int numDia=Integer.parseInt(dia);
-		System.out.println("Ingrese mes nac");
+		System.out.println("Ingrese mes de nacimiento");
 		String mes=sc.nextLine();
 		int numMes=Integer.parseInt(mes);
-		System.out.println("Ingrese año nac");
-		String año=sc.nextLine();
-		int numAño=Integer.parseInt(año);
-		Calendar fecha=new GregorianCalendar(numAño,numMes,numDia);
+		System.out.println("Ingrese aï¿½o de nacimiento");
+		String aï¿½o=sc.nextLine();
+		int numAï¿½o=Integer.parseInt(aï¿½o);
+		Calendar fecha=new GregorianCalendar(numAï¿½o,numMes,numDia);
 		em.addEstudiante(new Estudiante(numId,name,last,fecha));
 		em.addEstudiante(new Estudiante(numId,name+"2",last,fecha));
 		
