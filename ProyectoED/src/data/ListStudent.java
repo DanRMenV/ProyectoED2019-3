@@ -1,4 +1,3 @@
-  
 package data;
 
 public class ListStudent extends DoubleLinkedList<Estudiante>{
@@ -30,9 +29,5 @@ public class ListStudent extends DoubleLinkedList<Estudiante>{
         return false;
     }
 	
-
-	
-	
-	
-
+}
 }

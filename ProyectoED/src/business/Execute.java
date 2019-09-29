@@ -1,5 +1,11 @@
 package business;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.Scanner;
+
 import data.*;
+
 import java.util.*;
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
@@ -16,23 +22,54 @@ public class Execute {
 		//lst_admin.DisplayList();
 		while(true) {
 			pantalla_inicio();
-		}
-		
-		
+		}	
 	}
-	static void pantalla_inicio() {
+
+  
+  static void pantalla_inicio() {
+		EstudiantesManager em=new EstudiantesManager();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Ingrese id");
+		String id=sc.nextLine();
+		int numId=Integer.parseInt(id);
+		System.out.println("Ingrese nombre");
+		String name=sc.nextLine();
+		System.out.println("Ingrese Apellido");
+		String last=sc.nextLine();
+		System.out.println("Ingrese dia de nacimiento");
+		String dia=sc.nextLine();
+		int numDia=Integer.parseInt(dia);
+		System.out.println("Ingrese mes de nacimiento");
+		String mes=sc.nextLine();
+		int numMes=Integer.parseInt(mes);
+		System.out.println("Ingrese aï¿½o de nacimiento");
+		String aï¿½o=sc.nextLine();
+		int numAï¿½o=Integer.parseInt(aï¿½o);
+		Calendar fecha=new GregorianCalendar(numAï¿½o,numMes,numDia);
+		em.addEstudiante(new Estudiante(numId,name,last,fecha));
+		em.addEstudiante(new Estudiante(numId+1,name+"2",last,fecha));
+		
+		
+		System.out.println("Escriba id a buscar");
+		String search=sc.nextLine();
+		int idABuscar=Integer.parseInt(search);
+				
+		System.out.println(em.searchEstudiante(idABuscar).getNombre_estudiante());
+		
+		sc.close();
+
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
 			System.out.println("Bienvenido al Sistema de notas v1.0");
-			System.out.println("Elija la acción que desea hacer: ");
-			System.out.println("1-Iniciar sesión     2-Cerrar programa");
+			System.out.println("Elija la acciï¿½n que desea hacer: ");
+			System.out.println("1-Iniciar sesiï¿½n     2-Cerrar programa");
 			pantalla=scan.nextInt();
 		}
 		else if(pantalla==1) {
-			System.out.println("Ingrese el usuario y la contraseña");
+			System.out.println("Ingrese el usuario y la contraseï¿½a");
 			System.out.println("Usuario:");
 			temp_user = scan.nextLine();
-			System.out.println("Contraseña: ");
+			System.out.println("Contraseï¿½a: ");
 			temp_password = scan.nextLine();
 			if(lst_admin.ValUser(new Admin(temp_user, temp_password))) {
 				clearScreen();
@@ -49,12 +86,12 @@ public class Execute {
 		}
 		else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
-			System.out.println("Escoja la acción que desea realizar: ");
-			System.out.println("1- Añadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante");
+			System.out.println("Escoja la acciï¿½n que desea realizar: ");
+			System.out.println("1- Aï¿½adir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante");
 			pantalla=scan.nextInt()+3;
 		}
 		else if(pantalla==4) {
-			System.out.println("Añadir estudiante");
+			System.out.println("Aï¿½adir estudiante");
 			String temp_nom,temp_apel;
 			int temp_id,temp_day,temp_month,temp_year;
 			System.out.println("Ingrese el documento de identidad: ");
@@ -64,16 +101,16 @@ public class Execute {
 			temp_nom=scan.nextLine();
 			System.out.println("Ingrese el apellido del estudiante:");
 			temp_apel=scan.nextLine();
-			System.out.println("Ingrese el día de nacimiento");
+			System.out.println("Ingrese el dï¿½a de nacimiento");
 			temp_day=scan.nextInt();
 			System.out.println("Ingrese el mes de nacimiento");
 			temp_month=scan.nextInt();
-			System.out.println("Ingrese el año de nacimiento");
+			System.out.println("Ingrese el aï¿½o de nacimiento");
 			temp_year=scan.nextInt();
 			System.out.println(temp_nom+" "+temp_apel);
 			Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
 			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha));
-			System.out.println("Estudiante añadido ...");
+			System.out.println("Estudiante aï¿½adido ...");
 			pantalla=3;
 		}
 		else if(pantalla==5) {
