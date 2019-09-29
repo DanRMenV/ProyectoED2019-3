@@ -8,12 +8,9 @@ public class Estudiante {
 	String apellido_estudiante;
 	Calendar fecha_nacimiento;
 	Integer edad;
-	public DoubleLinkedList <Nota> list_nota = new DoubleLinkedList<Nota>();
+	public DoubleLinkedList <Nota> list_nota;
 	int curso;
 	double promedio=0;
-	
-	
-	
 	
 	
 	public int getId_estudiante() {
@@ -63,6 +60,7 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
+		this.list_nota = new DoubleLinkedList<Nota>();
 		calcEdad(fecha_nacimiento);
 	}
 
