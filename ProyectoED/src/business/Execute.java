@@ -3,10 +3,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Scanner;
-
 import data.*;
-
 import java.util.*;
+
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
 	static EstudiantesManager lst_stud = new EstudiantesManager();
@@ -18,8 +17,13 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-		lst_admin.printUsers();
-		//lst_admin.DisplayList();
+		Calendar fecha=new GregorianCalendar(1,1,1);
+		lst_stud.addEstudiante(new Estudiante(123,"juan","creck",fecha,12));
+		lst_stud.AddNota(123,5,"Nota 1");
+		lst_stud.AddNota(123,3,"Nota 2");
+		lst_stud.AddNota(123,1,"Nota 3");
+		lst_stud.AddNota(123,2,"Nota 4");
+		lst_stud.AddNota(123,4,"Nota 5");
 		while(true) {
 			pantalla_inicio();
 		}	
@@ -27,49 +31,18 @@ public class Execute {
 
   
   static void pantalla_inicio() {
-		EstudiantesManager em=new EstudiantesManager();
-		Scanner sc=new Scanner(System.in);
-		System.out.println("Ingrese id");
-		String id=sc.nextLine();
-		int numId=Integer.parseInt(id);
-		System.out.println("Ingrese nombre");
-		String name=sc.nextLine();
-		System.out.println("Ingrese Apellido");
-		String last=sc.nextLine();
-		System.out.println("Ingrese dia de nacimiento");
-		String dia=sc.nextLine();
-		int numDia=Integer.parseInt(dia);
-		System.out.println("Ingrese mes de nacimiento");
-		String mes=sc.nextLine();
-		int numMes=Integer.parseInt(mes);
-		System.out.println("Ingrese a�o de nacimiento");
-		String a�o=sc.nextLine();
-		int numA�o=Integer.parseInt(a�o);
-		Calendar fecha=new GregorianCalendar(numA�o,numMes,numDia);
-		em.addEstudiante(new Estudiante(numId,name,last,fecha));
-		em.addEstudiante(new Estudiante(numId+1,name+"2",last,fecha));
-		
-		
-		System.out.println("Escriba id a buscar");
-		String search=sc.nextLine();
-		int idABuscar=Integer.parseInt(search);
-				
-		System.out.println(em.searchEstudiante(idABuscar).getNombre_estudiante());
-		
-		sc.close();
-
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
 			System.out.println("Bienvenido al Sistema de notas v1.0");
-			System.out.println("Elija la acci�n que desea hacer: ");
-			System.out.println("1-Iniciar sesi�n     2-Cerrar programa");
+			System.out.println("Elija la accion que desea hacer: ");
+			System.out.println("1-Iniciar sesion     2-Cerrar programa");
 			pantalla=scan.nextInt();
 		}
 		else if(pantalla==1) {
-			System.out.println("Ingrese el usuario y la contrase�a");
+			System.out.println("Ingrese el usuario y la contrasena");
 			System.out.println("Usuario:");
 			temp_user = scan.nextLine();
-			System.out.println("Contrase�a: ");
+			System.out.println("Contrasena: ");
 			temp_password = scan.nextLine();
 			if(lst_admin.ValUser(new Admin(temp_user, temp_password))) {
 				clearScreen();
@@ -86,14 +59,15 @@ public class Execute {
 		}
 		else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
-			System.out.println("Escoja la acci�n que desea realizar: ");
-			System.out.println("1- A�adir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante");
+			System.out.println("Escoja la accion que desea realizar: ");
+			System.out.println("1- Anadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante   4-Anadir nota estudiante");
 			pantalla=scan.nextInt()+3;
+			clearScreen();
 		}
 		else if(pantalla==4) {
-			System.out.println("A�adir estudiante");
+			System.out.println("Anadir estudiante");
 			String temp_nom,temp_apel;
-			int temp_id,temp_day,temp_month,temp_year;
+			int temp_id,temp_day,temp_month,temp_year,temp_curso;
 			System.out.println("Ingrese el documento de identidad: ");
 			temp_id=scan.nextInt();
 			scan.nextLine();
@@ -101,22 +75,25 @@ public class Execute {
 			temp_nom=scan.nextLine();
 			System.out.println("Ingrese el apellido del estudiante:");
 			temp_apel=scan.nextLine();
-			System.out.println("Ingrese el d�a de nacimiento");
+			System.out.println("Ingrese el dia de nacimiento");
 			temp_day=scan.nextInt();
 			System.out.println("Ingrese el mes de nacimiento");
 			temp_month=scan.nextInt();
-			System.out.println("Ingrese el a�o de nacimiento");
+			System.out.println("Ingrese el anio de nacimiento");
 			temp_year=scan.nextInt();
-			System.out.println(temp_nom+" "+temp_apel);
+			System.out.println("Ingrese el curso actual");
+			temp_curso=scan.nextInt();
 			Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
-			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha));
-			System.out.println("Estudiante a�adido ...");
+			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha,temp_curso));
+			System.out.println("Estudiante anadido ...");
 			pantalla=3;
 		}
 		else if(pantalla==5) {
+			System.out.println("Numero de estudiates registrados: "+lst_stud.NumEstud());
 			lst_stud.listaEstudiantes();
 			System.out.println("Presione una ENTER para regresar al inicio");
 			scan.nextLine();
+			clearScreen();
 			pantalla=3;
 		}
 		else if(pantalla==6) {
@@ -177,6 +154,47 @@ public class Execute {
 				clearScreen();
 				pantalla=3;
 			}
+		}else if(pantalla == 7) {
+			int temp_id,temp_opc;
+			double temp_nota;
+			String temp_desc;
+			System.out.println("Ingrese la identificacion del estudiante a anadir nota: (-999 inicio)");
+			temp_id=scan.nextInt();
+			while(lst_stud.modificarEstudiante(temp_id)==false) {
+				System.out.println("Estudiante no encontrado...");
+				System.out.println("Ingrese la identificacion del estudiante a anadir nota: (-999 inicio)");
+				temp_id=scan.nextInt();
+				if(temp_id==-999) {
+					pantalla=3;
+					clearScreen();
+					break;
+				}
+			}
+			System.out.println("Estas son las notas registradas del estudiante: ");
+			lst_stud.displayNotas(123);
+			System.out.println("Anada la descripcion de la nota: ");
+			scan.nextLine();
+			temp_desc=scan.nextLine();
+			System.out.println("Anada la calificacion obtenida: ");
+			temp_nota=scan.nextDouble();
+			lst_stud.AddNota(temp_id, temp_nota, temp_desc);
+			System.out.println("Calificacion anadida");
+			System.out.println("Desea anadir mas notas?(1 - si, 0 - no)");
+			temp_opc=scan.nextInt();
+			while(temp_opc == 1) {
+				System.out.println("Anada la descripcion de la nota: ");
+				scan.nextLine();
+				temp_desc=scan.nextLine();
+				System.out.println("Anada la calificacion obtenida: ");
+				temp_nota=scan.nextDouble();
+				lst_stud.AddNota(temp_id, temp_nota, temp_desc);
+				System.out.println("Calificacion anadida");
+				System.out.println("Desea anadir mas notas?(1 - si, 0 - no)");
+				temp_opc=scan.nextInt();
+			}
+			pantalla=3;
+			clearScreen();
+			
 		}
 	}
 	public static void clearScreen() {  

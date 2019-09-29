@@ -28,6 +28,6 @@ public class ListStudent extends DoubleLinkedList<Estudiante>{
         }
         return false;
     }
+
 	
-}
 }

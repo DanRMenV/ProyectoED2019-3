@@ -24,8 +24,18 @@ public class EstudiantesManager {
 	public boolean modificarEstudiante(int id) {
 		return lista_estudiantes.ExistStudent(id);
 	}
+	public int NumEstud() {
+		return lista_estudiantes.NumeroElementos();
+	}
 	
-}
+	public void AddNota(int id,double nota, String descr) {
+		Estudiante e=searchEstudiante(id);
+		e.list_nota.PushBack(new Nota(descr,nota));
+	}
+	public void displayNotas(int id) {
+		Estudiante e=searchEstudiante(id);
+		e.list_nota.DisplayList();
+	}
 	
 }
 

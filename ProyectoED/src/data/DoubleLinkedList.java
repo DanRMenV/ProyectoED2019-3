@@ -3,6 +3,7 @@ package data;
 public class DoubleLinkedList <T>{
     DoubleNode<T> head = null;
     DoubleNode<T> tail = null;
+    int c_elementos=0;
     //Método PushFront()
     public void PushFront(T key) {
         DoubleNode<T> node2 = new DoubleNode(key);
@@ -18,6 +19,7 @@ public class DoubleLinkedList <T>{
         if (this.tail == null) {
             this.tail = this.head;
         }
+        c_elementos++;
     }
     //Método PushBack()
     public void PushBack(T key){
@@ -33,6 +35,7 @@ public class DoubleLinkedList <T>{
             node2.prev = this.tail;
             this.tail = node2;
         }
+        c_elementos++;
     }
     //Método Popback()
     public void PopBack(){
@@ -43,10 +46,12 @@ public class DoubleLinkedList <T>{
         if(this.head == this.tail){
             this.tail = null;
             this.head = tail;
+            c_elementos--;
         }
         else{
             this.tail = tail.prev;
             this.tail.next = null;
+            c_elementos--;
         }
     }
     //Método FindByKey(Key)
@@ -67,9 +72,11 @@ public class DoubleLinkedList <T>{
         if(this.head == null)return;
         if(this.head == this.tail && this.head.key == key){
             this.head = this.tail =null;
+            c_elementos--;
         }
         else if(head.key == key){
             head = head.next;
+            c_elementos--;
         }
         else{
             DoubleNode<T> anterior = head;
@@ -84,6 +91,7 @@ public class DoubleLinkedList <T>{
                 if(p == tail){
                     tail=anterior;
                 }
+                c_elementos--;
             }
         }
     }
@@ -114,6 +122,7 @@ public class DoubleLinkedList <T>{
         if(this.tail == node){
             this.tail = node2;
         }
+        c_elementos++;
     }
     //Método AddBefore(Node, Key);
     public void AddBefore(DoubleNode node, int key){
@@ -127,8 +136,11 @@ public class DoubleLinkedList <T>{
         if(this.head == node){
             this.head=node2;
         }
+        c_elementos++;
     }
-    
+    public int NumeroElementos() {
+    	return c_elementos;
+    }
     
     
 
