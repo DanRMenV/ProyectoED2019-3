@@ -1,11 +1,11 @@
 package data;
 
-public class DoubleLinkedList <T>{
-    DoubleNode<T> head = null;
-    DoubleNode<T> tail = null;
+public class AdminList {
+	Admin head = null;
+    Admin tail = null;
     //Método PushFront()
-    public void PushFront(T key) {
-        DoubleNode<T> node2 = new DoubleNode(key);
+    public void PushFront(String username,String password) {
+        Admin node2 = new Admin(username,password);
         if (this.head == null) {
             this.tail = node2;
             this.head = tail;
@@ -20,8 +20,8 @@ public class DoubleLinkedList <T>{
         }
     }
     //Método PushBack()
-    public void PushBack(T key){
-        DoubleNode<T> node2 = new DoubleNode(key);
+    public void PushBack(String username,String password){
+        Admin node2 = new Admin(username, password);
         node2.next = null;
         node2.prev = tail;
         if(this.head == null){
@@ -50,11 +50,11 @@ public class DoubleLinkedList <T>{
         }
     }
     //Método FindByKey(Key)
-    public DoubleNode FindByKey(T key){
-        DoubleNode<T> dn = null;
-        DoubleNode<T> p = this.head;
+    public Admin FindByKey(String username,String password){
+        Admin dn = null;
+        Admin p = this.head;
         while(p != null){
-            if(p.key == key){
+            if(p.username.equals(username) && p.password.equals(password)){
                 dn = p;
                 break;
             }
@@ -63,19 +63,19 @@ public class DoubleLinkedList <T>{
         return dn;
     }
     //Método Pop(Key)
-    public void Pop(T key){
+    public void Pop(String username){
         if(this.head == null)return;
-        if(this.head == this.tail && this.head.key == key){
+        if(this.head == this.tail && this.head.username == username ){
             this.head = this.tail =null;
         }
-        else if(head.key == key){
+        else if(head.username == username){
             head = head.next;
         }
         else{
-            DoubleNode<T> anterior = head;
-            DoubleNode<T> p =head.next;
+            Admin anterior = head;
+            Admin p =head.next;
 
-            while (p!=tail && p.key != key){
+            while (p!=tail && p.username != username){
                 anterior = anterior.next;
                 p=p.next;
             }
@@ -96,40 +96,11 @@ public class DoubleLinkedList <T>{
         if(this.head == null){
             System.out.println("Lista vacia...");
         }
-        DoubleNode <T> p = this.head;
+        Admin p = this.head;
+        System.out.println("Usernames");
         while(p !=  null){
-            System.out.println(p.key.toString());
+            System.out.println(p.username.toString()+": "+p.password.toString());
             p = p.next;
         }
     }
-    //Método AddAfter(Node, key)
-    public void AddAfter(DoubleNode node, int key){
-        DoubleNode<T> node2 = new DoubleNode(key);
-        node2.next = node.next;
-        node.next = node2;
-        node2.prev = node;
-        if(node2.next != null){
-            node2.next.prev=node2;
-        }
-        if(this.tail == node){
-            this.tail = node2;
-        }
-    }
-    //Método AddBefore(Node, Key);
-    public void AddBefore(DoubleNode node, int key){
-        DoubleNode<T> node2 = new DoubleNode(key);
-        node2.next=node;
-        node2.prev=node.prev;
-        node.prev=node2;
-        if(node2.prev != null){
-            node2.prev.next=node2;
-        }
-        if(this.head == node){
-            this.head=node2;
-        }
-    }
-    
-    
-    
-
 }

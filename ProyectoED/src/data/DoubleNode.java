@@ -4,6 +4,7 @@ public class DoubleNode<T> {
     T key;
     DoubleNode<T> next;
     DoubleNode<T> prev;
+    
     public DoubleNode(){
         //:v
     }
@@ -12,12 +13,14 @@ public class DoubleNode<T> {
         next = null;
         prev = null;
     }
-
     public DoubleNode(T key, DoubleNode<T> next, DoubleNode<T> prev) {
 		super();
 		this.key = key;
 		this.next = next;
 		this.prev = prev;
+	}
+	public T getKey() {
+		return key;
 	}
     
     
