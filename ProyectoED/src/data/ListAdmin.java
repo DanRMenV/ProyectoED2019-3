@@ -28,7 +28,8 @@ public class ListAdmin extends DoubleLinkedList<Admin> {
         }
         return false;
     }
-	public void DisList(){
+	@Override
+	public void DisplayList(){
         if(this.head == null){
             System.out.println("Lista vacia...");
         }
