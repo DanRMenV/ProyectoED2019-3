@@ -24,6 +24,7 @@ public class Execute {
 		lst_stud.AddNota(123,1,"Nota 3");
 		lst_stud.AddNota(123,2,"Nota 4");
 		lst_stud.AddNota(123,4,"Nota 5");
+
 		while(true) {
 			pantalla_inicio();
 		}	
@@ -31,8 +32,10 @@ public class Execute {
 
   
   static void pantalla_inicio() {
+  
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
+			//lst_admin.printUsers();
 			System.out.println("Bienvenido al Sistema de notas v1.0");
 			System.out.println("Elija la accion que desea hacer: ");
 			System.out.println("1-Iniciar sesion     2-Cerrar programa");
