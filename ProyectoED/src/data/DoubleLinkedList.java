@@ -1,8 +1,5 @@
 package data;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
 public class DoubleLinkedList <T>{
     DoubleNode<T> head = null;
     DoubleNode<T> tail = null;
