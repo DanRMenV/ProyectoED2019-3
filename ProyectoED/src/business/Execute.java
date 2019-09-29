@@ -37,16 +37,17 @@ public class Execute {
 
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
+			//lst_admin.printUsers();
 			System.out.println("Bienvenido al Sistema de notas v1.0");
-			System.out.println("Elija la acci�n que desea hacer: ");
-			System.out.println("1-Iniciar sesi�n     2-Cerrar programa");
+			System.out.println("Elija la accionn que desea hacer: ");
+			System.out.println("1-Iniciar sesion     2-Cerrar programa");
 			pantalla=scan.nextInt();
 		}
 		else if(pantalla==1) {
-			System.out.println("Ingrese el usuario y la contrase�a");
+			System.out.println("Ingrese el usuario y la contrasena");
 			System.out.println("Usuario:");
 			temp_user = scan.nextLine();
-			System.out.println("Contrase�a: ");
+			System.out.println("Contrasena: ");
 			temp_password = scan.nextLine();
 			if(lst_admin.ValUser(new Admin(temp_user, temp_password))) {
 				clearScreen();
@@ -63,12 +64,13 @@ public class Execute {
 		}
 		else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
-			System.out.println("Escoja la acci�n que desea realizar: ");
-			System.out.println("1- A�adir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante");
+			System.out.println("Escoja la accipn que desea realizar: ");
+			System.out.println("1- Anadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante");
 			pantalla=scan.nextInt()+3;
+			clearScreen();
 		}
 		else if(pantalla==4) {
-			System.out.println("A�adir estudiante");
+			System.out.println("Anadir estudiante");
 			String temp_nom,temp_apel;
 			int temp_id,temp_day,temp_month,temp_year;
 			System.out.println("Ingrese el documento de identidad: ");
@@ -78,16 +80,16 @@ public class Execute {
 			temp_nom=scan.nextLine();
 			System.out.println("Ingrese el apellido del estudiante:");
 			temp_apel=scan.nextLine();
-			System.out.println("Ingrese el d�a de nacimiento");
+			System.out.println("Ingrese el dia de nacimiento");
 			temp_day=scan.nextInt();
 			System.out.println("Ingrese el mes de nacimiento");
 			temp_month=scan.nextInt();
-			System.out.println("Ingrese el a�o de nacimiento");
+			System.out.println("Ingrese el anio de nacimiento");
 			temp_year=scan.nextInt();
 			System.out.println(temp_nom+" "+temp_apel);
 			Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
 			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha));
-			System.out.println("Estudiante a�adido ...");
+			System.out.println("Estudiante anadido ...");
 			pantalla=3;
 		}
 		else if(pantalla==5) {

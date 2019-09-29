@@ -14,6 +14,6 @@ public class AdminManager {
 		return this.lista_admin.ValidateUser(a);
 	}
 	public void printUsers() {
-		this.lista_admin.DisList();
+		this.lista_admin.DisplayList();
 	}
 }
