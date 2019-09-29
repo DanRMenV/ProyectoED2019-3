@@ -30,10 +30,20 @@ public class Execute {
 		int numAño=Integer.parseInt(año);
 		Calendar fecha=new GregorianCalendar(numAño,numMes,numDia);
 		em.addEstudiante(new Estudiante(numId,name,last,fecha));
-		em.addEstudiante(new Estudiante(numId,name+"2",last,fecha));
+		em.addEstudiante(new Estudiante(numId+1,name+"2",last,fecha));
+		
+		
+		
+		//em.lista_estudiantes.DisplayList();		
+		System.out.println("Escriba id a buscar");
+		String search=sc.nextLine();
+		int idABuscar=Integer.parseInt(search);
+				
+		System.out.println(em.searchEstudiante(idABuscar).getNombre_estudiante());
+		
+		
 		
 		sc.close();
-		//em.lista_estudiantes.DisplayList();		
 	}
 
 }
