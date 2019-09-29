@@ -28,7 +28,7 @@ public class Estudiante {
 	@Override
 	public String toString() {
 		return "Estudiante [id_estudiante=" + id_estudiante + ", nombre_estudiante=" + nombre_estudiante
-				+ ", apellido_estudiante=" + apellido_estudiante + ", fecha_nacimiento=" + fecha_nacimiento.get(Calendar.DAY_OF_MONTH) + ", edad="
+				+ ", apellido_estudiante=" + apellido_estudiante + ", fecha_nacimiento=" + fecha_nacimiento.toString() + ", edad="
 				+ edad + "]";
 	}
 
