@@ -4,6 +4,7 @@ public class DoubleNode<T> {
     T key;
     DoubleNode<T> next;
     DoubleNode<T> prev;
+    
     public DoubleNode(){
         //:v
     }

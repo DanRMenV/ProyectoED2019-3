@@ -128,4 +128,8 @@ public class DoubleLinkedList <T>{
             this.head=node2;
         }
     }
+    
+    
+    
+
 }

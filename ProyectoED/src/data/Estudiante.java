@@ -73,6 +73,7 @@ public class Estudiante {
 		return "id=" + id_estudiante + ", nombre=" + nombre_estudiante
 				+ ", apellido=" + apellido_estudiante  + ", edad="
 				+ edad ;
+
 	}
 
 
