@@ -4,6 +4,8 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Scanner;
 import data.*;
+
+import java.io.File;
 import java.util.*;
 
 public class Execute {
@@ -11,21 +13,34 @@ public class Execute {
 	static EstudiantesManager lst_stud = new EstudiantesManager();
 	static int pantalla=0;
 	static String temp_user="",temp_password="";
+	static long TInicio, TFin, tiempo;
+	static boolean mostrar=true;
 	public static void main(String[] args) {
 		lst_admin.addAdminUser(new Admin("juanse","123456"));
 		lst_admin.addAdminUser(new Admin("crack yo","09786"));
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-		while(true) {
+		
+		TInicio = System.currentTimeMillis(); 
+		lst_stud.readStudents("datosPrueba10000000.txt");
+		TFin = System.currentTimeMillis();  
+		tiempo = TFin - TInicio;
+		System.out.println("Tiempo de ejecución en nanosegundos carga datos: " + tiempo); 
+		
+		TInicio = System.currentTimeMillis(); 
+		lst_stud.searchEstudiante(10000000);
+		TFin = System.currentTimeMillis(); 
+		tiempo = TFin - TInicio;
+		System.out.println("Tiempo de ejecución en mili consulta 1 dato: " + tiempo); 
+		
+		while(mostrar) {
 			pantalla_inicio();
 		}	
 	}
 
-  
   static void pantalla_inicio() {
-  
-		Scanner scan = new Scanner(System.in);
+  		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
 			//lst_admin.printUsers();
 			System.out.println("Bienvenido al Sistema de notas v1.0");
@@ -85,7 +100,11 @@ public class Execute {
 		}
 		else if(pantalla==5) {
 			System.out.println("Numero de estudiates registrados: "+lst_stud.NumEstud());
+			TInicio = System.currentTimeMillis();
 			lst_stud.listaEstudiantes();
+			TFin = System.currentTimeMillis(); 
+			tiempo = TFin - TInicio;
+			System.out.println("Tiempo de ejecución en milisegundos: " + tiempo); 
 			System.out.println("Presione una ENTER para regresar al inicio");
 			scan.nextLine();
 			clearScreen();
@@ -226,10 +245,16 @@ public class Execute {
 			nothing=scan.nextLine();
 			clearScreen();
 			pantalla=3;
+		}else {
+			mostrar=false;
 		}
 	}
+  
 	public static void clearScreen() {  
 		for (int i = 0; i < 50; ++i) System.out.println();
 	}
+	
+	
+	
 
 }
