@@ -1,5 +1,7 @@
 package data;
 import business.*;
+
+import java.time.Period;
 import java.util.*;
 
 public class Estudiante {
@@ -11,7 +13,6 @@ public class Estudiante {
 	public ListNotas list_nota;
 	int curso;
 	double promedio=0;
-
 	public int getId_estudiante() {
 		return id_estudiante;
 	}
@@ -67,15 +68,21 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
-		list_nota = new ListNotas();
+		this.list_nota = new ListNotas();
 		calcEdad(fecha_nacimiento);
 	}
 
 	void calcEdad(Calendar fecha_nac) {
-		Calendar now= Calendar.getInstance();
-		int aAct=now.get(Calendar.YEAR);
-		int aNac=fecha_nac.get(Calendar.YEAR);
-		this.edad= aAct-aNac;	
+		Calendar today = Calendar.getInstance();
+		int diffYear = today.get(Calendar.YEAR) - fecha_nac.get(Calendar.YEAR);
+		int diffMonth = today.get(Calendar.MONTH) - fecha_nac.get(Calendar.MONTH);
+		int diffDay = today.get(Calendar.DAY_OF_MONTH) - fecha_nac.get(Calendar.DAY_OF_MONTH);
+		// Si está en ese año pero todavía no los ha cumplido
+		if (diffMonth < 0 || (diffMonth == 0 && diffDay < 0)) {
+			diffYear = diffYear - 1;
+		}
+		this.edad = diffYear;
+
 	}
 	void addNo() {
 		list_nota.PushBack(new Nota("1",1));
@@ -86,5 +93,4 @@ public class Estudiante {
 				+ ", apellido=" + apellido_estudiante  + ", edad="
 				+ edad +", curso="+curso+", promedio="+promedio;
 	}
-
 }

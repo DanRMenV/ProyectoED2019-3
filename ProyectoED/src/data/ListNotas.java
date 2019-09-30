@@ -1,6 +1,7 @@
 package data;
 
 public class ListNotas extends DoubleLinkedList<Nota>{
+	
 	public double sumaNota() {
 		double suma=0.0;
 		DoubleNode <Nota> p = this.head;
