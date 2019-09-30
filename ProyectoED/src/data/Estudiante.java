@@ -1,5 +1,7 @@
 package data;
 import business.*;
+
+import java.time.Period;
 import java.util.*;
 
 public class Estudiante {
@@ -65,10 +67,16 @@ public class Estudiante {
 	}
 
 	void calcEdad(Calendar fecha_nac) {
-		Calendar now= Calendar.getInstance();
-		int aAct=now.get(Calendar.YEAR);
-		int aNac=fecha_nac.get(Calendar.YEAR);
-		this.edad= aAct-aNac;	
+		Calendar today = Calendar.getInstance();
+		int diffYear = today.get(Calendar.YEAR) - fecha_nac.get(Calendar.YEAR);
+		int diffMonth = today.get(Calendar.MONTH) - fecha_nac.get(Calendar.MONTH);
+		int diffDay = today.get(Calendar.DAY_OF_MONTH) - fecha_nac.get(Calendar.DAY_OF_MONTH);
+		// Si está en ese año pero todavía no los ha cumplido
+		if (diffMonth < 0 || (diffMonth == 0 && diffDay < 0)) {
+			diffYear = diffYear - 1;
+		}
+		this.edad = diffYear;
+
 	}
 	void addNo() {
 		list_nota.PushBack(new Nota("1",1));
