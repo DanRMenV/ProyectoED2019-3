@@ -8,14 +8,10 @@ public class Estudiante {
 	String apellido_estudiante;
 	Calendar fecha_nacimiento;
 	Integer edad;
-	public DoubleLinkedList <Nota> list_nota = new DoubleLinkedList<Nota>();
+	public ListNotas list_nota;
 	int curso;
 	double promedio=0;
-	
-	
-	
-	
-	
+
 	public int getId_estudiante() {
 		return id_estudiante;
 	}
@@ -55,6 +51,14 @@ public class Estudiante {
 	public void setCurso(int curso) {
 		this.curso = curso;
 	}
+	
+	public double getPromedio() {
+		return promedio;
+	}
+
+	public void setPromedio(double promedio) {
+		this.promedio = promedio;
+	}
 
 	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, int curso) {
 		super();
@@ -63,6 +67,7 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
+		list_nota = new ListNotas();
 		calcEdad(fecha_nacimiento);
 	}
 
@@ -79,7 +84,7 @@ public class Estudiante {
 	public String toString() {
 		return "id=" + id_estudiante + ", nombre=" + nombre_estudiante
 				+ ", apellido=" + apellido_estudiante  + ", edad="
-				+ edad +", curso="+curso;
+				+ edad +", curso="+curso+", promedio="+promedio;
 	}
 
 }

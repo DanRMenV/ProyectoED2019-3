@@ -8,6 +8,11 @@ public class Nota {
 		this.descripcion = descripcion;
 		this.calificacion = calificacion;
 	}
+	
+	public double getCalificacion() {
+		return calificacion;
+	}
+
 	@Override
 	public String toString() {
 		return descripcion + ": " + calificacion;

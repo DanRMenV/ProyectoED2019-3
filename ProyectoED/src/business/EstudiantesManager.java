@@ -36,6 +36,10 @@ public class EstudiantesManager {
 		Estudiante e=searchEstudiante(id);
 		e.list_nota.DisplayList();
 	}
-	
+	public double calcProme(int id) {
+		Estudiante e=searchEstudiante(id);
+		e.setPromedio(e.list_nota.sumaNota()/e.list_nota.NumeroElementos());
+		return e.list_nota.sumaNota()/e.list_nota.NumeroElementos();
+	}
 }
 
