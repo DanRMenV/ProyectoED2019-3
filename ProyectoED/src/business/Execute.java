@@ -24,8 +24,10 @@ public class Execute {
 
   
   static void pantalla_inicio() {
+  
 		Scanner scan = new Scanner(System.in);
 		if(pantalla==0) {
+			//lst_admin.printUsers();
 			System.out.println("Bienvenido al Sistema de notas v1.0");
 			System.out.println("Elija la accion que desea hacer: ");
 			System.out.println("1-Iniciar sesion     2-Cerrar programa");
@@ -153,14 +155,20 @@ public class Execute {
 			String temp_desc;
 			System.out.println("Ingrese la identificacion del estudiante a anadir nota: (-999 inicio)");
 			temp_id=scan.nextInt();
+			if(temp_id==-999) {
+				pantalla=3;
+				clearScreen();
+				return;
+			}
 			while(lst_stud.modificarEstudiante(temp_id)==false) {
 				System.out.println("Estudiante no encontrado...");
 				System.out.println("Ingrese la identificacion del estudiante a anadir nota: (-999 inicio)");
+				scan.nextLine();
 				temp_id=scan.nextInt();
 				if(temp_id==-999) {
 					pantalla=3;
 					clearScreen();
-					break;
+					return;
 				}
 			}
 			System.out.println("Estas son las notas registradas del estudiante: ");
@@ -194,6 +202,11 @@ public class Execute {
 			String nothing;
 			System.out.println("Ingrese la identificacion del estudiante para ver historia academica: (-999 inicio)");
 			temp_id=scan.nextInt();
+			if(temp_id==-999) {
+				pantalla=3;
+				clearScreen();
+				return;
+			}
 			while(lst_stud.modificarEstudiante(temp_id)==false) {
 				System.out.println("Estudiante no encontrado...");
 				System.out.println("Ingrese la identificacion del estudiante para ver historia academica (-999 inicio)");
@@ -201,7 +214,7 @@ public class Execute {
 				if(temp_id==-999) {
 					pantalla=3;
 					clearScreen();
-					break;
+					return;
 				}
 			}
 			System.out.println("Las notas del estudiante han sido: ");
