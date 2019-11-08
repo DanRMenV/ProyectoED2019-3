@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+   <children>
+      <AnchorPane fx:id="Login1" layoutY="7.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="353.0" layoutY="21.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/exit.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="79.0" layoutY="21.0" text="Sistema de Notas" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="29.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane fx:id="Login2" layoutY="75.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+         <children>
+            <Label layoutX="84.0" layoutY="39.0" text="Usuario" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="UserField" focusColor="#16e4e0" layoutX="84.0" layoutY="74.0" prefHeight="25.0" prefWidth="231.0" promptText="Digite su Usuario" style="-fx-text-fill: #ffffff;" unFocusColor="#414a4a">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXTextField>
+            <JFXPasswordField fx:id="PasswordField" focusColor="#16e4e0" layoutX="84.0" layoutY="163.0" prefHeight="38.0" prefWidth="231.0" promptText="Digite su contraseña" style="-fx-text-fill: #ffffff;">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXPasswordField>
+            <Label layoutX="84.0" layoutY="130.0" text="Contraseña" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="IngresarError" layoutX="85.0" layoutY="217.0" prefHeight="17.0" prefWidth="231.0" text="Usuario o contraseña incorrectos" textFill="#f20000" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="132.0" layoutY="255.0" onMouseClicked="#onIngresarButtonClicked" prefHeight="33.0" prefWidth="135.0" style="-fx-background-color: white;" text="Ingresar">
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis></JFXButton>
+         </children></AnchorPane>
+      <AnchorPane fx:id="Prueba" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #000000;" visible="false">
+         <children>
+            <Label layoutX="112.0" layoutY="60.0" text="Hola Mundo" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
