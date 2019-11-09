@@ -1,6 +1,7 @@
 package gui;
 
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import business.*;
 import data.*;
@@ -9,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
+import javafx.scene.text.Text;
 
 public class Controller {
 	static AdminManager lst_admin = new AdminManager();
@@ -22,6 +24,8 @@ public class Controller {
 	@FXML private JFXPasswordField PasswordField;
 	
 	@FXML private Label IngresarError;
+
+	@FXML private Text bienvenida;
 	
 	public void onExitButtonClicked(MouseEvent event) {
 		Platform.exit();
@@ -40,6 +44,7 @@ public class Controller {
 		boolean ver=lst_admin.ValUser(new Admin(temp_user,temp_password));
 		
 		if(ver) {
+			bienvenida.setText("Bienvenido "+temp_user+" ¿qué desea hacer?");
 			Login1.setVisible(false);
 			Login2.setVisible(false);
 			Prueba.setVisible(true);
