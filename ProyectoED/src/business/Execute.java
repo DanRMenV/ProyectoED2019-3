@@ -23,16 +23,16 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
 		
 		TInicio = System.currentTimeMillis(); 
-		lst_stud.readStudents("datosPrueba1000000.txt");
+		lst_stud.readStudents("ProyectoED/datosPrueba1000000.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecución en nanosegundos carga datos: " + tiempo); 
+		System.out.println("Tiempo de ejecuciï¿½n en nanosegundos carga datos: " + tiempo); 
 		
 		TInicio = System.currentTimeMillis(); 
 		lst_stud.searchEstudiante(10000);
 		TFin = System.currentTimeMillis(); 
 		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecución en mili consulta 1 dato: " + tiempo); 
+		System.out.println("Tiempo de ejecuciï¿½n en mili consulta 1 dato: " + tiempo); 
 		
 		while(mostrar) {
 			pantalla_inicio();
@@ -104,7 +104,7 @@ public class Execute {
 			lst_stud.listaEstudiantes();
 			TFin = System.currentTimeMillis(); 
 			tiempo = TFin - TInicio;
-			System.out.println("Tiempo de ejecución en milisegundos: " + tiempo); 
+			System.out.println("Tiempo de ejecuciï¿½n en milisegundos: " + tiempo); 
 			System.out.println("Presione una ENTER para regresar al inicio");
 			scan.nextLine();
 			clearScreen();
