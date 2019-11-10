@@ -63,6 +63,17 @@ public class Estudiante {
 		this.promedio = promedio;
 	}
 	
+	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, String curso) {
+		super();
+		this.id_estudiante = id_estudiante;
+		this.nombre_estudiante = nombre_estudiante;
+		this.apellido_estudiante = apellido_estudiante;
+		this.fecha_nacimiento = fecha_nacimiento;
+		this.curso = cursoInt(curso.trim());
+		this.list_nota = new ListNotas();
+		calcEdad(fecha_nacimiento);
+	}
+
 	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, int curso) {
 		super();
 		this.id_estudiante = id_estudiante;
@@ -73,7 +84,7 @@ public class Estudiante {
 		this.list_nota = new ListNotas();
 		calcEdad(fecha_nacimiento);
 	}
-
+	
 	void calcEdad(Calendar fecha_nac) {
 		Calendar today = Calendar.getInstance();
 		int diffYear = today.get(Calendar.YEAR) - fecha_nac.get(Calendar.YEAR);
@@ -89,6 +100,50 @@ public class Estudiante {
 	void addNo() {
 		list_nota.PushBack(new Nota("1",1));
 	}
+	
+	public int cursoInt(String curso) {
+		int id=0;
+		switch(curso) {
+		case "Primero":
+			id=1; 
+			break;
+		case "Segundo":
+			id=2;
+			break;
+		case "Tercero":
+			id=3;
+			break;
+		case "Cuarto":
+			id=4;
+			break;
+		case "Quinto":
+			id=5;
+			break;
+		case "Sexto":
+			id=6;
+			break;
+		case "Septimo":
+			id=7;
+			break;
+		case "Octavo":
+			id=8;
+			break;
+		case "Noveno":
+			id=9;
+			break;
+		case "Decimo":
+			id=10;
+			break;
+		case "Once":
+			id=11;
+			break;
+		default:
+			id=0;
+			break;
+		}
+		return id;
+	}
+	
 	@Override
 	public String toString() {
 		return "id=" + id_estudiante + ", nombre=" + nombre_estudiante
