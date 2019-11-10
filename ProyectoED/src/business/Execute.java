@@ -94,7 +94,7 @@ public class Execute {
 			System.out.println("Ingrese el curso actual");
 			temp_curso=scan.nextInt();
 			Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
-			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha,temp_curso));
+			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha,""));
 			System.out.println("Estudiante anadido ...");
 			pantalla=3;
 		}
