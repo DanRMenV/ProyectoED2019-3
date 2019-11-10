@@ -92,6 +92,10 @@ public class Controller implements Initializable{
 	public void onAnadirIcon(MouseEvent event) {
 		Prueba.setVisible(false);
 		AddEstudiante.setVisible(true);
+		inNomEst.setText("");
+		inApeEst.setText("");
+		inFecNac.setValue(null);
+		inCurso.setValue("");
 	}
 	
 	
