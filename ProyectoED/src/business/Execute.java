@@ -8,10 +8,18 @@ import data.*;
 import java.io.File;
 import java.util.*;
 
+
+
+
+
+
+
+
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
 	static EstudiantesManager lst_stud = new EstudiantesManager();
-	static int pantalla=0;
+	static CursoManager lst_curso = new CursoManager();
+	static int pantalla=9;
 	static String temp_user="",temp_password="";
 	static long TInicio, TFin, tiempo;
 	static boolean mostrar=true;
@@ -21,8 +29,24 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-
+		for(int a=1; a<=11; a++) {
+			String name;
+			if(a == 1)name="Primero";
+			else if(a == 2)name="Segundo";
+			else if(a == 3)name="Tercero";
+			else if(a == 4)name="Cuarto";
+			else if(a == 5)name="Quinto";
+			else if(a == 6)name="Sexto";
+			else if(a == 7)name="Septimo";
+			else if(a == 8)name="Octavo";
+			else if(a == 9)name="Noveno";
+			else if(a == 10)name="Decimo";
+			else name="Undecimo";
+			lst_curso.addCurso(new Curso(a,name));
+		}
 		
+		lst_curso.listaEstudiantes();
+		lst_admin.printUsers();
 		TInicio = System.currentTimeMillis(); 
 		lst_stud.readStudents("datosPrueba100.txt");
 		TFin = System.currentTimeMillis();  
@@ -72,6 +96,7 @@ public class Execute {
 			System.out.println("Bienvenido: "+temp_user);
 			System.out.println("Escoja la accion que desea realizar: ");
 			System.out.println("1- Anadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante   4-Anadir nota estudiante   5-Historia academica estudiante");
+			System.out.println("6- Para entrar el sistema en de estudiantes en BTS");
 			pantalla=scan.nextInt()+3;
 			clearScreen();
 		}
@@ -246,6 +271,101 @@ public class Execute {
 			nothing=scan.nextLine();
 			clearScreen();
 			pantalla=3;
+		}else if(pantalla == 9){
+			int option;
+			System.out.println("Sistema BTS");
+			System.out.println("Escoja la accion que desea realizar: ");
+			System.out.println("1- Anadir estudiante    2- Ver lista todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
+			option = scan.nextInt();
+			clearScreen();
+			if(option == 1) {
+				System.out.println("Anadir estudiante: ");
+				System.out.println("Seleccione el curso al cual va a anadir el estudiante");
+				int int_curs = scan.nextInt();
+				Curso temp_curso = lst_curso.FindCurso(int_curs);
+				String temp_nom,temp_apel;
+				
+				int temp_id,temp_day,temp_month,temp_year;
+				System.out.println("Ingrese el documento de identidad: ");
+				temp_id=scan.nextInt();
+				scan.nextLine();
+				System.out.println("Ingrese el nombre del estudiante: ");
+				temp_nom=scan.nextLine();
+				System.out.println("Ingrese el apellido del estudiante:");
+				temp_apel=scan.nextLine();
+				System.out.println("Ingrese el dia de nacimiento");
+				temp_day=scan.nextInt();
+				System.out.println("Ingrese el mes de nacimiento");
+				temp_month=scan.nextInt();
+				System.out.println("Ingrese el anio de nacimiento");
+				temp_year=scan.nextInt();
+				temp_curso.est_curso.insert(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
+				System.out.println("Estudiante anadido ...");
+				clearScreen();
+			}else if(option == 2) {
+				for(int a=1; a<=11; a++) {
+					Curso temp_curso = lst_curso.FindCurso(a);
+					EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+					temp_curso.est_curso.printStudentCurso(temp_root);
+				}
+			}else if(option == 3) {
+				int int_curs = scan.nextInt();
+				Curso temp_curso = lst_curso.FindCurso(int_curs);
+				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				temp_curso.est_curso.printStudentCurso(temp_root);
+			}else if(option == 4) {
+				int temp_option=0;
+				System.out.println("Ingrese el curso del estudiante");
+				int int_curs=scan.nextInt();
+				Curso temp_curso = lst_curso.FindCurso(int_curs);
+				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				System.out.println("Ingrese el documento del estudiante");
+				int find_id = scan.nextInt();
+				EstudianteBST temp_stud=temp_curso.est_curso.Find(temp_root, find_id);
+				System.out.println("Seleccione el dato que desea modificar");
+				System.out.println("1-Nombre, 2-Apellido, 3-Fecha de nacimiento, 4-Todos los campos, 5-Volver al inicio");
+				temp_option=scan.nextInt();
+				scan.nextLine();
+				if(temp_option==1) {
+					String temp_nom;
+					System.out.println("Ingrese el nombre del estudiante: ");
+					temp_nom=scan.next();
+					temp_stud.setNombre_estudiante(temp_nom);
+					
+				}else if(temp_option==2) {
+					String temp_apell;
+					System.out.println("Ingrese el apellido del estudiante:");
+					temp_apell=scan.next();
+					temp_stud.setApellido_estudiante(temp_apell);
+				}else if(temp_option==3) {
+					System.out.println("Ingrese el dia");
+					int temp_dia = scan.nextInt();
+					System.out.println("Ingrese el mes");
+					int temp_mes = scan.nextInt();
+					System.out.println("Ingrese el anio");
+					int temp_anio = scan.nextInt();
+				}else if(temp_option==4) {
+					int temp_id;
+					System.out.println("Ingrese el documento de identidad: ");
+					temp_id=scan.nextInt();
+					scan.nextLine();
+					String temp_nom;
+					System.out.println("Ingrese el nombre del estudiante: ");
+					temp_nom=scan.nextLine();
+					String temp_apell;
+					System.out.println("Ingrese el apellido del estudiante:");
+					temp_apell=scan.nextLine();
+					temp_stud.setId_estudiante(temp_id);
+					temp_stud.setNombre_estudiante(temp_nom);
+					temp_stud.setApellido_estudiante(temp_apell);
+				}else {
+					clearScreen();
+					pantalla=3;
+				}
+				System.out.println("Dato modificado...");
+				System.out.println("Presione ENTER para volver al inicio");
+				clearScreen();
+			}
 		}else {
 			mostrar=false;
 		}
