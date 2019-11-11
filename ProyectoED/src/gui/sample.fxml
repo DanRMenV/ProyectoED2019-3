@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
-      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;" visible="false">
+      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;">
          <children>
             <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="353.0" layoutY="21.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,7 +29,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" visible="false" AnchorPane.topAnchor="156.0">
+      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" AnchorPane.topAnchor="156.0">
          <children>
             <Label layoutX="84.0" layoutY="39.0" text="Usuario" textFill="WHITE">
                <font>
@@ -173,7 +173,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="VerLista" layoutX="54.0" layoutY="31.0" prefHeight="489.0" prefWidth="757.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="VerLista" layoutX="54.0" layoutY="31.0" prefHeight="489.0" prefWidth="757.0" style="-fx-background-color: white;" visible="false">
          <children>
             <JFXTreeTableView fx:id="Lista" layoutX="32.0" layoutY="69.0" prefHeight="400.0" prefWidth="702.0" />
             <Text layoutX="32.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtrar">
