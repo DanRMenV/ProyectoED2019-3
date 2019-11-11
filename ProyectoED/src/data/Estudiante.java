@@ -13,8 +13,6 @@ public class Estudiante {
 	public ListNotas list_nota;
 	int curso;
 	double promedio=0;
-	
-	
 	public int getId_estudiante() {
 		return id_estudiante;
 	}
@@ -54,7 +52,7 @@ public class Estudiante {
 	public void setCurso(int curso) {
 		this.curso = curso;
 	}
-
+	
 	public double getPromedio() {
 		return promedio;
 	}
@@ -62,7 +60,7 @@ public class Estudiante {
 	public void setPromedio(double promedio) {
 		this.promedio = promedio;
 	}
-	
+
 	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, String curso) {
 		super();
 		this.id_estudiante = id_estudiante;

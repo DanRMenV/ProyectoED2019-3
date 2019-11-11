@@ -21,6 +21,7 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
+
 		
 		TInicio = System.currentTimeMillis(); 
 		lst_stud.readStudents("ProyectoED/datosPrueba1000000.txt");
