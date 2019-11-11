@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
-      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;">
+      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;" visible="false">
          <children>
             <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="353.0" layoutY="21.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +29,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" AnchorPane.topAnchor="156.0">
+      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" visible="false" AnchorPane.topAnchor="156.0">
          <children>
             <Label layoutX="84.0" layoutY="39.0" text="Usuario" textFill="WHITE">
                <font>
@@ -92,7 +93,7 @@
                   <Font name="Arial Black" size="11.0" />
                </font>
             </Text>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="495.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="495.0" layoutY="58.0" onMouseClicked="#onListaButoon" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/List.png" />
                </image>
@@ -170,6 +171,22 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="VerLista" layoutX="54.0" layoutY="31.0" prefHeight="489.0" prefWidth="757.0" style="-fx-background-color: white;">
+         <children>
+            <JFXTreeTableView fx:id="Lista" layoutX="32.0" layoutY="69.0" prefHeight="400.0" prefWidth="702.0" />
+            <Text layoutX="32.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtrar">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="buscar" layoutX="112.0" layoutY="29.0" promptText="escriba aqui" />
+            <ImageView fitHeight="56.0" fitWidth="85.0" layoutX="678.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/salir_lista.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
