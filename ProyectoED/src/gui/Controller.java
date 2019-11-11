@@ -17,6 +17,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -26,6 +27,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+
+import javax.swing.*;
 
 public class Controller implements Initializable{
 	static AdminManager lst_admin = new AdminManager();
@@ -56,6 +59,12 @@ public class Controller implements Initializable{
 	@FXML private JFXTreeTableView<Student> Lista;
 	@FXML private AnchorPane VerLista;
 	@FXML private JFXTextField buscar;
+	@FXML private JFXComboBox<String> BoxCurso;
+
+	ObservableList<String> ListaCursoContent =
+			FXCollections.observableArrayList(
+					"1", "2", "3", "4", "5", "6", "7", "8",
+					"9", "10", "11");
 	
 	ObservableList<String> comboCursos =
 			FXCollections.observableArrayList(
@@ -70,17 +79,25 @@ public class Controller implements Initializable{
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-
 		lst_stud.readStudents("datosPrueba100.txt");
-		CrearLista();
 		//Elementos graficos
 		inCurso.setItems(comboCursos);
-		
+		BoxCurso.setItems(ListaCursoContent);
 	}
 	
 	public void onExitButtonClicked(MouseEvent event) {
 		Platform.exit();
 		System.exit(0);
+	}
+
+	public void onExitMenuButtonClicked(MouseEvent event) {
+		Platform.exit();
+		System.exit(0);
+	}
+
+	public void onExitListaButtonClicked(MouseEvent event) {
+		VerLista.setVisible(false);
+		Prueba.setVisible(true);
 	}
 	
 	public void onIngresarButtonClicked(MouseEvent event) {
@@ -136,6 +153,21 @@ public class Controller implements Initializable{
 		lst_stud.listaEstudiantes();
 	}
 
+	public void onListaButoon(MouseEvent event){
+		Prueba.setVisible(false);
+		VerLista.setVisible(true);
+	}
+
+	public void onComboCursoChanged(ActionEvent event){
+		Lista.setDisable(false);
+		for(int i=0; i<ListaCursoContent.size(); i++){
+			if(BoxCurso.getValue().equals(ListaCursoContent.get(i))){
+				CrearLista(BoxCurso.getValue());
+			}
+		}
+	}
+
+
 	class Student extends RecursiveTreeObject<Student> {
 		StringProperty Id;
 		StringProperty Nombre;
@@ -154,105 +186,100 @@ public class Controller implements Initializable{
 		}
 	}
 
-	public void onListaButoon(MouseEvent event){
-		//lista columnas
+	public void CrearLista(String c){
 
-		Prueba.setVisible(false);
-		VerLista.setVisible(true);
-	}
+			JFXTreeTableColumn<Student, String> stdId = new JFXTreeTableColumn<>("Id");
+			stdId.setPrefWidth(100);
+			stdId.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Id;
+				}
+			});
 
-	public void CrearLista(){
-		JFXTreeTableColumn<Student,String> stdId = new JFXTreeTableColumn<>("Id");
-		stdId.setPrefWidth(100);
-		stdId.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Id;
-			}
-		});
+			JFXTreeTableColumn<Student, String> stdName = new JFXTreeTableColumn<>("Nombre");
+			stdName.setPrefWidth(150);
+			stdName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Nombre;
+				}
+			});
 
-		JFXTreeTableColumn<Student,String> stdName = new JFXTreeTableColumn<>("Nombre");
-		stdName.setPrefWidth(150);
-		stdName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Nombre;
-			}
-		});
+			JFXTreeTableColumn<Student, String> stdApellido = new JFXTreeTableColumn<>("Apellido");
+			stdApellido.setPrefWidth(150);
+			stdApellido.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Apellido;
+				}
+			});
 
-		JFXTreeTableColumn<Student,String> stdApellido = new JFXTreeTableColumn<>("Apellido");
-		stdApellido.setPrefWidth(150);
-		stdApellido.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Apellido;
-			}
-		});
+			JFXTreeTableColumn<Student, String> stdAge = new JFXTreeTableColumn<>("Edad");
+			stdAge.setPrefWidth(100);
+			stdAge.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Edad;
+				}
+			});
 
-		JFXTreeTableColumn<Student,String> stdAge = new JFXTreeTableColumn<>("Edad");
-		stdAge.setPrefWidth(100);
-		stdAge.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Edad;
-			}
-		});
+			JFXTreeTableColumn<Student, String> stdCurso = new JFXTreeTableColumn<>("Curso");
+			stdCurso.setPrefWidth(100);
+			stdCurso.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Curso;
+				}
+			});
 
-		JFXTreeTableColumn<Student,String> stdCurso = new JFXTreeTableColumn<>("Curso");
-		stdCurso.setPrefWidth(100);
-		stdCurso.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Curso;
-			}
-		});
+			JFXTreeTableColumn<Student, String> stdPromedio = new JFXTreeTableColumn<>("Promedio");
+			stdPromedio.setPrefWidth(80);
+			stdPromedio.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
+					return param.getValue().getValue().Promedio;
+				}
+			});
 
-		JFXTreeTableColumn<Student,String> stdPromedio = new JFXTreeTableColumn<>("Promedio");
-		stdPromedio.setPrefWidth(80);
-		stdPromedio.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-				return param.getValue().getValue().Promedio;
-			}
-		});
+			ObservableList<Student> students = FXCollections.observableArrayList();
+			int n = lst_stud.NumEstud();
 
-		ObservableList<Student> students = FXCollections.observableArrayList();
-		int n = lst_stud.NumEstud();
-		for(int i=1; i<=n; i++) {
-			int I = lst_stud.searchEstudiante(i).getId_estudiante();
-			String Id = Integer.toString(I);
-			String name = lst_stud.searchEstudiante(i).getNombre_estudiante();
-			String apellido = lst_stud.searchEstudiante(i).getApellido_estudiante();
-			int edad = lst_stud.searchEstudiante(i).getEdad();
-			String age = Integer.toString(edad);
-			int cur = lst_stud.searchEstudiante(i).getCurso();
-			String curso = Integer.toString(cur);
-			double pro = lst_stud.searchEstudiante(i).getPromedio();
-			String promedio = String.valueOf(pro);
-			students.add(new Student(Id, name , apellido, age, curso, promedio));
-		}
-
-		final TreeItem<Student> root = new RecursiveTreeItem<Student>(students, RecursiveTreeObject::getChildren);
-		Lista.getColumns().setAll(stdId,stdName,stdApellido,stdAge,stdCurso,stdPromedio);
-		Lista.setRoot(root);
-		Lista.setShowRoot(false);
-
-		buscar.textProperty().addListener(new ChangeListener<String>() {
-			@Override
-			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-				Lista.setPredicate(new Predicate<TreeItem<Student>>() {
-					@Override
-					public boolean test(TreeItem<Student> student) {
-						Boolean flag = student.getValue().Id.getValue().contains(newValue) ||
-								student.getValue().Nombre.getValue().contains(newValue) ||
-								student.getValue().Apellido.getValue().contains(newValue);
-						return flag;
+					for (int i = 1; i <= n; i++) {
+						int cur = lst_stud.searchEstudiante(i).getCurso();
+						String curso = Integer.toString(cur);
+						if(curso.equals(c)) {
+							int I = lst_stud.searchEstudiante(i).getId_estudiante();
+							String Id = Integer.toString(I);
+							String name = lst_stud.searchEstudiante(i).getNombre_estudiante();
+							String apellido = lst_stud.searchEstudiante(i).getApellido_estudiante();
+							int edad = lst_stud.searchEstudiante(i).getEdad();
+							String age = Integer.toString(edad);
+							double pro = lst_stud.searchEstudiante(i).getPromedio();
+							String promedio = String.valueOf(pro);
+							students.add(new Student(Id, name, apellido, age, curso, promedio));
+						}
 					}
-				});
-			}
-		});
-	}
 
+			final TreeItem<Student> root = new RecursiveTreeItem<Student>(students, RecursiveTreeObject::getChildren);
+			Lista.getColumns().setAll(stdId, stdName, stdApellido, stdAge, stdCurso, stdPromedio);
+			Lista.setRoot(root);
+			Lista.setShowRoot(false);
 
+			buscar.textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					Lista.setPredicate(new Predicate<TreeItem<Student>>() {
+						@Override
+						public boolean test(TreeItem<Student> student) {
+							Boolean flag = student.getValue().Id.getValue().contains(newValue) ||
+									student.getValue().Nombre.getValue().contains(newValue) ||
+									student.getValue().Apellido.getValue().contains(newValue);
+							return flag;
+						}
+					});
+				}
+			});
+		}
 
 }
