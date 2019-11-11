@@ -63,7 +63,11 @@ public class EstudianteBST {
 	public void setPromedio(double promedio) {
 		this.promedio = promedio;
 	}
-
+	public void setDate(int dia, int mes, int year) {
+		Calendar date = new GregorianCalendar(year,mes,dia);
+		this.fecha_nacimiento = date;
+		calcEdad(date);
+	}
 	public EstudianteBST(int id_estudiante, String nombre_estudiante, String apellido_estudiante,int dia, int mes, int year, String curso) {
 		super();
 		this.id_estudiante = id_estudiante;
