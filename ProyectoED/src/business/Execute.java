@@ -23,13 +23,13 @@ public class Execute {
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
 		
 		TInicio = System.currentTimeMillis(); 
-		lst_stud.readStudents("ProyectoED/datosPrueba1000000.txt");
+		lst_stud.readStudents("datosPrueba100.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo); 
 		
 		TInicio = System.currentTimeMillis(); 
-		lst_stud.searchEstudiante(10000);
+		lst_stud.searchEstudiante(10);
 		TFin = System.currentTimeMillis(); 
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en mili consulta 1 dato: " + tiempo); 
