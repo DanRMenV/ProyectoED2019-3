@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="lib"/>
 	<classpathentry kind="lib" path="C:/Users/SEBASTIAN/git/ProyectoED2019-3/ProyectoED2019-3/ProyectoED/lib/jfoenix-8.0.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Mendivelso/git/ProyectoED2019-3/ProyectoED/lib/jfoenix-8.0.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
