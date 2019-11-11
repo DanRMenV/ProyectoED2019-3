@@ -74,8 +74,7 @@ public class EstudiantesManager {
 		sc.close();
 		return new Estudiante(id,name,surname,new GregorianCalendar(2000,01,01),curso);
 	}
-	
-	
+
 }
 
 
