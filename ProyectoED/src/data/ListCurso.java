@@ -28,4 +28,5 @@ public class ListCurso extends DoubleLinkedList<Curso>{
         }
         return false;
     }
+	
 }

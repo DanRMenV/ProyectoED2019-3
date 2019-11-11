@@ -45,10 +45,15 @@ public class Execute {
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		lst_curso.FindCurso(1).est_curso.insert(3, "s", "r", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.insert(1, "s4", "rdfg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.insert(5, "s3", "rdgg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.insert(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.insert(7, "sdf", "rdddd", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.listaEstudiantes();
 		lst_admin.printUsers();
 		TInicio = System.currentTimeMillis(); 
@@ -280,7 +285,7 @@ public class Execute {
 			System.out.println("Sistema BTS");
 			System.out.println("Escoja la accion que desea realizar: ");
 			System.out.println("1- Anadir estudiante    2- Ver todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
-			System.out.println("6- Añadir nota curso");
+			System.out.println("6- Añadir nota curso   7- Ver promedio por cursos");
 			option = scan.nextInt();
 			clearScreen();
 			if(option == 1) {
@@ -305,6 +310,7 @@ public class Execute {
 				System.out.println("Ingrese el anio de nacimiento");
 				temp_year=scan.nextInt();
 				temp_curso.est_curso.insert(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
+				lst_curso.FindCurso(int_curs).addNumStud();
 				System.out.println("Estudiante anadido ...");
 				clearScreen();
 			}else if(option == 2) {
@@ -453,7 +459,13 @@ public class Execute {
 				System.out.println("Ingrese la decripcion de la nota: ");
 				String temp_desc = scan.next();
 				temp_curso.est_curso.addNotaCurso(temp_root, temp_desc);
+				temp_curso.setSum_total(0);
+				temp_curso.sumaTotal(temp_root);
+				temp_curso.calcProm();
+				System.out.println("Promedio curso: "+temp_curso.getProm_curso());
 				
+			}else if(option == 7) {
+				lst_curso.listaEstudiantes();
 			}
 		}else {
 			mostrar=false;
