@@ -38,6 +38,9 @@ public class EstudiantesManager {
 		Estudiante e=searchEstudiante(id);
 		e.list_nota.PushBack(new Nota(descr,nota));
 	}
+	public void AddNota(EstudianteBST student,double nota, String descr) {
+		student.list_nota.PushBack(new Nota(descr,nota));
+	}
 	public void displayNotas(int id) {
 		Estudiante e=searchEstudiante(id);
 		e.list_nota.DisplayList();

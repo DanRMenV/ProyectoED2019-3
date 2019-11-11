@@ -79,7 +79,6 @@ public class Controller implements Initializable{
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-
 		lst_stud.readStudents("datosPrueba100.txt");
 		//Elementos graficos
 		inCurso.setItems(comboCursos);
