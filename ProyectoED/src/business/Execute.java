@@ -24,16 +24,16 @@ public class Execute {
 
 		
 		TInicio = System.currentTimeMillis(); 
-		lst_stud.readStudents("datosPrueba10000000.txt");
+		lst_stud.readStudents("ProyectoED/datosPrueba1000000.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecución en nanosegundos carga datos: " + tiempo); 
+		System.out.println("Tiempo de ejecuciï¿½n en nanosegundos carga datos: " + tiempo); 
 		
 		TInicio = System.currentTimeMillis(); 
-		lst_stud.searchEstudiante(10000000);
+		lst_stud.searchEstudiante(10000);
 		TFin = System.currentTimeMillis(); 
 		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecución en mili consulta 1 dato: " + tiempo); 
+		System.out.println("Tiempo de ejecuciï¿½n en mili consulta 1 dato: " + tiempo); 
 		
 		while(mostrar) {
 			pantalla_inicio();
@@ -95,7 +95,7 @@ public class Execute {
 			System.out.println("Ingrese el curso actual");
 			temp_curso=scan.nextInt();
 			Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
-			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha,temp_curso));
+			lst_stud.addEstudiante(new Estudiante(temp_id,temp_nom,temp_apel,fecha,""));
 			System.out.println("Estudiante anadido ...");
 			pantalla=3;
 		}
@@ -105,7 +105,7 @@ public class Execute {
 			lst_stud.listaEstudiantes();
 			TFin = System.currentTimeMillis(); 
 			tiempo = TFin - TInicio;
-			System.out.println("Tiempo de ejecución en milisegundos: " + tiempo); 
+			System.out.println("Tiempo de ejecuciï¿½n en milisegundos: " + tiempo); 
 			System.out.println("Presione una ENTER para regresar al inicio");
 			scan.nextLine();
 			clearScreen();
