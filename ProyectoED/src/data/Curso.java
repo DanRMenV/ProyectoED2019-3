@@ -4,8 +4,10 @@ import business.EstudiantesBSTManager;
 
 public class Curso {
 	int id_curso;
+	int num_stud;
 	String name;
-	float prom_curso;
+	public double sum_total;
+	double prom_curso;
 	public EstudiantesBSTManager est_curso;
 	public Curso(int id_curso, String name) {
 		super();
@@ -13,9 +15,32 @@ public class Curso {
 		this.name = name;
 		est_curso = new EstudiantesBSTManager();
 	}
+	public void addNumStud() {
+		this.num_stud++;
+	}
+	
 	@Override
 	public String toString() {
-		return "Curso  =" + name + ", prom_curso=" + prom_curso;
+		return "Curso  =" + name + " Numero estudiantes = "+num_stud+"  prom_curso=" + prom_curso;
+	}
+	public void calcProm() {
+		this.prom_curso = sum_total / num_stud;		
+	}
+	public void sumaTotal(EstudianteBST raiz) {
+		if(raiz == null)return ;
+		if(raiz.left != null) {
+			sumaTotal(raiz.left);
+		}
+		sum_total = sum_total + raiz.getPromedio();
+		if(raiz.right != null) {
+			sumaTotal(raiz.right);
+		}
+	}
+	public double getProm_curso() {
+		return prom_curso;
+	}
+	public void setSum_total(double sum_total) {
+		this.sum_total = sum_total;
 	}
 	
 }

@@ -1,6 +1,7 @@
 package business;
 
 import data.Curso;
+import data.EstudianteBST;
 import data.ListCurso;
 
 public class CursoManager {
@@ -18,4 +19,5 @@ public class CursoManager {
 	public  Curso FindCurso(int id) {
 		return lista_curso.FindCurso(id);
 	}
+	
 }
