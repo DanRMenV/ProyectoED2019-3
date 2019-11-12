@@ -19,5 +19,7 @@ public class CursoManager {
     public  Curso FindCurso(int id) {
         return lista_curso.FindCurso(id);
     }
+    
+    
 
 }
