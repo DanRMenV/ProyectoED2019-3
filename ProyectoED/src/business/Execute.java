@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
-	static EstudiantesManager lst_stud = new EstudiantesManager();
+	//static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
 	static int pantalla=9;
 	static String temp_user="",temp_password="";
@@ -47,12 +47,17 @@ public class Execute {
 		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.listaEstudiantes();
-		lst_admin.printUsers();
-		TInicio = System.currentTimeMillis(); 
-		lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
+		
+		//Aca se imprime la informacion basica del curso
+		
+		//lst_curso.listaEstudiantes();
+		//lst_admin.printUsers();
+		
+		
+		//TInicio = System.currentTimeMillis(); 
+		//lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
 
-		TFin = System.currentTimeMillis();  
+		/*TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo); 
 		
@@ -61,7 +66,7 @@ public class Execute {
 		TFin = System.currentTimeMillis(); 
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en mili consulta 1 dato: " + tiempo); 
-		
+		*/
 		while(mostrar) {
 			pantalla_inicio();
 		}	
@@ -95,7 +100,7 @@ public class Execute {
 		else if(pantalla==2) {
 			return;
 		}
-		else if(pantalla==3) {
+		/*else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
 			System.out.println("Escoja la accion que desea realizar: ");
 			System.out.println("1- Anadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante   4-Anadir nota estudiante   5-Historia academica estudiante");
@@ -274,7 +279,7 @@ public class Execute {
 			nothing=scan.nextLine();
 			clearScreen();
 			pantalla=3;
-		}else if(pantalla == 9){
+		}*/else if(pantalla == 9){
 			int option;
 			System.out.println("Sistema BTS");
 			System.out.println("Escoja la accion que desea realizar: ");
