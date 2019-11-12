@@ -33,6 +33,7 @@ import javax.swing.*;
 public class Controller implements Initializable{
 	static AdminManager lst_admin = new AdminManager();
 	static EstudiantesManager lst_stud = new EstudiantesManager();
+	static CursoManager lst_curso = new CursoManager();
 	
 	//Login bienvenida
 	@FXML private AnchorPane Login1;
@@ -79,7 +80,33 @@ public class Controller implements Initializable{
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
 		lst_admin.addAdminUser(new Admin("nel","1245"));
 		lst_admin.addAdminUser(new Admin("trolazo","696969"));
-		lst_stud.readStudents("datosPrueba100.txt");
+		for(int a=1; a<=11; a++) {
+			String name;
+			if(a == 1)name="Primero";
+			else if(a == 2)name="Segundo";
+			else if(a == 3)name="Tercero";
+			else if(a == 4)name="Cuarto";
+			else if(a == 5)name="Quinto";
+			else if(a == 6)name="Sexto";
+			else if(a == 7)name="Septimo";
+			else if(a == 8)name="Octavo";
+			else if(a == 9)name="Noveno";
+			else if(a == 10)name="Decimo";
+			else name="Undecimo";
+			lst_curso.addCurso(new Curso(a,name));
+		}
+		lst_curso.FindCurso(1).est_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
+		lst_curso.FindCurso(1).est_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
+		lst_curso.FindCurso(1).est_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
+		lst_curso.FindCurso(1).est_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
+		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();
+		//lst_curso.listaEstudiantes();
+		//lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
 		//Elementos graficos
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
@@ -243,6 +270,7 @@ public class Controller implements Initializable{
 			});
 
 			ObservableList<Student> students = FXCollections.observableArrayList();
+
 			int n = lst_stud.NumEstud();
 
 					for (int i = 1; i <= n; i++) {

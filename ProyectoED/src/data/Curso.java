@@ -18,7 +18,7 @@ public class Curso {
 	public void addNumStud() {
 		this.num_stud++;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Curso  =" + name + " Numero estudiantes = "+num_stud+"  prom_curso=" + prom_curso;
@@ -42,5 +42,6 @@ public class Curso {
 	public void setSum_total(double sum_total) {
 		this.sum_total = sum_total;
 	}
+
 	
 }
