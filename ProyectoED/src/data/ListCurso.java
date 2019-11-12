@@ -1,9 +1,9 @@
 package data;
 
 public class ListCurso extends DoubleLinkedList<Curso>{
-		
 
-	public Curso FindCurso(int id){
+
+    public Curso FindCurso(int id){
         DoubleNode<Curso> dn = null;
         DoubleNode<Curso> p = this.head;
         while(p != null){
@@ -15,8 +15,8 @@ public class ListCurso extends DoubleLinkedList<Curso>{
         }
         return dn.key;
     }
-	
-	public boolean ExistCurso(int id){
+
+    public boolean ExistCurso(int id){
         DoubleNode<Curso> dn = null;
         DoubleNode<Curso> p = this.head;
         while(p != null){
@@ -28,5 +28,5 @@ public class ListCurso extends DoubleLinkedList<Curso>{
         }
         return false;
     }
-	
+
 }

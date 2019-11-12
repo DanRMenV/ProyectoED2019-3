@@ -8,6 +8,7 @@ public class BinaryTree {
 	public BinaryTree() {
 		this.root = null;
 	}
+
 	public EstudianteBST Find(EstudianteBST root, int data) {
 		if (root == null || root.id_estudiante == data) {
 			return root;	
@@ -73,7 +74,7 @@ public class BinaryTree {
 		return LeftDescendant(N.left);
 	}
 	public EstudianteBST RightAncestor(EstudianteBST N) {
-		//Arreglar el leftascendant o algo así :)
+		//Arreglar el leftascendant o algo asï¿½ :)
 		if(N.id_estudiante < N.parent.id_estudiante)return N.parent;
 		return RightAncestor(N.parent);
 	}
