@@ -45,8 +45,8 @@ public class EstudiantesBSTManager{
 				int curso = reader.nextInt();
 				int dia = (int) (Math.random() * 31) + 1;
 				int mes = (int) (Math.random() * 12) + 1;
-				int anio = (int) (Math.random() * 2018) + 2000;
-				this.ListStudentBST.insert(i++,name,surname,dia,mes,anio,curso);
+				int ano = (int) (Math.random() * 2018) + 2000;
+				this.ListStudentBST.insert(i++,name,surname,dia,mes,ano,curso);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
