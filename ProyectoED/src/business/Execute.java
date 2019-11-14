@@ -48,7 +48,7 @@ public class Execute {
 		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
 		
-		lst_curso.readStudents("datosPrueba100.txt");
+		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
 		
 		//Aca se imprime la informacion basica del curso
 		

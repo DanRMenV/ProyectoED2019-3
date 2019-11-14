@@ -105,8 +105,7 @@ public class Controller implements Initializable{
 		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		//lst_curso.listaEstudiantes();
-		//lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
+		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
 		//Elementos graficos
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
@@ -200,15 +199,13 @@ public class Controller implements Initializable{
 		StringProperty Nombre;
 		StringProperty Apellido;
 		StringProperty Edad;
-		StringProperty Curso;
 		StringProperty Promedio;
 
-		public Student(String Id, String Nombre, String Apellido, String Edad, String Curso, String Promedio) {
+		public Student(String Id, String Nombre, String Apellido, String Edad, String Promedio) {
 			this.Id = new SimpleStringProperty(Id) ;
 			this.Nombre = new SimpleStringProperty(Nombre);
 			this.Apellido = new SimpleStringProperty(Apellido);
 			this.Edad = new SimpleStringProperty(Edad);
-			this.Curso = new SimpleStringProperty(Curso);
 			this.Promedio= new SimpleStringProperty(Promedio);
 		}
 	}
@@ -251,15 +248,6 @@ public class Controller implements Initializable{
 				}
 			});
 
-			JFXTreeTableColumn<Student, String> stdCurso = new JFXTreeTableColumn<>("Curso");
-			stdCurso.setPrefWidth(100);
-			stdCurso.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
-				@Override
-				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Student, String> param) {
-					return param.getValue().getValue().Curso;
-				}
-			});
-
 			JFXTreeTableColumn<Student, String> stdPromedio = new JFXTreeTableColumn<>("Promedio");
 			stdPromedio.setPrefWidth(80);
 			stdPromedio.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Student, String>, ObservableValue<String>>() {
@@ -271,6 +259,10 @@ public class Controller implements Initializable{
 
 			ObservableList<Student> students = FXCollections.observableArrayList();
 
+			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
+			EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+			estudiantesDatos(temp_root,students);
+			/*
 			int n = lst_stud.NumEstud();
 
 					for (int i = 1; i <= n; i++) {
@@ -288,9 +280,10 @@ public class Controller implements Initializable{
 							students.add(new Student(Id, name, apellido, age, curso, promedio));
 						}
 					}
+					*/
 
 			final TreeItem<Student> root = new RecursiveTreeItem<Student>(students, RecursiveTreeObject::getChildren);
-			Lista.getColumns().setAll(stdId, stdName, stdApellido, stdAge, stdCurso, stdPromedio);
+			Lista.getColumns().setAll(stdId, stdName, stdApellido, stdAge, stdPromedio);
 			Lista.setRoot(root);
 			Lista.setShowRoot(false);
 
@@ -308,6 +301,26 @@ public class Controller implements Initializable{
 					});
 				}
 			});
+		}
+
+		public void estudiantesDatos(EstudianteBST root, ObservableList<Student> students){
+			EstudianteBST raiz = root;
+			if(raiz == null)return ;
+			if(raiz.left != null) {
+				estudiantesDatos(raiz.left,students);
+			}
+			int I = raiz.getId_estudiante();
+			String Id = Integer.toString(I);
+			String name = raiz.getNombre_estudiante();
+			String apellido = raiz.getApellido_estudiante();
+			int edad = raiz.getEdad();
+			String age = Integer.toString(edad);
+			double pro = raiz.getPromedio();
+			String promedio = String.valueOf(pro);
+			students.add(new Student(Id, name, apellido, age, promedio));
+			if(raiz.right != null) {
+				estudiantesDatos(raiz.right,students);
+			}
 		}
 
 }

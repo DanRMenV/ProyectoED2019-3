@@ -37,8 +37,8 @@ public class CursoManager {
                 int curso = Integer.parseInt(reader.next());
                 int dia = (int) (Math.random() * 31) + 1;
                 int mes = (int) (Math.random() * 12) + 1;
-                int año = (int) (Math.random() * 2018) + 2000;
-                this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(i++,name,surname,dia,mes,año,curso);
+                int aï¿½o = (int) (Math.random() * 2018) + 2000;
+                this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(i++,name,surname,dia,mes,aï¿½o,curso);
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -71,8 +71,8 @@ public class CursoManager {
 		sc.close();
 		int dia = (int) (Math.random() * 31) + 1;
         int mes = (int) (Math.random() * 12) + 1;
-        int año = (int) (Math.random() * 2018) + 2000;
-        this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(id,name,surname,dia,mes,año,curso);
+        int aÃ±o = (int) (Math.random() * 2018) + 2000;
+        this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(id,name,surname,dia,mes,aÃ±o,curso);
 	}
     
     
