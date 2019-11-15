@@ -37,19 +37,22 @@ public class Execute {
 			else name="Undecimo";
 			lst_curso.addCurso(new Curso(a,name));
 		}
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
+		/*lst_curso.FindCurso(1).students_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).students_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).students_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).students_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
+		lst_curso.FindCurso(1).students_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
+		lst_curso.FindCurso(1).addNumStud();*/
+
+		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
-		
+
+		lst_curso.students_of_curso(1);
 		//Aca se imprime la informacion basica del curso
 		
 		//lst_curso.listaEstudiantes();
@@ -310,30 +313,33 @@ public class Execute {
 				temp_month=scan.nextInt();
 				System.out.println("Ingrese el anio de nacimiento");
 				temp_year=scan.nextInt();
-				temp_curso.est_curso.addEstudianteBST(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
+				lst_curso.addEstudianteBST(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
 				lst_curso.FindCurso(int_curs).addNumStud();
 				System.out.println("Estudiante anadido ...");
 				clearScreen();
 			}else if(option == 2) {
 				for(int a=1; a<=11; a++) {
 					Curso temp_curso = lst_curso.FindCurso(a);
-					EstudianteBST temp_root = temp_curso.est_curso.getRoot();
-					temp_curso.est_curso.printStudentCurso(temp_root);
+					EstudianteBST temp_root = lst_curso.FindCurso(a).students_curso.getRoot();
+					//lst_curso.printStudentCurso(temp_root);
+					lst_curso.FindCurso(a).students_curso.printStudentCurso(temp_root);
 				}
 			}else if(option == 3) {
 				int int_curs = scan.nextInt();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
-				temp_curso.est_curso.printStudentCurso(temp_root);
+				EstudianteBST temp_root =lst_curso.FindCurso(int_curs).students_curso.getRoot();
+				//lst_curso.printStudentCurso(temp_root);
+				lst_curso.FindCurso(int_curs).students_curso.printStudentCurso(temp_root);
 			}else if(option == 4) {
 				int temp_option=0;
 				System.out.println("Ingrese el curso del estudiante");
 				int int_curs=scan.nextInt();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				EstudianteBST temp_root = lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				System.out.println("Ingrese el documento del estudiante");
 				int find_id = scan.nextInt();
-				EstudianteBST temp_stud=temp_curso.est_curso.searchEstudianteBST(temp_root, find_id);
+				//EstudianteBST temp_stud=lst_curso.searchEstudianteBST(temp_root, find_id, int_curs);
+				Estudiante temp_stud=lst_curso.searchEstudianteBST(temp_root, find_id, int_curs);
 				if(temp_stud == null) {
 					System.out.println("Estudiante no encontrado");
 					return ;
@@ -390,12 +396,12 @@ public class Execute {
 				int temp_option=0;
 				System.out.println("Ingrese el documento del estudiante");
 				int find_id = scan.nextInt();
-				EstudianteBST temp_est = null;
+				Estudiante temp_est = null;
 				EstudianteBST temp_root ;
 				for(int a=1; a<=11; a++) {
 					Curso temp_curso = lst_curso.FindCurso(a);
-					temp_root = temp_curso.est_curso.getRoot();
-					temp_est = temp_curso.est_curso.searchEstudianteBST(temp_root, find_id);
+					temp_root = lst_curso.FindCurso(a).students_curso.getRoot();
+					temp_est = lst_curso.searchEstudianteBST(temp_root, find_id,a);
 					if(temp_est != null) {
 						if(temp_est.getId_estudiante() == find_id)break;
 					}
@@ -456,10 +462,10 @@ public class Execute {
 				System.out.println("Seleccione el curso para anadir nota");
 				int int_curs = scan.nextInt();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				EstudianteBST temp_root = lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				System.out.println("Ingrese la decripcion de la nota: ");
 				String temp_desc = scan.next();
-				temp_curso.est_curso.addNotaCurso(temp_root, temp_desc);
+				lst_curso.FindCurso(int_curs).students_curso.addNotaCurso(temp_root, temp_desc);
 				temp_curso.setSum_total(0);
 				temp_curso.sumaTotal(temp_root);
 				temp_curso.calcProm();

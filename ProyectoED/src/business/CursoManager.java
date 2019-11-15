@@ -38,6 +38,7 @@ public class CursoManager {
                 int dia = (int) (Math.random() * 31) + 1;
                 int mes = (int) (Math.random() * 12) + 1;
                 int a�o = (int) (Math.random() * 2018) + 2000;
+
                 this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(i++,name,surname,dia,mes,a�o,curso);
             }
             reader.close();
@@ -46,7 +47,30 @@ public class CursoManager {
             e.printStackTrace();
         }
     } */
-    
+
+
+	public void addEstudianteBST(int id, String name, String surname, int dia, int mes, int year, int curso) {
+		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
+		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);
+		this.lista_curso.FindCurso(curso).students_curso.insert(nuevo);
+
+	}
+
+	public Estudiante searchEstudianteBST(EstudianteBST root, int id,int curso){
+		//EstudianteBST e= ListStudentBST.Find(root, data);
+		Estudiante e=lista_curso.FindCurso(curso).students_curso.Find(root,id).data;
+
+		return e;
+	}
+
+	public EstudianteBST getRoot(int curso) {
+		return lista_curso.FindCurso(curso).students_curso.getRoot();
+	}
+
+	public int students_of_curso(int curso){
+		return lista_curso.FindCurso(curso).students_curso.getNumEst();
+	}
+
     public void readStudents(String fileName) {
 		int i=1;
 		try {
@@ -72,7 +96,7 @@ public class CursoManager {
 		int dia = (int) (Math.random() * 31) + 1;
         int mes = (int) (Math.random() * 12) + 1;
         int año = (int) (Math.random() * 2018) + 2000;
-        this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(id,name,surname,dia,mes,año,curso);
+        addEstudianteBST(id,name,surname,dia,mes,año,curso);
 	}
     
     

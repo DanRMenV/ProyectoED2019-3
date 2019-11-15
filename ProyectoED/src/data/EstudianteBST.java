@@ -7,8 +7,17 @@ public class EstudianteBST {
     public EstudianteBST left;
     public EstudianteBST right;
     public EstudianteBST parent;
+    public Estudiante data;
+
+    public EstudianteBST(Estudiante data) {
+        this.left=null;
+        this.right=null;
+        this.parent=null;
+        this.data = data;
+    }
+
     //Es lo mismo que ya estaba en Estudiante de lista
-    int id_estudiante;
+    /*int id_estudiante;
     String nombre_estudiante;
     String apellido_estudiante;
     Calendar fecha_nacimiento;
@@ -153,6 +162,6 @@ public class EstudianteBST {
         return "id=" + id_estudiante + ", nombre=" + nombre_estudiante
                 + ", apellido=" + apellido_estudiante  + ", edad="
                 + edad +", curso="+curso+", promedio="+promedio;
-    }
+    }*/
 
 }

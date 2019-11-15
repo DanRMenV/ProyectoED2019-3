@@ -8,12 +8,13 @@ public class Curso {
 	String name;
 	public double sum_total;
 	double prom_curso;
-	public EstudiantesBSTManager est_curso;
+	public BinaryTree students_curso;
+
 	public Curso(int id_curso, String name) {
 		super();
 		this.id_curso = id_curso;
 		this.name = name;
-		est_curso = new EstudiantesBSTManager();
+		students_curso = new BinaryTree();
 	}
 	public void addNumStud() {
 		this.num_stud++;
@@ -31,7 +32,7 @@ public class Curso {
 		if(raiz.left != null) {
 			sumaTotal(raiz.left);
 		}
-		sum_total = sum_total + raiz.getPromedio();
+		sum_total = sum_total + raiz.data.getPromedio();
 		if(raiz.right != null) {
 			sumaTotal(raiz.right);
 		}

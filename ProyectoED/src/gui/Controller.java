@@ -95,15 +95,15 @@ public class Controller implements Initializable{
 			else name="Undecimo";
 			lst_curso.addCurso(new Curso(a,name));
 		}
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
+		lst_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
+		lst_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
+		lst_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
+		lst_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
+		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		lst_curso.FindCurso(1).addNumStud();
 		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
 		//Elementos graficos
@@ -152,8 +152,50 @@ public class Controller implements Initializable{
 		inFecNac.setValue(null);
 		inCurso.setValue("");
 	}
-	
-	
+
+	public int cursoInt(String curso) {
+		int id=0;
+		switch(curso) {
+			case "Primero":
+				id=1;
+				break;
+			case "Segundo":
+				id=2;
+				break;
+			case "Tercero":
+				id=3;
+				break;
+			case "Cuarto":
+				id=4;
+				break;
+			case "Quinto":
+				id=5;
+				break;
+			case "Sexto":
+				id=6;
+				break;
+			case "Septimo":
+				id=7;
+				break;
+			case "Octavo":
+				id=8;
+				break;
+			case "Noveno":
+				id=9;
+				break;
+			case "Decimo":
+				id=10;
+				break;
+			case "Once":
+				id=11;
+				break;
+			default:
+				id=0;
+				break;
+		}
+		return id;
+	}
+
 	public void onIngresoEstudiante() {		
 		String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
 		
@@ -168,11 +210,13 @@ public class Controller implements Initializable{
 		int temp_month=fecha_nac.getMonthValue();
 		int temp_year=fecha_nac.getYear();
 		temp_curso=inCurso.getValue();
-		
+
+
 		Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
 		Estudiante tmpNew=new Estudiante(id,temp_nombres,temp_apellidos,fecha,temp_curso);
-		lst_stud.addEstudiante(tmpNew);
-		
+		//lst_stud.addEstudiante(tmpNew);
+		lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
+
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
 		
@@ -260,7 +304,7 @@ public class Controller implements Initializable{
 			ObservableList<Student> students = FXCollections.observableArrayList();
 
 			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
-			EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+			EstudianteBST temp_root = temp_curso.students_curso.getRoot();
 			estudiantesDatos(temp_root,students);
 			/*
 			int n = lst_stud.NumEstud();
@@ -309,13 +353,15 @@ public class Controller implements Initializable{
 			if(raiz.left != null) {
 				estudiantesDatos(raiz.left,students);
 			}
-			int I = raiz.getId_estudiante();
+			Estudiante temp=raiz.data;
+
+			int I = temp.getId_estudiante();
 			String Id = Integer.toString(I);
-			String name = raiz.getNombre_estudiante();
-			String apellido = raiz.getApellido_estudiante();
-			int edad = raiz.getEdad();
+			String name = temp.getNombre_estudiante();
+			String apellido = temp.getApellido_estudiante();
+			int edad = temp.getEdad();
 			String age = Integer.toString(edad);
-			double pro = raiz.getPromedio();
+			double pro = temp.getPromedio();
 			String promedio = String.valueOf(pro);
 			students.add(new Student(Id, name, apellido, age, promedio));
 			if(raiz.right != null) {
