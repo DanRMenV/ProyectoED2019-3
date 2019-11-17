@@ -51,7 +51,7 @@ public class Execute {
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		TInicio = System.currentTimeMillis();
-		lst_curso.readStudents("datosPrueba1000000.txt");
+		lst_curso.readStudents("datosPrueba10000.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
