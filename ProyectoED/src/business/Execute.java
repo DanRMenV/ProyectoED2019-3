@@ -37,21 +37,11 @@ public class Execute {
 			else name="Undecimo";
 			lst_curso.addCurso(new Curso(a,name));
 		}
-		/*lst_curso.FindCurso(1).students_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).students_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).students_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).students_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).students_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();*/
-
+	
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		TInicio = System.currentTimeMillis();
-		lst_curso.readStudents("datosPrueba10000.txt");
+		lst_curso.readStudents("datosPrueba100000.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
