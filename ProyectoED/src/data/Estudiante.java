@@ -11,8 +11,10 @@ public class Estudiante {
 	Calendar fecha_nacimiento;
 	Integer edad;
 	public ListNotas list_nota;
+	
 	int curso;
 	double promedio=0;
+	
 	public int getId_estudiante() {
 		return id_estudiante;
 	}
@@ -75,6 +77,7 @@ public class Estudiante {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = cursoInt(curso.trim());
 		this.list_nota = new ListNotas();
+		this.list_nota.initNotas();
 		calcEdad(fecha_nacimiento);
 	}
 
@@ -86,6 +89,7 @@ public class Estudiante {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
 		this.list_nota = new ListNotas();
+		this.list_nota.initNotas();
 		calcEdad(fecha_nacimiento);
 	}
 	
@@ -101,8 +105,15 @@ public class Estudiante {
 		this.edad = diffYear;
 
 	}
+	
 	void addNo() {
 		list_nota.PushBack(new Nota("1",1));
+	}
+	
+	public void initNotas() {
+		for(int i=0;i<10;i++) {
+			list_nota.PushBack(new Nota("Nota: "+i));
+		}
 	}
 	
 	public int cursoInt(String curso) {

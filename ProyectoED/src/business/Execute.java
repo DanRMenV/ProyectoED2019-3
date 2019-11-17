@@ -50,9 +50,13 @@ public class Execute {
 
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
-		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
+		TInicio = System.currentTimeMillis();
+		lst_curso.readStudents("datosPrueba1000000.txt");
+		TFin = System.currentTimeMillis();  
+		tiempo = TFin - TInicio;
+		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
 
-		lst_curso.students_of_curso(1);
+		//lst_curso.students_of_curso(1);
 		//Aca se imprime la informacion basica del curso
 		
 		//lst_curso.listaEstudiantes();
