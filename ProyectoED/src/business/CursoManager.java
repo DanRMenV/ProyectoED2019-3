@@ -95,8 +95,8 @@ public class CursoManager {
 		sc.close();
 		int dia = (int) (Math.random() * 31) + 1;
         int mes = (int) (Math.random() * 12) + 1;
-        int año = (int) (Math.random() * 2018) + 2000;
-        addEstudianteBST(id,name,surname,dia,mes,año,curso);
+        int ano = (int) (Math.random() * 2018) + 2000;
+        addEstudianteBST(id,name,surname,dia,mes,ano,curso);
 	}
     
     
