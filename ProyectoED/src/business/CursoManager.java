@@ -77,7 +77,7 @@ public class CursoManager {
 			Scanner reader = new Scanner(new File(fileName));
 			while(reader.hasNextLine()) {
 				String est = reader.nextLine();
-				createEstudiante(est,i++);
+				createEstudiante(est);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
@@ -86,7 +86,7 @@ public class CursoManager {
 		}
 	}
 	
-	private void createEstudiante(String text,int id) {
+	/*private void createEstudiante(String text,int id) {
 		Scanner sc = new Scanner(text);
 		sc.useDelimiter(",");
 		String name = sc.next();
@@ -97,8 +97,21 @@ public class CursoManager {
         int mes = (int) (Math.random() * 12) + 1;
         int ano = (int) (Math.random() * 2018) + 2000;
         addEstudianteBST(id,name,surname,dia,mes,ano,curso);
-	}
+	}*/
     
+    private void createEstudiante(String text) {
+		Scanner sc = new Scanner(text);
+		sc.useDelimiter(";");
+		String name = sc.next();
+		String surname = sc.next();
+		int dia = sc.nextInt();
+        int mes = sc.nextInt();
+        int ano = sc.nextInt();
+		int curso = sc.nextInt();
+		int id = sc.nextInt();
+		sc.close();
+        addEstudianteBST(id,name,surname,dia,mes,ano,curso);
+	}
     
     
 

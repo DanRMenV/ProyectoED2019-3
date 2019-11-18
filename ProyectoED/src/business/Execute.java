@@ -41,31 +41,10 @@ public class Execute {
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		TInicio = System.currentTimeMillis();
-		lst_curso.readStudents("datosPrueba100000.txt");
+		lst_curso.readStudents("datos1millon.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
-
-		//lst_curso.students_of_curso(1);
-		//Aca se imprime la informacion basica del curso
-		
-		//lst_curso.listaEstudiantes();
-		//lst_admin.printUsers();
-		
-		
-		//TInicio = System.currentTimeMillis(); 
-		//lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
-
-		/*TFin = System.currentTimeMillis();  
-		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo); 
-		
-		TInicio = System.currentTimeMillis(); 
-		//lst_stud.searchEstudianteBST(10);
-		TFin = System.currentTimeMillis(); 
-		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecuci�n en mili consulta 1 dato: " + tiempo); 
-		*/
 		while(mostrar) {
 			pantalla_inicio();
 		}	
@@ -312,18 +291,28 @@ public class Execute {
 				System.out.println("Estudiante anadido ...");
 				clearScreen();
 			}else if(option == 2) {
+				TInicio = System.currentTimeMillis();
+		
 				for(int a=1; a<=11; a++) {
 					Curso temp_curso = lst_curso.FindCurso(a);
 					EstudianteBST temp_root = lst_curso.FindCurso(a).students_curso.getRoot();
 					//lst_curso.printStudentCurso(temp_root);
 					lst_curso.FindCurso(a).students_curso.printStudentCurso(temp_root);
 				}
+				TFin = System.currentTimeMillis();  
+				tiempo = TFin - TInicio;
+				System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
+				
 			}else if(option == 3) {
 				int int_curs = scan.nextInt();
+				TInicio = System.currentTimeMillis();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
 				EstudianteBST temp_root =lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				//lst_curso.printStudentCurso(temp_root);
 				lst_curso.FindCurso(int_curs).students_curso.printStudentCurso(temp_root);
+				TFin = System.currentTimeMillis();  
+				tiempo = TFin - TInicio;
+				System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
 			}else if(option == 4) {
 				int temp_option=0;
 				System.out.println("Ingrese el curso del estudiante");
