@@ -95,18 +95,8 @@ public class Controller implements Initializable{
 			else name="Undecimo";
 			lst_curso.addCurso(new Curso(a,name));
 		}
-		lst_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.readStudents("ProyectoED/datosPrueba100.txt");
-		//Elementos graficos
+		
+		lst_curso.readStudents("datos10000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 	}
