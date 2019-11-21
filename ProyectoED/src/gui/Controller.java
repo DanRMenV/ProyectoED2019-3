@@ -11,6 +11,7 @@ import business.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import data.*;
 import javafx.application.Platform;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -18,9 +19,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableView;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
@@ -62,6 +66,12 @@ public class Controller implements Initializable{
 	@FXML private JFXTextField buscar;
 	@FXML private JFXComboBox<String> BoxCurso;
 
+	//Lista notas
+	@FXML private JFXTreeTableView<Grades> ListaNotas;
+	@FXML private AnchorPane AñadirNotas;
+	@FXML private JFXTextField buscarEst;
+	@FXML private JFXComboBox<String> BoxCursoNotas;
+
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
 					"1", "2", "3", "4", "5", "6", "7", "8",
@@ -96,9 +106,10 @@ public class Controller implements Initializable{
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
-		lst_curso.readStudents("datos10000.txt");
+		lst_curso.readStudents("ProyectoED/datos10000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
+		BoxCursoNotas.setItems(ListaCursoContent);
 	}
 	
 	public void onExitButtonClicked(MouseEvent event) {
@@ -113,6 +124,11 @@ public class Controller implements Initializable{
 
 	public void onExitListaButtonClicked(MouseEvent event) {
 		VerLista.setVisible(false);
+		Prueba.setVisible(true);
+	}
+
+	public void onExitListaNotasButtonClicked(MouseEvent event) {
+		AñadirNotas.setVisible(false);
 		Prueba.setVisible(true);
 	}
 	
@@ -296,25 +312,6 @@ public class Controller implements Initializable{
 			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
 			EstudianteBST temp_root = temp_curso.students_curso.getRoot();
 			estudiantesDatos(temp_root,students);
-			/*
-			int n = lst_stud.NumEstud();
-
-					for (int i = 1; i <= n; i++) {
-						int cur = lst_stud.searchEstudiante(i).getCurso();
-						String curso = Integer.toString(cur);
-						if(curso.equals(c)) {
-							int I = lst_stud.searchEstudiante(i).getId_estudiante();
-							String Id = Integer.toString(I);
-							String name = lst_stud.searchEstudiante(i).getNombre_estudiante();
-							String apellido = lst_stud.searchEstudiante(i).getApellido_estudiante();
-							int edad = lst_stud.searchEstudiante(i).getEdad();
-							String age = Integer.toString(edad);
-							double pro = lst_stud.searchEstudiante(i).getPromedio();
-							String promedio = String.valueOf(pro);
-							students.add(new Student(Id, name, apellido, age, curso, promedio));
-						}
-					}
-					*/
 
 			final TreeItem<Student> root = new RecursiveTreeItem<Student>(students, RecursiveTreeObject::getChildren);
 			Lista.getColumns().setAll(stdId, stdName, stdApellido, stdAge, stdPromedio);
@@ -358,5 +355,295 @@ public class Controller implements Initializable{
 				estudiantesDatos(raiz.right,students);
 			}
 		}
+
+		//Lista Grades
+
+		public void onNotaButoon(MouseEvent event){
+			Prueba.setVisible(false);
+			AñadirNotas.setVisible(true);
+		}
+
+		public void onComboCursoNChanged(ActionEvent event){
+			ListaNotas.setDisable(false);
+			for(int i=0; i<ListaCursoContent.size(); i++){
+				if(BoxCursoNotas.getValue().equals(ListaCursoContent.get(i))){
+					CrearListaNotas(BoxCursoNotas.getValue());
+				}
+			}
+		}
+
+
+		class Grades extends RecursiveTreeObject<Grades> {
+			StringProperty Nombre;
+			StringProperty SurName;
+			StringProperty Nota1;
+			StringProperty Nota2;
+			StringProperty Nota3;
+			StringProperty Nota4;
+			StringProperty Nota5;
+			StringProperty Nota6;
+			StringProperty Nota7;
+			StringProperty Nota8;
+			StringProperty Nota9;
+			StringProperty Nota10;
+
+
+			public Grades(String Nombre, String SurName, String Nota1,String Nota2,String Nota3,String Nota4,String Nota5,String Nota6,String Nota7,String Nota8,String Nota9,String Nota10) {
+				this.Nombre = new SimpleStringProperty(Nombre);
+				this.SurName= new SimpleStringProperty(SurName);
+				this.Nota1 = new SimpleStringProperty(Nota1);
+				this.Nota2 = new SimpleStringProperty(Nota2);
+				this.Nota3 = new SimpleStringProperty(Nota3);
+				this.Nota4 = new SimpleStringProperty(Nota4);
+				this.Nota5 = new SimpleStringProperty(Nota5);
+				this.Nota6 = new SimpleStringProperty(Nota6);
+				this.Nota7 = new SimpleStringProperty(Nota7);
+				this.Nota8 = new SimpleStringProperty(Nota8);
+				this.Nota9 = new SimpleStringProperty(Nota9);
+				this.Nota10 = new SimpleStringProperty(Nota10);
+			}
+
+
+			public StringProperty getnombreProperty() {
+				return Nombre;
+			}
+
+			public StringProperty getsurNameProperty() {
+				return SurName;
+			}
+
+			public void setNota1(String nota1) {
+				this.Nota1.set(nota1);
+			}
+
+
+			public StringProperty getnota1Property() {
+				return Nota1;
+			}
+
+			public StringProperty getnota2Property() {
+				return Nota2;
+			}
+
+			public StringProperty getnota3Property() {
+				return Nota3;
+			}
+
+			public StringProperty getnota4Property() {
+				return Nota4;
+			}
+
+			public StringProperty getnota5Property() {
+				return Nota5;
+			}
+
+			public StringProperty getnota6Property() {
+				return Nota6;
+			}
+
+			public StringProperty getnota7Property() {
+				return Nota7;
+			}
+
+			public StringProperty getnota8Property() {
+				return Nota8;
+			}
+
+			public StringProperty getnota9Property() {
+				return Nota9;
+			}
+
+			public StringProperty getnota10Property() {
+				return Nota10;
+			}
+		}
+
+		public void CrearListaNotas(String c){
+
+			JFXTreeTableColumn<Grades, String> stdName = new JFXTreeTableColumn<>("Nombre");
+			stdName.setPrefWidth(100);
+			stdName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnombreProperty();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdSurName = new JFXTreeTableColumn<>("Apellido");
+			stdSurName.setPrefWidth(100);
+			stdSurName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getsurNameProperty();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota1 = new JFXTreeTableColumn<>("Nota1");
+			stdNota1.setPrefWidth(50);
+			stdNota1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota1Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota2 = new JFXTreeTableColumn<>("Nota2");
+			stdNota2.setPrefWidth(60);
+			stdNota2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota2Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota3 = new JFXTreeTableColumn<>("Nota3");
+			stdNota3.setPrefWidth(60);
+			stdNota3.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota3Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota4 = new JFXTreeTableColumn<>("Nota4");
+			stdNota4.setPrefWidth(60);
+			stdNota4.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota4Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota5 = new JFXTreeTableColumn<>("Nota5");
+			stdNota5.setPrefWidth(60);
+			stdNota5.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota5Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota6 = new JFXTreeTableColumn<>("Nota6");
+			stdNota6.setPrefWidth(60);
+			stdNota6.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota6Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota7 = new JFXTreeTableColumn<>("Nota7");
+			stdNota7.setPrefWidth(60);
+			stdNota7.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota7Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota8 = new JFXTreeTableColumn<>("Nota8");
+			stdNota8.setPrefWidth(60);
+			stdNota8.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota8Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota9 = new JFXTreeTableColumn<>("Nota9");
+			stdNota9.setPrefWidth(60);
+			stdNota9.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota9Property();
+				}
+			});
+
+			JFXTreeTableColumn<Grades, String> stdNota10 = new JFXTreeTableColumn<>("Nota10");
+			stdNota10.setPrefWidth(60);
+			stdNota10.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getnota10Property();
+				}
+			});
+
+
+
+			ObservableList<Grades> Grade = FXCollections.observableArrayList();
+
+			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
+			EstudianteBST temp_root = temp_curso.students_curso.getRoot();
+			estudiantesNotas(temp_root,Grade);
+
+			final TreeItem<Grades> root = new RecursiveTreeItem<Grades>(Grade, RecursiveTreeObject::getChildren);
+			ListaNotas.getColumns().setAll(stdName,stdSurName,stdNota1,stdNota2,stdNota3,stdNota4,stdNota5,stdNota6,stdNota7,stdNota8,stdNota9,stdNota10);
+			stdNota1.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+
+			stdNota1.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					TreeItem<Grades> notaEditable = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable.getValue().setNota1(event.getNewValue());
+				}
+			});
+
+			ListaNotas.setEditable(true);
+			ListaNotas.setRoot(root);
+			ListaNotas.setShowRoot(false);
+
+			buscarEst.textProperty().addListener(new ChangeListener<String>() {
+				@Override
+				public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+					ListaNotas.setPredicate(new Predicate<TreeItem<Grades>>() {
+						@Override
+						public boolean test(TreeItem<Grades> grade) {
+							Boolean flag = grade.getValue().Nombre.getValue().contains(newValue) ||
+									grade.getValue().SurName.getValue().contains(newValue);
+							return flag;
+						}
+					});
+				}
+			});
+		}
+
+		public void estudiantesNotas(EstudianteBST root, ObservableList<Grades> Grade){
+			EstudianteBST raiz = root;
+			if(raiz == null)return ;
+			if(raiz.left != null) {
+				estudiantesNotas(raiz.left,Grade);
+			}
+			Estudiante temp=raiz.data;
+
+			String name = temp.getNombre_estudiante();
+			String apellido = temp.getApellido_estudiante();
+			double n1 = temp.list_nota.GetNota(1);
+			String nota1 = String.valueOf(n1);
+			double n2 = temp.list_nota.GetNota(2);
+			String nota2 = String.valueOf(n2);
+			double n3 = temp.list_nota.GetNota(3);
+			String nota3 = String.valueOf(n3);
+			double n4 = temp.list_nota.GetNota(4);
+			String nota4 = String.valueOf(n4);
+			double n5 = temp.list_nota.GetNota(5);
+			String nota5 = String.valueOf(n5);
+			double n6 = temp.list_nota.GetNota(6);
+			String nota6 = String.valueOf(n6);
+			double n7 = temp.list_nota.GetNota(7);
+			String nota7 = String.valueOf(n7);
+			double n8 = temp.list_nota.GetNota(8);
+			String nota8 = String.valueOf(n8);
+			double n9 = temp.list_nota.GetNota(9);
+			String nota9 = String.valueOf(n9);
+			double n10 = temp.list_nota.GetNota(10);
+			String nota10 = String.valueOf(n10);
+			Grade.add(new Grades(name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
+
+
+			if(raiz.right != null) {
+				estudiantesNotas(raiz.right,Grade);
+			}
+		}
+
 
 }

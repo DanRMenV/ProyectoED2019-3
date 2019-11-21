@@ -14,12 +14,16 @@ public class Nota {
 	public Nota(String descripcion) {
 		super();
 		this.descripcion = descripcion;
-		this.calificacion = -1;
+		this.calificacion = 0;
 	}
 	
 	
 	public double getCalificacion() {
 		return calificacion;
+	}
+
+	public void setCalificacion(double calificacion) {
+		this.calificacion = calificacion;
 	}
 
 	@Override

@@ -20,7 +20,7 @@ public class ListNotas extends DoubleLinkedList<Nota>{
 		int notas=0;
 		DoubleNode <Nota> p = this.head;
         while(p !=  null){
-            if(p.key.getCalificacion()>=0.0) {
+            if(p.key.getCalificacion()>=1.0) {
         	suma+=p.key.getCalificacion();
         	notas++;
             }
@@ -35,5 +35,22 @@ public class ListNotas extends DoubleLinkedList<Nota>{
 			PushBack(new Nota(Integer.toString(i)));
 		}		
 	}
-	
+
+	public double GetNota(int NumNota){
+		DoubleNode<Nota> temp = this.head;
+		for(int i=0; i<NumNota; i++){
+			temp = temp.next;
+		}
+		return temp.getKey().getCalificacion();
+	}
+
+	public void SetNota(int NumNota, double cal){
+		DoubleNode<Nota> temp = this.head;
+		for(int i=0; i<NumNota; i++){
+			temp = temp.next;
+		}
+		temp.getKey().setCalificacion(cal);
+	}
+
+
 }

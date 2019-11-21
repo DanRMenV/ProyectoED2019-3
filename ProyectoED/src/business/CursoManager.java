@@ -53,7 +53,7 @@ public class CursoManager {
 		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
 		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);
 		this.lista_curso.FindCurso(curso).students_curso.insert(nuevo);
-
+		nuevo.initNotas();
 	}
 
 	public Estudiante searchEstudianteBST(EstudianteBST root, int id,int curso){
