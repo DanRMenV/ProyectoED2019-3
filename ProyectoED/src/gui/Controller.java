@@ -68,7 +68,7 @@ public class Controller implements Initializable{
 
 	//Lista notas
 	@FXML private JFXTreeTableView<Grades> ListaNotas;
-	@FXML private AnchorPane AñadirNotas;
+	@FXML private AnchorPane AnadirNotas;
 	@FXML private JFXTextField buscarEst;
 	@FXML private JFXComboBox<String> BoxCursoNotas;
 
@@ -128,7 +128,7 @@ public class Controller implements Initializable{
 	}
 
 	public void onExitListaNotasButtonClicked(MouseEvent event) {
-		AñadirNotas.setVisible(false);
+		AnadirNotas.setVisible(false);
 		Prueba.setVisible(true);
 	}
 	
@@ -360,7 +360,7 @@ public class Controller implements Initializable{
 
 		public void onNotaButoon(MouseEvent event){
 			Prueba.setVisible(false);
-			AñadirNotas.setVisible(true);
+			AnadirNotas.setVisible(true);
 		}
 
 		public void onComboCursoNChanged(ActionEvent event){
