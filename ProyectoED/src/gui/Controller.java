@@ -106,7 +106,8 @@ public class Controller implements Initializable{
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
-		lst_curso.readStudents("ProyectoED/datos10000.txt");
+		lst_curso.readStudents("datosPrueba100.txt");
+
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 		BoxCursoNotas.setItems(ListaCursoContent);
