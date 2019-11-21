@@ -365,6 +365,7 @@ public class Controller implements Initializable{
 
 		public void onComboCursoNChanged(ActionEvent event){
 			ListaNotas.setDisable(false);
+			//cambios
 			for(int i=0; i<ListaCursoContent.size(); i++){
 				if(BoxCursoNotas.getValue().equals(ListaCursoContent.get(i))){
 					CrearListaNotas(BoxCursoNotas.getValue());
