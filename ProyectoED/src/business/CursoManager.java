@@ -72,7 +72,7 @@ public class CursoManager {
 	}
 
     public void readStudents(String fileName) {
-		int i=1;
+		int i=1000000000;
 		try {
 			Scanner reader = new Scanner(new File(fileName));
 			while(reader.hasNextLine()) {

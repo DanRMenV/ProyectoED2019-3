@@ -107,7 +107,6 @@ public class Controller implements Initializable{
 		}
 		
 		lst_curso.readStudents("datosPrueba100.txt");
-
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 		BoxCursoNotas.setItems(ListaCursoContent);
@@ -366,7 +365,6 @@ public class Controller implements Initializable{
 
 		public void onComboCursoNChanged(ActionEvent event){
 			ListaNotas.setDisable(false);
-			//cambios
 			for(int i=0; i<ListaCursoContent.size(); i++){
 				if(BoxCursoNotas.getValue().equals(ListaCursoContent.get(i))){
 					CrearListaNotas(BoxCursoNotas.getValue());
@@ -376,6 +374,7 @@ public class Controller implements Initializable{
 
 
 		class Grades extends RecursiveTreeObject<Grades> {
+			StringProperty Ide;
 			StringProperty Nombre;
 			StringProperty SurName;
 			StringProperty Nota1;
@@ -390,7 +389,8 @@ public class Controller implements Initializable{
 			StringProperty Nota10;
 
 
-			public Grades(String Nombre, String SurName, String Nota1,String Nota2,String Nota3,String Nota4,String Nota5,String Nota6,String Nota7,String Nota8,String Nota9,String Nota10) {
+			public Grades(String Ide, String Nombre, String SurName, String Nota1,String Nota2,String Nota3,String Nota4,String Nota5,String Nota6,String Nota7,String Nota8,String Nota9,String Nota10) {
+				this.Ide = new SimpleStringProperty(Ide);
 				this.Nombre = new SimpleStringProperty(Nombre);
 				this.SurName= new SimpleStringProperty(SurName);
 				this.Nota1 = new SimpleStringProperty(Nota1);
@@ -406,8 +406,13 @@ public class Controller implements Initializable{
 			}
 
 
+
 			public StringProperty getnombreProperty() {
 				return Nombre;
+			}
+
+			public StringProperty getideProperty(){
+				return Ide;
 			}
 
 			public StringProperty getsurNameProperty() {
@@ -418,6 +423,41 @@ public class Controller implements Initializable{
 				this.Nota1.set(nota1);
 			}
 
+			public void setNota2(String nota2) {
+				this.Nota2.set(nota2);
+			}
+
+			public void setNota3(String nota3) {
+				this.Nota3.set(nota3);
+			}
+
+			public void setNota4(String nota4) {
+				this.Nota4.set(nota4);
+			}
+
+			public void setNota5(String nota5) {
+				this.Nota5.set(nota5);
+			}
+
+			public void setNota6(String nota6) {
+				this.Nota6.set(nota6);
+			}
+
+			public void setNota7(String nota7) {
+				this.Nota7.set(nota7);
+			}
+
+			public void setNota8(String nota8) {
+				this.Nota8.set(nota8);
+			}
+
+			public void setNota9(String nota9) {
+				this.Nota9.set(nota9);
+			}
+
+			public void setNota10(String nota10) {
+				this.Nota10.set(nota10);
+			}
 
 			public StringProperty getnota1Property() {
 				return Nota1;
@@ -461,6 +501,15 @@ public class Controller implements Initializable{
 		}
 
 		public void CrearListaNotas(String c){
+
+			JFXTreeTableColumn<Grades, String> stdIde = new JFXTreeTableColumn<>("Id");
+			stdIde.setPrefWidth(0);
+			stdIde.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<Grades, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<Grades, String> param) {
+					return param.getValue().getValue().getideProperty();
+				}
+			});
 
 			JFXTreeTableColumn<Grades, String> stdName = new JFXTreeTableColumn<>("Nombre");
 			stdName.setPrefWidth(100);
@@ -571,7 +620,6 @@ public class Controller implements Initializable{
 			});
 
 
-
 			ObservableList<Grades> Grade = FXCollections.observableArrayList();
 
 			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
@@ -580,13 +628,124 @@ public class Controller implements Initializable{
 
 			final TreeItem<Grades> root = new RecursiveTreeItem<Grades>(Grade, RecursiveTreeObject::getChildren);
 			ListaNotas.getColumns().setAll(stdName,stdSurName,stdNota1,stdNota2,stdNota3,stdNota4,stdNota5,stdNota6,stdNota7,stdNota8,stdNota9,stdNota10);
-			stdNota1.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
 
+			stdNota1.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
 			stdNota1.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
 				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event1) {
+					Double tem1 = Double.parseDouble(event1.getNewValue());
+					TreeItem<Grades> notaEditable1 = ListaNotas.getTreeItem(event1.getTreeTablePosition().getRow());
+					notaEditable1.getValue().setNota1(event1.getNewValue());
+					int k = Integer.parseInt(event1.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(1,tem1);
+				}
+			});
+
+			stdNota2.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota2.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event2) {
+					Double tem2 = Double.parseDouble(event2.getNewValue());
+					TreeItem<Grades> notaEditable2 = ListaNotas.getTreeItem(event2.getTreeTablePosition().getRow());
+					notaEditable2.getValue().setNota2(event2.getNewValue());
+					int k = Integer.parseInt(event2.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(2,tem2);
+				}
+			});
+
+			stdNota3.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota3.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
 				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
-					TreeItem<Grades> notaEditable = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
-					notaEditable.getValue().setNota1(event.getNewValue());
+					Double tem3 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable3 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable3.getValue().setNota3(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(3,tem3);
+				}
+			});
+
+			stdNota4.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota4.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem4 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable4 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable4.getValue().setNota4(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(4,tem4);
+				}
+			});
+
+			stdNota5.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota5.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem5 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable5 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable5.getValue().setNota5(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(5,tem5);
+				}
+			});
+
+			stdNota6.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota6.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem6 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable6 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable6.getValue().setNota6(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(6,tem6);
+				}
+			});
+
+			stdNota7.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota7.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem7 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable7 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable7.getValue().setNota7(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(7,tem7);
+				}
+			});
+
+			stdNota8.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota8.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem8 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable8 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable8.getValue().setNota8(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(8,tem8);
+				}
+			});
+
+			stdNota9.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota9.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem9 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable9 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable9.getValue().setNota9(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(9,tem9);
+				}
+			});
+
+			stdNota10.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());
+			stdNota10.setOnEditCommit(new EventHandler<TreeTableColumn.CellEditEvent<Grades, String>>() {
+				@Override
+				public void handle(TreeTableColumn.CellEditEvent<Grades, String> event) {
+					Double tem10 = Double.parseDouble(event.getNewValue());
+					TreeItem<Grades> notaEditable10 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
+					notaEditable10.getValue().setNota10(event.getNewValue());
+					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
+					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(10,tem10);
 				}
 			});
 
@@ -617,6 +776,8 @@ public class Controller implements Initializable{
 			}
 			Estudiante temp=raiz.data;
 
+			int id = temp.getId_estudiante();
+			String ide = String.valueOf(id);
 			String name = temp.getNombre_estudiante();
 			String apellido = temp.getApellido_estudiante();
 			double n1 = temp.list_nota.GetNota(1);
@@ -639,7 +800,7 @@ public class Controller implements Initializable{
 			String nota9 = String.valueOf(n9);
 			double n10 = temp.list_nota.GetNota(10);
 			String nota10 = String.valueOf(n10);
-			Grade.add(new Grades(name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
+			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
 
 
 			if(raiz.right != null) {

@@ -200,7 +200,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="AñadirNotas" layoutY="-1.0" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: white;" visible="false">
+      <AnchorPane fx:id="AnadirNotas" layoutY="-1.0" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: white;" visible="false">
          <children>
             <JFXTreeTableView fx:id="ListaNotas" disable="true" layoutX="32.0" layoutY="69.0" prefHeight="471.0" prefWidth="796.0" />
             <Text layoutX="32.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtrar">
