@@ -68,7 +68,11 @@ public class Estudiante {
 		this.fecha_nacimiento = date;
 		calcEdad(date);
 	}
-
+	public Estudiante(int id_estudiante, double prom) {
+		super();
+		this.id_estudiante = id_estudiante;
+		this.promedio = prom;
+	}
 	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, String curso) {
 		super();
 		this.id_estudiante = id_estudiante;

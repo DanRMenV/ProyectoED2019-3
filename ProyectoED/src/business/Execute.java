@@ -10,6 +10,14 @@ import java.util.*;
 
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
+	
+	
+	
+	
+	static HeapNota heap_prueba  = new HeapNota(100);
+	
+	
+	
 	//static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
 	static int pantalla=9;
@@ -17,6 +25,16 @@ public class Execute {
 	static long TInicio, TFin, tiempo;
 	static boolean mostrar=true;
 	public static void main(String[] args) {
+		
+		
+		/*
+		heap_prueba.Insert(new Estudiante(1,4.1));
+		heap_prueba.Insert(new Estudiante(2,1.0));
+		heap_prueba.Insert(new Estudiante(3,3.9));
+		heap_prueba.Insert(new Estudiante(4,4.8));
+		heap_prueba.Insert(new Estudiante(5,1.5));
+		heap_prueba.Insert(new Estudiante(6,2.8));*/
+		
 		lst_admin.addAdminUser(new Admin("juanse","123456"));
 		lst_admin.addAdminUser(new Admin("crack yo","09786"));
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
@@ -41,7 +59,7 @@ public class Execute {
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		TInicio = System.currentTimeMillis();
-		lst_curso.readStudents("datos1millon.txt");
+		lst_curso.readStudents("datosPrueba100.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
@@ -258,13 +276,20 @@ public class Execute {
 			clearScreen();
 			pantalla=3;
 		}*/else if(pantalla == 9){
-			int option;
-			System.out.println("Sistema BTS");
-			System.out.println("Escoja la accion que desea realizar: ");
-			System.out.println("1- Anadir estudiante    2- Ver todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
-			System.out.println("6- A�adir nota curso   7- Ver promedio por cursos");
-			option = scan.nextInt();
-			clearScreen();
+			int option = 8;
+			
+			
+			
+			//System.out.println("Sistema BTS");
+			//System.out.println("Escoja la accion que desea realizar: ");
+			//System.out.println("1- Anadir estudiante    2- Ver todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
+			//System.out.println("6- A�adir nota curso   7- Ver promedio por cursos  8-TestHeap");
+			//option = scan.nextInt();
+			//clearScreen();
+			
+			
+			
+			
 			if(option == 1) {
 				System.out.println("Anadir estudiante: ");
 				System.out.println("Seleccione el curso al cual va a anadir el estudiante");
@@ -456,6 +481,44 @@ public class Execute {
 				
 			}else if(option == 7) {
 				lst_curso.listaEstudiantes();
+			}
+			else if(option == 8) {
+				int heapTest = 0;
+				System.out.println(" ");
+				System.out.println("HeapStudent Test");
+				System.out.println("1- anadir estudiante   2- Buscar estudiante    3-Ver 5 mejores promedios    4- modificar promedio estudiante   5-Mostrar estudiantes guardados ");
+				heapTest = scan.nextInt();
+				if(heapTest == 1) {
+					double temProm = 0.0;
+					int tempId;
+					System.out.println("Ingrese el documento del estudiante");
+					tempId = scan.nextInt();
+					System.out.println("Ingrese el promedio del estudiante");
+					temProm = scan.nextDouble();
+					Estudiante nuevo = new Estudiante(tempId,temProm);
+					heap_prueba.Insert(nuevo);
+				}
+				if(heapTest == 2) {
+					int tempId;
+					System.out.println("Ingrese el documento del estudiante");
+					tempId = scan.nextInt();
+					System.out.println(heap_prueba.posFind(tempId));
+				}
+				if(heapTest == 3) {
+					heap_prueba.mejProm();
+				}
+				if(heapTest == 4) {
+					int tempId;
+					double tempProm;
+					System.out.println("Inserte el documento: ");
+					tempId = scan.nextInt();
+					System.out.println("Inserte el promedio: ");
+					tempProm = scan.nextDouble();
+					heap_prueba.modProm(tempId, tempProm);
+				}
+				if(heapTest == 5) {
+					heap_prueba.printEst();
+				}
 			}
 		}else {
 			mostrar=false;
