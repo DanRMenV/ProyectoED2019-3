@@ -106,7 +106,7 @@ public class Controller implements Initializable{
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
-		lst_curso.readStudents("datosPrueba100.txt");
+		lst_curso.readStudents("datos100000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 		BoxCursoNotas.setItems(ListaCursoContent);
@@ -371,7 +371,6 @@ public class Controller implements Initializable{
 				}
 			}
 		}
-
 
 		class Grades extends RecursiveTreeObject<Grades> {
 			StringProperty Ide;
