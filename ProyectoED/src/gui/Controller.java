@@ -68,7 +68,7 @@ public class Controller implements Initializable{
 
 	//Lista notas
 	@FXML private JFXTreeTableView<Grades> ListaNotas;
-	@FXML private AnchorPane AñadirNotas;
+	@FXML private AnchorPane AnadirNotas;
 	@FXML private JFXTextField buscarEst;
 	@FXML private JFXComboBox<String> BoxCursoNotas;
 
@@ -106,7 +106,7 @@ public class Controller implements Initializable{
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
-		lst_curso.readStudents("ProyectoED/datos10000.txt");
+		lst_curso.readStudents("datos100000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 		BoxCursoNotas.setItems(ListaCursoContent);
@@ -128,7 +128,7 @@ public class Controller implements Initializable{
 	}
 
 	public void onExitListaNotasButtonClicked(MouseEvent event) {
-		AñadirNotas.setVisible(false);
+		AnadirNotas.setVisible(false);
 		Prueba.setVisible(true);
 	}
 	
@@ -360,7 +360,7 @@ public class Controller implements Initializable{
 
 		public void onNotaButoon(MouseEvent event){
 			Prueba.setVisible(false);
-			AñadirNotas.setVisible(true);
+			AnadirNotas.setVisible(true);
 		}
 
 		public void onComboCursoNChanged(ActionEvent event){
@@ -371,7 +371,6 @@ public class Controller implements Initializable{
 				}
 			}
 		}
-
 
 		class Grades extends RecursiveTreeObject<Grades> {
 			StringProperty Ide;
@@ -801,8 +800,6 @@ public class Controller implements Initializable{
 			double n10 = temp.list_nota.GetNota(10);
 			String nota10 = String.valueOf(n10);
 			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
-
-
 			if(raiz.right != null) {
 				estudiantesNotas(raiz.right,Grade);
 			}
