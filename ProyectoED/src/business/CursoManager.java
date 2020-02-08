@@ -77,7 +77,7 @@ public class CursoManager {
 			Scanner reader = new Scanner(new File(fileName));
 			while(reader.hasNextLine()) {
 				String est = reader.nextLine();
-				createEstudiante(est,i++);
+				createEstudiante(est);
 			}
 			reader.close();
 		} catch (FileNotFoundException e) {
