@@ -800,8 +800,6 @@ public class Controller implements Initializable{
 			double n10 = temp.list_nota.GetNota(10);
 			String nota10 = String.valueOf(n10);
 			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
-
-
 			if(raiz.right != null) {
 				estudiantesNotas(raiz.right,Grade);
 			}
