@@ -129,8 +129,7 @@ public class Controller implements Initializable{
 
 	public void onExitListaButtonClicked(MouseEvent event) {
 		VerLista.setVisible(false);
-		Prueba.setVisible(true);
-		Lista.setDisable(true);		
+		Prueba.setVisible(true);	
 	}
 
 	public void onExitListaNotasButtonClicked(MouseEvent event) {
