@@ -8,7 +8,7 @@ public class EstudianteBST {
     public EstudianteBST right;
     public EstudianteBST parent;
     public Estudiante data;
-
+    int height;
     public EstudianteBST(Estudiante data) {
         this.left=null;
         this.right=null;

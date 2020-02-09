@@ -37,7 +37,9 @@ import javax.swing.*;
 import javax.swing.text.AbstractDocument.Content;
 
 public class Controller implements Initializable{
-	static AdminManager lst_admin = new AdminManager();
+	//static AdminManager lst_admin = new AdminManager();
+  
+  static AdminManager hash_admin = new AdminManager();
 	static CursoManager lst_curso = new CursoManager();
 	
 	//Login bienvenida
@@ -84,16 +86,17 @@ public class Controller implements Initializable{
 	
 	ObservableList<String> ListaMaterias =
 			FXCollections.observableArrayList(
-					"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
+					"EspaÃ±ol","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		//Datos
-		lst_admin.addAdminUser(new Admin("juanse","123456"));
-		lst_admin.addAdminUser(new Admin("crack yo","09786"));
-		lst_admin.addAdminUser(new Admin("babb","12345444"));
-		lst_admin.addAdminUser(new Admin("nel","1245"));
-		lst_admin.addAdminUser(new Admin("trolazo","696969"));
+		hash_admin.addAdminUser(new Admin(1000274,"Juanse","123456"));
+		hash_admin.addAdminUser(new Admin(1000123,"Mendivelso","654321"));
+		hash_admin.addAdminUser(new Admin(1000654,"JuanP","123456"));
+		hash_admin.addAdminUser(new Admin(696969,"nel","1245"));
+		hash_admin.addAdminUser(new Admin(1,"Admin",""));
+    
 		for(int a=1; a<=11; a++) {
 			String name;
 			if(a == 1)name="Primero";
@@ -129,7 +132,7 @@ public class Controller implements Initializable{
 
 	public void onExitListaButtonClicked(MouseEvent event) {
 		VerLista.setVisible(false);
-		Prueba.setVisible(true);
+		Prueba.setVisible(true);	
 	}
 
 	public void onExitListaNotasButtonClicked(MouseEvent event) {
@@ -137,13 +140,33 @@ public class Controller implements Initializable{
 		Prueba.setVisible(true);
 	}
 	
-	public void onIngresarButtonClicked(MouseEvent event) {
+	/*public void onIngresarButtonClicked(MouseEvent event) {
 		String temp_user="",temp_password="";
 		temp_user = UserField.getText();
 		temp_password = PasswordField.getText();
 		boolean ver=lst_admin.ValUser(new Admin(temp_user,temp_password));	
 		if(ver) {
 			bienvenida.setText("Bienvenido "+temp_user+" que desea hacer?");
+      
+			Login1.setVisible(false);
+			Login2.setVisible(false);
+			Prueba.setVisible(true);
+			
+		}else {
+			IngresarError.setVisible(true);
+			UserField.setText("");
+			PasswordField.setText("");	
+		}	
+	}*/
+  
+  public void onIngresarButtonClicked(MouseEvent event) {
+		long temp_id ;
+		String temp_password="";
+		temp_id = Long.parseLong((UserField.getText()));
+		temp_password = PasswordField.getText();
+		boolean ver=hash_admin.ValUser(new Admin(temp_id,temp_password));	
+		if(ver) {
+			bienvenida.setText("Bienvenido xdxdxd falta arreglar estoooooooo "+" que desea hacer?");
 			Login1.setVisible(false);
 			Login2.setVisible(false);
 			Prueba.setVisible(true);
