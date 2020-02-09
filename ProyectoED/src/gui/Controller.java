@@ -248,6 +248,8 @@ public class Controller implements Initializable{
 			}
 		}
 	}
+	
+	
 
 
 	class Student extends RecursiveTreeObject<Student> {
@@ -368,14 +370,12 @@ public class Controller implements Initializable{
 			AnadirNotas.setVisible(true);
 		}
 		
-		String c;
+		String c="";
+		String m="";
 		public void onComboCursoNChanged(ActionEvent event){
 			c = BoxCursoNotas.getValue();
-		}
-		
-		public void onComboMateriaChanged(ActionEvent event){
-			if(c.equals("")) {
-				
+			if(m.equals("")) {
+				System.out.println("ponga materia");
 			}else {
 				ListaNotas.setDisable(false);
 				for(int i=0; i<ListaMaterias.size(); i++){
@@ -385,6 +385,22 @@ public class Controller implements Initializable{
 				}
 			}
 		}
+		
+		public void onComboMateriaChanged(ActionEvent event){
+			m=BoxMaterias.getValue();
+			if(c.equals("")) {
+				System.out.println("ponga curso");
+			}else {
+				ListaNotas.setDisable(false);
+				for(int i=0; i<ListaMaterias.size(); i++){
+					if(BoxMaterias.getValue().equals(ListaMaterias.get(i))){
+						CrearListaNotas(c,BoxMaterias.getValue());
+					}
+				}
+			}
+		}
+		
+		
 
 		class Grades extends RecursiveTreeObject<Grades> {
 			StringProperty Ide;
