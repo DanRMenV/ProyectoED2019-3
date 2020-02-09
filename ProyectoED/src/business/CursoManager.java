@@ -14,7 +14,7 @@ import data.ListCurso;
 public class CursoManager {
     ListCurso lista_curso;
     
-    //Aquí voy a colocar el manejo delBST grande porque no sé donde mas xd
+    //Aquï¿½ voy a colocar el manejo delBST grande porque no sï¿½ donde mas xd
     
     BinaryTree arbol_col;
     
@@ -36,51 +36,21 @@ public class CursoManager {
     public  Curso FindCurso(int id) {
         return lista_curso.FindCurso(id);
     }
-    
-    /*public void readStudents(String fileName) {
-        int i=1;
-        try {
-            Scanner reader = new Scanner(new File(fileName));
-            while(reader.hasNextLine()) {
-                reader.useDelimiter(",");
-                String name = reader.next();
-                String surname = reader.next();
-                int curso = Integer.parseInt(reader.next());
-                int dia = (int) (Math.random() * 31) + 1;
-                int mes = (int) (Math.random() * 12) + 1;
-                int aï¿½o = (int) (Math.random() * 2018) + 2000;
-
-                this.lista_curso.FindCurso(curso).est_curso.addEstudianteBST(i++,name,surname,dia,mes,aï¿½o,curso);
-            }
-            reader.close();
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    } */
-
 
 	public void addEstudianteBST(int id, String name, String surname, int dia, int mes, int year, int curso) {
 		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
 		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);
+    nuevo.initMaterias();
 		Curso tempCurs = this.lista_curso.FindCurso(curso);
 		tempCurs.students_curso.AVLinsert(nuevo);
 		tempCurs.num_stud = tempCurs.students_curso.getNumEst();
 		//Agregar estudiante al arbol general
 		arbol_col.AVLinsert(nuevo);
-		
 		//En esta parte se agrega el estudiante al Heap
 		tempCurs.heap_curso.Insert(nuevo);
-		
-		
-		
-		
-		
-		nuevo.initNotas();
 	}
 
 	public Estudiante searchEstudianteBST(EstudianteBST root, int id,int curso){
-		//EstudianteBST e= ListStudentBST.Find(root, data);
 		Estudiante e=lista_curso.FindCurso(curso).students_curso.Find(root,id).data;
 
 		return e;

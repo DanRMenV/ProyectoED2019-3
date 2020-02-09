@@ -55,6 +55,7 @@ public class BinaryTree {
 			return;
 		}
 	}
+	
 	public void inOrder() {
 		EstudianteBST raiz = root;
 		if(raiz == null)return ;
@@ -132,21 +133,6 @@ public class BinaryTree {
 	}
 
 	Scanner scan = new Scanner(System.in);
-	public void addNotaCurso(EstudianteBST root, String desc) {
-		EstudianteBST raiz = root;
-		if(raiz == null)return ;
-		if(raiz.left != null) {
-			addNotaCurso(raiz.left,desc);
-		}
-		Estudiante temp=raiz.data;
-		System.out.println("Documento de identidad: "+temp.getId_estudiante()+" Nombre: "+temp.getNombre_estudiante()+" "+temp.getApellido_estudiante()+" Edad: "+temp.getEdad()+" Promedio: "+temp.getPromedio()+" Curso: "+temp.getCurso());
-		temp.list_nota.PushBack(new Nota(desc,scan.nextDouble()));
-		calcProme(raiz);
-		temp.list_nota.DisplayList();
-		if(raiz.right != null) {
-			addNotaCurso(raiz.right,desc);
-		}
-	}
 	public double calcProme(EstudianteBST est) {
 		/*est.data.setPromedio(est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos());
 		return est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos();*/
@@ -321,8 +307,6 @@ public class BinaryTree {
 		adjustHeight(N);
 		adjustHeight(X);
 	}
-	
-	
-	
+		
 		
 }

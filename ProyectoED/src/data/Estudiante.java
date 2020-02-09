@@ -10,7 +10,8 @@ public class Estudiante {
 	String apellido_estudiante;
 	Calendar fecha_nacimiento;
 	Integer edad;
-	public ListNotas list_nota;
+	//public ListNotas list_nota;
+	public ListMaterias list_materias;
 	
 	int curso;
 	double promedio=0;
@@ -80,8 +81,8 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = cursoInt(curso.trim());
-		this.list_nota = new ListNotas();
-		this.list_nota.initNotas();
+		this.list_materias =new ListMaterias();
+		this.list_materias.initMaterias();
 		calcEdad(fecha_nacimiento);
 	}
 
@@ -92,8 +93,8 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
-		this.list_nota = new ListNotas();
-		this.list_nota.initNotas();
+		this.list_materias =new ListMaterias();
+		this.list_materias.initMaterias();
 		calcEdad(fecha_nacimiento);
 	}
 	
@@ -110,14 +111,19 @@ public class Estudiante {
 
 	}
 	
-	void addNo() {
-		list_nota.PushBack(new Nota("1",1));
+	
+	public void initMaterias() {
+		String[] mat={"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
+
+		for(int i=0;i<mat.length;i++) {
+			list_materias.PushBack(new Materia(mat[i]));
+			list_materias.getMateria(mat[i]).list_nota.initNotas();
+		}		
 	}
 	
-	public void initNotas() {
-		for(int i=0;i<10;i++) {
-			list_nota.PushBack(new Nota("Nota: "+i));
-		}
+	public void updatePromedio(String materia) {
+		list_materias.getMateria(materia).updatePromedio();
+		this.promedio=list_materias.promedioMaterias();
 	}
 	
 	public int cursoInt(String curso) {

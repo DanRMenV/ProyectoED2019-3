@@ -208,18 +208,19 @@
                   <Font size="25.0" />
                </font>
             </Text>
-            <JFXTextField fx:id="buscarEst" layoutX="112.0" layoutY="29.0" promptText="escriba aqui" />
+            <JFXTextField fx:id="buscarEst" layoutX="112.0" layoutY="29.0" prefHeight="25.0" prefWidth="110.0" promptText="escriba aqui" />
             <ImageView fitHeight="56.0" fitWidth="85.0" layoutX="776.0" layoutY="14.0" onMouseClicked="#onExitListaNotasButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/salir_lista.png" />
                </image>
             </ImageView>
-            <JFXComboBox fx:id="BoxCursoNotas" layoutX="610.0" layoutY="30.0" onAction="#onComboCursoNChanged" prefHeight="25.0" prefWidth="103.0" promptText="Curso" />
-            <Text layoutX="333.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione un curso por favor">
+            <JFXComboBox fx:id="BoxCursoNotas" layoutX="539.0" layoutY="30.0" onAction="#onComboCursoNChanged" prefHeight="25.0" prefWidth="75.0" promptText="Curso" />
+            <Text layoutX="229.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione un curso y una materia">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
+            <JFXComboBox fx:id="BoxMaterias" layoutX="636.0" layoutY="30.0" onAction="#onComboMateriaChanged" prefHeight="25.0" prefWidth="128.0" promptText="Materia" />
          </children>
       </AnchorPane>
    </children>

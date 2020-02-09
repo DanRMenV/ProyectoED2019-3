@@ -10,10 +10,6 @@ import java.util.*;
 
 public class Execute {
 	static AdminManager hash_admin = new AdminManager();
-	
-	
-	
-	
 	static HeapNota heap_prueba  = new HeapNota(100);
 	
 	
@@ -29,8 +25,6 @@ public class Execute {
 	
 	public static void main(String[] args) {
 	
-		
-		
 		heap_prueba.Insert(new Estudiante(1,4.1));
 		heap_prueba.Insert(new Estudiante(2,1.0));
 		heap_prueba.Insert(new Estudiante(3,3.9));
@@ -43,6 +37,7 @@ public class Execute {
 		hash_admin.addAdminUser(new Admin(1000654,"JuanP","123456"));
 		hash_admin.addAdminUser(new Admin(696969,"nel","123456"));
 		hash_admin.addAdminUser(new Admin(1,"Admin",""));
+
 		for(int a=1; a<=11; a++) {
 			String name;
 			if(a == 1)name="Primero";
@@ -415,7 +410,7 @@ public class Execute {
 				EstudianteBST temp_root = lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				System.out.println("Ingrese la decripcion de la nota: ");
 				String temp_desc = scan.next();
-				lst_curso.FindCurso(int_curs).students_curso.addNotaCurso(temp_root, temp_desc);
+				//lst_curso.FindCurso(int_curs).students_curso.addNotaCurso(temp_root, temp_desc);
 				temp_curso.setSum_total(0);
 				temp_curso.sumaTotal(temp_root);
 				temp_curso.calcProm();

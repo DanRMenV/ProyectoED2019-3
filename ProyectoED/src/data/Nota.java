@@ -1,5 +1,7 @@
 package data;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Nota {
 	String descripcion;
 	double calificacion;
@@ -14,7 +16,7 @@ public class Nota {
 	public Nota(String descripcion) {
 		super();
 		this.descripcion = descripcion;
-		this.calificacion = 0;
+		this.calificacion = 0.0;
 	}
 	
 	

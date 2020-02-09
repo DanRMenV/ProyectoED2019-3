@@ -9,13 +9,8 @@ public class Curso {
 	public double sum_total;
 	double prom_curso;
 	public BinaryTree students_curso;
-	
-	//Aquí va el Heap de cada curso para los mejores promedios
-	
 	public HeapNota heap_curso;
-	
-	
-	
+  
 	public Curso(int id_curso, String name) {
 		super();
 		this.id_curso = id_curso;
