@@ -9,6 +9,7 @@ public class Curso {
 	public double sum_total;
 	double prom_curso;
 	public BinaryTree students_curso;
+	//HEAP
 
 	public Curso(int id_curso, String name) {
 		super();

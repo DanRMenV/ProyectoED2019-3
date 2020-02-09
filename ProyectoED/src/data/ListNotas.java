@@ -50,6 +50,7 @@ public class ListNotas extends DoubleLinkedList<Nota>{
 			temp = temp.next;
 		}
 		temp.getKey().setCalificacion(cal);
+		
 	}
 
 
