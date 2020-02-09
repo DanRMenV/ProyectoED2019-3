@@ -86,7 +86,7 @@ public class Controller implements Initializable{
 	
 	ObservableList<String> ListaMaterias =
 			FXCollections.observableArrayList(
-					"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
+					"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

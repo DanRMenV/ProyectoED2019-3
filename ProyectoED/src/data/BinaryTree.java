@@ -133,13 +133,7 @@ public class BinaryTree {
 	}
 
 	Scanner scan = new Scanner(System.in);
-	public double calcProme(EstudianteBST est) {
-		/*est.data.setPromedio(est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos());
-		return est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos();*/
-		est.data.setPromedio(est.data.list_nota.promedio());
-		return est.data.list_nota.promedio();
-		
-	}
+
 	//Metodos AVL----
 	public void inOrderHeight() {
 		EstudianteBST raiz = this.root;

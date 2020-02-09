@@ -80,8 +80,6 @@ public class EstudiantesManager {
 		return new Estudiante(id,name,surname,new GregorianCalendar(2000,01,01),curso);
 	}*/
 
-}
-*/
 
 //Temporalmente comentado por no saber lo que hace lol
 
