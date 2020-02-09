@@ -7,7 +7,7 @@ import java.util.Scanner;
 import data.*;
 
 public class EstudiantesManager {
-	ListStudent lista_estudiantes;
+	/*ListStudent lista_estudiantes;
 
 	public EstudiantesManager() {
 		this.lista_estudiantes =new ListStudent();
@@ -34,9 +34,11 @@ public class EstudiantesManager {
 		return lista_estudiantes.NumeroElementos();
 	}
 	
-	public void AddNota(int id,double nota, String descr) {
+	public void AddNota(int id,double nota, String materia,String descr) {
 		Estudiante e=searchEstudiante(id);
-		e.list_nota.PushBack(new Nota(descr,nota));
+		//e.list_nota.PushBack(new Nota(descr,nota));
+		e.list_materias.getMateria(materia).getList().PushBack(new Nota(descr,nota));
+		
 	}
 	public void AddNota(EstudianteBST student,double nota, String descr) {
 		student.data.list_nota.PushBack(new Nota(descr,nota));
@@ -76,7 +78,7 @@ public class EstudiantesManager {
 		int curso = Integer.parseInt(sc.next());
 		sc.close();
 		return new Estudiante(id,name,surname,new GregorianCalendar(2000,01,01),curso);
-	}
+	}*/
 
 }
 

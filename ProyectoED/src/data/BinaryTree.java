@@ -51,6 +51,7 @@ public class BinaryTree {
 		root.left = estud;
 		numEst++;
 	}
+	
 	public void inOrder() {
 		EstudianteBST raiz = root;
 		if(raiz == null)return ;
@@ -127,7 +128,7 @@ public class BinaryTree {
 	}
 
 	Scanner scan = new Scanner(System.in);
-	public void addNotaCurso(EstudianteBST root, String desc) {
+	/*public void addNotaCurso(EstudianteBST root, String desc) {
 		EstudianteBST raiz = root;
 		if(raiz == null)return ;
 		if(raiz.left != null) {
@@ -141,103 +142,12 @@ public class BinaryTree {
 		if(raiz.right != null) {
 			addNotaCurso(raiz.right,desc);
 		}
-	}
-	public double calcProme(EstudianteBST est) {
-		/*est.data.setPromedio(est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos());
-		return est.data.list_nota.sumaNota() / est.data.list_nota.NumeroElementos();*/
-		est.data.setPromedio(est.data.list_nota.promedio());
-		return est.data.list_nota.promedio();
-		
-	}
-	//Metodo incompleto ....
-	
-	 /*	public void DeleteByData(int data) {
-		BinaryNode 	N = Find(root,data);
-		if(N.data != data)return;
-		if(N.data > root.data) {
-			if(N.right == null && N.left == null) {
-				N.parent.right = null;
-				N.parent = null;
-			}
-			else if(N.right == null) {
-				N.parent.right = N.left;
-				N.left.parent = N.parent;
-				N.parent = null;
-				N.left = null;
-				N = null;
-			}else {
-				BinaryNode X = Next(N);
-				BinaryNode father = N.parent;
-				father.right = X;
-				X.parent = father;
-				X.left = N.left;
-				N.left = null;
-				X.right = N.right.right;
-			}
-		}else {
-			if(N.right == null && N.left == null) {
-				N.parent.left = null;
-				N.parent = null;
-			}
-			else if(N.right == null) {
-				if(N.parent != null) {
-					N.parent.right = N.left;
-					N.left.parent = N.parent;
-					N.parent = null;
-					N.left = null;
-					N = null;
-				}else {
-					System.out.println(N.data);
-					root = N.left;
-					N.left.parent = root;
-					root.parent = null;
-				}
-			}else {
-				if(N.parent != null) {
-					BinaryNode X = Next(N);
-					BinaryNode father = N.parent;
-					father.left = X;
-					X.parent = father;
-					N.right.left = N.right.left.right;
-					N.right.left.parent = N.right;
-					X.right = N.right;
-					X.left = N.left;
-					X.left.parent = X;
-				}else {
-					BinaryNode X = Next(N);
-					X.right = N.right;
-					X.left = N.left;
-					X.left.parent = X;
-					root = X;
-					if(Next(N).right != null) {
-						X.right.left = Next(N).right;
-						X.right.left.parent = X.right;
-					}
-				}
-			}
-		}
-		
-		/*if(delete.right == null) {
-			if(delete.left != null) {
-				delete.parent.right = delete.left;
-				delete.left.parent = delete.parent;
-			}else {
-				delete.parent.right = null;
-			}
-			delete.parent = null;
-		}else {
-			BinaryNode X = Next(delete);
-			if(delete.parent != null) {
-				delete.parent.right = X;
-				X.parent = delete.parent;
-			}
-			if(X.right != null) {
-				delete.right.left = X.right;
-				X.right = delete.right;
-			}
-			delete = null;
-		}
-		
 	}*/
+	
+	/*public double calcProme(EstudianteBST est) {
+		est.data.setPromedio(est.data.list_materias.promedioMateria());
+		return est.data.list_materias.promedioMateria();
+	}*/
+	
 		
 }

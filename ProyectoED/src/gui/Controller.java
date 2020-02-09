@@ -36,7 +36,6 @@ import javax.swing.*;
 
 public class Controller implements Initializable{
 	static AdminManager lst_admin = new AdminManager();
-	static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
 	
 	//Login bienvenida
@@ -52,11 +51,9 @@ public class Controller implements Initializable{
 	
 	//Anadir estudiante
 	@FXML private AnchorPane AddEstudiante;
-	
 	@FXML private JFXTextField inIdEst;
 	@FXML private JFXTextField inNomEst;
 	@FXML private JFXTextField inApeEst;
-	
 	@FXML private JFXDatePicker inFecNac;
 	@FXML private JFXComboBox<String> inCurso;
 
@@ -106,7 +103,7 @@ public class Controller implements Initializable{
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
-		lst_curso.readStudents("datos100000.txt");
+		lst_curso.readStudents("datos10000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
 		BoxCursoNotas.setItems(ListaCursoContent);
@@ -153,6 +150,7 @@ public class Controller implements Initializable{
 	public void onAnadirIcon(MouseEvent event) {
 		Prueba.setVisible(false);
 		AddEstudiante.setVisible(true);
+		inIdEst.setText("");
 		inNomEst.setText("");
 		inApeEst.setText("");
 		inFecNac.setValue(null);
@@ -225,8 +223,8 @@ public class Controller implements Initializable{
 
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
+
 		
-		lst_stud.listaEstudiantes();
 	}
 
 	public void onListaButoon(MouseEvent event){
@@ -636,7 +634,10 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable1 = ListaNotas.getTreeItem(event1.getTreeTablePosition().getRow());
 					notaEditable1.getValue().setNota1(event1.getNewValue());
 					int k = Integer.parseInt(event1.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(1,tem1);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(1,tem1);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria("Ingles").getList().SetNota(1, tem1);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio("Ingles");
+					
 				}
 			});
 
@@ -648,7 +649,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable2 = ListaNotas.getTreeItem(event2.getTreeTablePosition().getRow());
 					notaEditable2.getValue().setNota2(event2.getNewValue());
 					int k = Integer.parseInt(event2.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(2,tem2);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(2,tem2);
 				}
 			});
 
@@ -660,7 +661,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable3 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable3.getValue().setNota3(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(3,tem3);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(3,tem3);
 				}
 			});
 
@@ -672,7 +673,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable4 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable4.getValue().setNota4(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(4,tem4);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(4,tem4);
 				}
 			});
 
@@ -684,7 +685,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable5 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable5.getValue().setNota5(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(5,tem5);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(5,tem5);
 				}
 			});
 
@@ -696,7 +697,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable6 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable6.getValue().setNota6(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(6,tem6);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(6,tem6);
 				}
 			});
 
@@ -708,7 +709,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable7 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable7.getValue().setNota7(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(7,tem7);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(7,tem7);
 				}
 			});
 
@@ -720,7 +721,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable8 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable8.getValue().setNota8(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(8,tem8);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(8,tem8);
 				}
 			});
 
@@ -732,7 +733,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable9 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable9.getValue().setNota9(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(9,tem9);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(9,tem9);
 				}
 			});
 
@@ -744,7 +745,7 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable10 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable10.getValue().setNota10(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(10,tem10);
+					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(10,tem10);
 				}
 			});
 
@@ -779,30 +780,34 @@ public class Controller implements Initializable{
 			String ide = String.valueOf(id);
 			String name = temp.getNombre_estudiante();
 			String apellido = temp.getApellido_estudiante();
-			double n1 = temp.list_nota.GetNota(1);
+			//double n1 = temp.list_nota.GetNota(1);
+			double n1 = temp.list_materias.getMateria("Ingles").getList().GetNota(1);
 			String nota1 = String.valueOf(n1);
-			double n2 = temp.list_nota.GetNota(2);
+			double n2 = temp.list_materias.getMateria("Ingles").getList().GetNota(2);
 			String nota2 = String.valueOf(n2);
-			double n3 = temp.list_nota.GetNota(3);
+			double n3 = temp.list_materias.getMateria("Ingles").getList().GetNota(3);
 			String nota3 = String.valueOf(n3);
-			double n4 = temp.list_nota.GetNota(4);
+			double n4 = temp.list_materias.getMateria("Ingles").getList().GetNota(4);
 			String nota4 = String.valueOf(n4);
-			double n5 = temp.list_nota.GetNota(5);
+			double n5 = temp.list_materias.getMateria("Ingles").getList().GetNota(5);
 			String nota5 = String.valueOf(n5);
-			double n6 = temp.list_nota.GetNota(6);
+			double n6 = temp.list_materias.getMateria("Ingles").getList().GetNota(6);
 			String nota6 = String.valueOf(n6);
-			double n7 = temp.list_nota.GetNota(7);
+			double n7 = temp.list_materias.getMateria("Ingles").getList().GetNota(7);
 			String nota7 = String.valueOf(n7);
-			double n8 = temp.list_nota.GetNota(8);
+			double n8 = temp.list_materias.getMateria("Ingles").getList().GetNota(8);
 			String nota8 = String.valueOf(n8);
-			double n9 = temp.list_nota.GetNota(9);
+			double n9 = temp.list_materias.getMateria("Ingles").getList().GetNota(9);
 			String nota9 = String.valueOf(n9);
-			double n10 = temp.list_nota.GetNota(10);
+			double n10 = temp.list_materias.getMateria("Ingles").getList().GetNota(10);
 			String nota10 = String.valueOf(n10);
+			
 			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
 			if(raiz.right != null) {
 				estudiantesNotas(raiz.right,Grade);
 			}
+			
+			
 		}
 
 
