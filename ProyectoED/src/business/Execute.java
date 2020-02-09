@@ -9,7 +9,7 @@ import java.io.File;
 import java.util.*;
 
 public class Execute {
-	static AdminManager lst_admin = new AdminManager();
+	static AdminManager hash_admin = new AdminManager();
 	
 	
 	
@@ -20,26 +20,27 @@ public class Execute {
 	
 	//static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
-	static int pantalla=9;
-	static String temp_user="",temp_password="";
+	static int pantalla=0;
+	static long temp_id;
+	static String temp_password="";
 	static long TInicio, TFin, tiempo;
 	static boolean mostrar=true;
 	public static void main(String[] args) {
 		
 		
-		/*
+		
 		heap_prueba.Insert(new Estudiante(1,4.1));
 		heap_prueba.Insert(new Estudiante(2,1.0));
 		heap_prueba.Insert(new Estudiante(3,3.9));
 		heap_prueba.Insert(new Estudiante(4,4.8));
 		heap_prueba.Insert(new Estudiante(5,1.5));
-		heap_prueba.Insert(new Estudiante(6,2.8));*/
+		heap_prueba.Insert(new Estudiante(6,2.8));
 		
-		lst_admin.addAdminUser(new Admin("juanse","123456"));
-		lst_admin.addAdminUser(new Admin("crack yo","09786"));
-		lst_admin.addAdminUser(new Admin("babb","12345444"));
-		lst_admin.addAdminUser(new Admin("nel","1245"));
-		lst_admin.addAdminUser(new Admin("trolazo","696969"));
+		hash_admin.addAdminUser(new Admin(1000274,"Juanse","123456"));
+		hash_admin.addAdminUser(new Admin(1000123,"Mendivirus","654321"));
+		hash_admin.addAdminUser(new Admin(1000654,"JuanP","123456"));
+		hash_admin.addAdminUser(new Admin(696969,"nel","123456"));
+		hash_admin.addAdminUser(new Admin(1,"Admin",""));
 		for(int a=1; a<=11; a++) {
 			String name;
 			if(a == 1)name="Primero";
@@ -59,7 +60,7 @@ public class Execute {
 		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
 		
 		TInicio = System.currentTimeMillis();
-		lst_curso.readStudents("datosPrueba100.txt");
+		lst_curso.readStudents("datos100000.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
 		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
@@ -78,15 +79,17 @@ public class Execute {
 			pantalla=scan.nextInt();
 		}
 		else if(pantalla==1) {
-			System.out.println("Ingrese el usuario y la contrasena");
-			System.out.println("Usuario:");
-			temp_user = scan.nextLine();
+			System.out.println("Ingrese el numero de identificación y la contrasena");
+			System.out.println("Identificacion:");
+			temp_id = scan.nextLong();
+			scan.nextLine();
 			System.out.println("Contrasena: ");
 			temp_password = scan.nextLine();
-			if(lst_admin.ValUser(new Admin(temp_user, temp_password))) {
+			//System.out.println(temp_id+"----"+temp_password);
+			if(hash_admin.ValUser(new Admin(temp_id, temp_password))==true) {
 				clearScreen();
 				System.out.println("Acceso garantizado");
-				pantalla=3;
+				pantalla=9;
 				
 			}else {
 				clearScreen();
