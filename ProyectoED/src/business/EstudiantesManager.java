@@ -1,4 +1,4 @@
-package business;
+/*package business;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.GregorianCalendar;
@@ -79,5 +79,7 @@ public class EstudiantesManager {
 	}
 
 }
+*/
 
+//Temporalmente comentado por no saber lo que hace lol
 

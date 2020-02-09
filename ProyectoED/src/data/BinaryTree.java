@@ -3,9 +3,12 @@ package data;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+//Muchos metodos del arbol fueron modificados para garantizar que funcionara como un AVL
+
+
 public class BinaryTree {
 	protected EstudianteBST root;
-	private int numEst=0;
+	int numEst=0;
 	//Constructor que inicualiza la raiz en null
 	public BinaryTree() {
 		this.root = null;
@@ -14,7 +17,9 @@ public class BinaryTree {
 	public int getNumEst() {
 		return numEst;
 	}
-
+	public EstudianteBST Find(int data) {
+		return Find(this.root, data);
+	}
 	public EstudianteBST Find(EstudianteBST root, int data) {
 		if (root == null || root.data.id_estudiante == data) {
 			return root;	
@@ -32,24 +37,23 @@ public class BinaryTree {
 		}
 	}
 	public void insert(Estudiante est) {
-		/*GregorianCalendar date = new GregorianCalendar(dia,mes,year);
-		Estudiante est=new Estudiante(id,name,surname,date,curso);*/
-		EstudianteBST estud=new EstudianteBST(est);
-
-		//EstudianteBST nuevo = new EstudianteBST(data,name,surname,dia,mes,year,curso);
-
-		EstudianteBST root = Find (this.root,est.id_estudiante);
-		if(this.root == null) {
-			this.root = estud;
+		EstudianteBST Nuevo=new EstudianteBST(est); //estud
+		EstudianteBST N = Find (this.root,est.id_estudiante);//root
+		if(N == null) {
+			this.root = Nuevo;
+			numEst++;
+			return;
+		}else if(Nuevo.data.id_estudiante > N.data.id_estudiante) {
+			N.right = Nuevo;
+			Nuevo.parent = N;
+			numEst++;
+		}else if(Nuevo.data.id_estudiante < N.data.id_estudiante) {
+			N.left = Nuevo;
+			Nuevo.parent = N;
+			numEst++;
+		}else {
 			return;
 		}
-		estud.parent = root;
-		if(estud.data.id_estudiante > root.data.id_estudiante) {
-			root.right = estud;
-			return;
-		}
-		root.left = estud;
-		numEst++;
 	}
 	public void inOrder() {
 		EstudianteBST raiz = root;
@@ -86,7 +90,6 @@ public class BinaryTree {
 		return LeftDescendant(N.left);
 	}
 	public EstudianteBST RightAncestor(EstudianteBST N) {
-		//Arreglar el leftascendant o algo as� :)
 		if(N.data.id_estudiante < N.parent.data.id_estudiante)return N.parent;
 		return RightAncestor(N.parent);
 	}
@@ -112,7 +115,9 @@ public class BinaryTree {
 			iterator = Next(iterator);
 		}
 	}
-
+	public void printStudentCurso() {
+		printStudentCurso(this.root);
+	}
 	public void printStudentCurso (EstudianteBST root) {
 		EstudianteBST raiz = root;
 		if(raiz == null)return ;
@@ -149,95 +154,175 @@ public class BinaryTree {
 		return est.data.list_nota.promedio();
 		
 	}
-	//Metodo incompleto ....
+	//Metodos AVL----
+	public void inOrderHeight() {
+		EstudianteBST raiz = this.root;
+		if(raiz == null)return ;
+		if(raiz.left != null) {
+			inOrderHeight(raiz.left);
+		}
+		System.out.println("Nodo: "+raiz.data+" Height: "+raiz.height);
+		if(raiz.right != null) {
+			inOrderHeight(raiz.right);
+		}
+	}
+	public void inOrderHeight(EstudianteBST root) {
+		EstudianteBST raiz = root;
+		if(raiz == null)return ;
+		if(raiz.left != null) {
+			inOrderHeight(raiz.left);
+		}
+		System.out.println("Nodo: "+raiz.data+" Height: "+raiz.height);
+		if(raiz.right != null) {
+			inOrderHeight(raiz.right);
+		}
+	}
+	public void AVLinsert(Estudiante data) {
+		insert(data);
+		EstudianteBST N = Find(root,data.id_estudiante);
+		Rebalance(N);
+	}
 	
-	 /*	public void DeleteByData(int data) {
-		BinaryNode 	N = Find(root,data);
-		if(N.data != data)return;
-		if(N.data > root.data) {
-			if(N.right == null && N.left == null) {
-				N.parent.right = null;
-				N.parent = null;
-			}
-			else if(N.right == null) {
-				N.parent.right = N.left;
-				N.left.parent = N.parent;
-				N.parent = null;
-				N.left = null;
-				N = null;
-			}else {
-				BinaryNode X = Next(N);
-				BinaryNode father = N.parent;
-				father.right = X;
-				X.parent = father;
-				X.left = N.left;
-				N.left = null;
-				X.right = N.right.right;
-			}
-		}else {
-			if(N.right == null && N.left == null) {
-				N.parent.left = null;
-				N.parent = null;
-			}
-			else if(N.right == null) {
-				if(N.parent != null) {
-					N.parent.right = N.left;
-					N.left.parent = N.parent;
-					N.parent = null;
-					N.left = null;
-					N = null;
+	public void Rebalance (EstudianteBST N) {
+		EstudianteBST P = N.parent;
+		int left_height = 0, right_height = 0, temp_bal=0;
+		if(N.right != null) right_height = N.right.height;
+		if(N.left != null) left_height = N.left.height;
+		temp_bal = Math.abs(left_height - right_height);
+		//Se garantiza que la altura sea 0 en caso de no existir nodo izquierdo o derecho
+		
+		
+		if(temp_bal >1) {
+			if(left_height > right_height) {
+				EstudianteBST X = N.left;
+				if(X.left == null) {
+					//System.out.println("LeftRight");
+					LeftRight(N);
+				}else if(X.right == null) {
+					//System.out.println("LeftLeft");
+					LeftLeft(N);
+				}else if(X.left.height > X.right.height) {
+					//System.out.println("LeftLeft");
+					LeftLeft(N);
 				}else {
-					System.out.println(N.data);
-					root = N.left;
-					N.left.parent = root;
-					root.parent = null;
+					//System.out.println("LeftRight");
+					LeftRight(N);
 				}
 			}else {
-				if(N.parent != null) {
-					BinaryNode X = Next(N);
-					BinaryNode father = N.parent;
-					father.left = X;
-					X.parent = father;
-					N.right.left = N.right.left.right;
-					N.right.left.parent = N.right;
-					X.right = N.right;
-					X.left = N.left;
-					X.left.parent = X;
+				EstudianteBST X = N.right;
+				if(X.right == null) {
+					//System.out.println("RightLeft");
+					RightLeft(N);
+				}else if(X.left == null) {
+					//System.out.println("RightRight");
+					RightRight(N);
+				}else if(X.right.height > X.left.height) {
+					//System.out.println("RightRight");
+					RightRight(N);
 				}else {
-					BinaryNode X = Next(N);
-					X.right = N.right;
-					X.left = N.left;
-					X.left.parent = X;
-					root = X;
-					if(Next(N).right != null) {
-						X.right.left = Next(N).right;
-						X.right.left.parent = X.right;
-					}
+					//System.out.println("RightLeft");
+					RightLeft(N);
 				}
 			}
 		}
+		adjustHeight(N);
+		if(P != null)Rebalance(P);
 		
-		/*if(delete.right == null) {
-			if(delete.left != null) {
-				delete.parent.right = delete.left;
-				delete.left.parent = delete.parent;
-			}else {
-				delete.parent.right = null;
-			}
-			delete.parent = null;
+	}
+	
+	public void adjustHeight(EstudianteBST N) {
+		int left_height = 0, right_height = 0;
+		if(N.right != null) right_height = N.right.height;
+		if(N.left != null) left_height = N.left.height;
+		N.height = 1 + Math.max(right_height,left_height);
+	}
+	
+	public void RightRight(EstudianteBST N) {
+		EstudianteBST X = N.right;
+		if(N.parent == null) {
+			X.parent = null;
+			root = X;
 		}else {
-			BinaryNode X = Next(delete);
-			if(delete.parent != null) {
-				delete.parent.right = X;
-				X.parent = delete.parent;
+			X.parent = N.parent;
+			if(N.parent.right == N) {
+				N.parent.right = X;
+			}else {
+				N.parent.left = X;
 			}
-			if(X.right != null) {
-				delete.right.left = X.right;
-				X.right = delete.right;
-			}
-			delete = null;
+			
 		}
+		if(X.left != null) {
+			X.left.parent = N;
+			N.right = X.left;
+		}else {
+			N.right = null;
+		}
+		X.left = N;
+		N.parent = X;
+		adjustHeight(N);
+		//adjustHeight(X);
+	}
+	
+	public void LeftLeft(EstudianteBST N) {
+		EstudianteBST X = N.left;
+		if(N.parent == null) {
+			X.parent = null;
+			root = X;
+		}else {
+			X.parent = N.parent;
+			if(N.parent.left == N) {
+				N.parent.left = X;
+			}else {
+				N.parent.right = X;
+			}
+		}
+		if(X.right != null) {
+			X.right.parent = N;
+			N.left = X.right;
+		}else {
+			N.left = null;
+		}
+		X.right = N;
+		N.parent = X;
+		adjustHeight(N);
+		//adjustHeight(X);
+	}
+	public void LeftRight(EstudianteBST N) {
+		//Convertirlo a LeftLeft
+		EstudianteBST X = N.left;
+		N.left = X.right;
+		X.right.parent = N;
 		
-	}*/
+		if(X.right.left != null) {
+			X.right.left.parent = X;
+			X.right = X.right.left;
+		}else {
+			X.right = null;
+		}
+		N.left.left = X;
+		X.parent = N.left;
+		adjustHeight(N);
+		adjustHeight(X);
+	}
+	public void RightLeft(EstudianteBST N) {
+		//Convertirlo a RightRight
+		EstudianteBST X = N.right;
+		N.right = X.left;
+		X.left.parent = N;
+		
+		if(X.left.right != null) {
+			X.left.right.parent = X;
+			X.left = X.left.right;
+		}else {
+			X.left = null;
+		}
+		N.right.right = X;
+		X.parent = N.right;
+		adjustHeight(N);
+		adjustHeight(X);
+	}
+	
+	
+	
 		
 }

@@ -1,8 +1,6 @@
 package data;
 
 public class ListCurso extends DoubleLinkedList<Curso>{
-
-
     public Curso FindCurso(int id){
         DoubleNode<Curso> dn = null;
         DoubleNode<Curso> p = this.head;

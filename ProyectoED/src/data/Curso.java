@@ -4,17 +4,24 @@ import business.EstudiantesBSTManager;
 
 public class Curso {
 	int id_curso;
-	int num_stud;
+	public int num_stud;
 	String name;
 	public double sum_total;
 	double prom_curso;
 	public BinaryTree students_curso;
-
+	
+	//Aquí va el Heap de cada curso para los mejores promedios
+	
+	public HeapNota heap_curso;
+	
+	
+	
 	public Curso(int id_curso, String name) {
 		super();
 		this.id_curso = id_curso;
 		this.name = name;
 		students_curso = new BinaryTree();
+		heap_curso = new HeapNota(1000);
 	}
 	public void addNumStud() {
 		this.num_stud++;

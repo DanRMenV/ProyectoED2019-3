@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+import data.BinaryTree;
 import data.Curso;
 import data.Estudiante;
 import data.EstudianteBST;
@@ -12,9 +13,19 @@ import data.ListCurso;
 
 public class CursoManager {
     ListCurso lista_curso;
-
+    
+    //Aquí voy a colocar el manejo delBST grande porque no sé donde mas xd
+    
+    BinaryTree arbol_col;
+    
+    
+    
+    
+    
+    
     public CursoManager() {
         this.lista_curso = new ListCurso();
+        this.arbol_col = new BinaryTree();
     }
     public void addCurso(Curso e) {
         this.lista_curso.PushBack(e);
@@ -52,7 +63,19 @@ public class CursoManager {
 	public void addEstudianteBST(int id, String name, String surname, int dia, int mes, int year, int curso) {
 		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
 		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);
-		this.lista_curso.FindCurso(curso).students_curso.insert(nuevo);
+		Curso tempCurs = this.lista_curso.FindCurso(curso);
+		tempCurs.students_curso.AVLinsert(nuevo);
+		tempCurs.num_stud = tempCurs.students_curso.getNumEst();
+		//Agregar estudiante al arbol general
+		arbol_col.AVLinsert(nuevo);
+		
+		//En esta parte se agrega el estudiante al Heap
+		tempCurs.heap_curso.Insert(nuevo);
+		
+		
+		
+		
+		
 		nuevo.initNotas();
 	}
 
@@ -112,6 +135,8 @@ public class CursoManager {
 		sc.close();
         addEstudianteBST(id,name,surname,dia,mes,ano,curso);
 	}
+    
+  
     
     
 

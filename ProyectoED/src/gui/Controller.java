@@ -36,7 +36,7 @@ import javax.swing.*;
 
 public class Controller implements Initializable{
 	static AdminManager hash_admin = new AdminManager();
-	static EstudiantesManager lst_stud = new EstudiantesManager();
+	//static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
 	
 	//Login bienvenida
@@ -227,7 +227,7 @@ public class Controller implements Initializable{
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
 		
-		lst_stud.listaEstudiantes();
+		//lst_stud.listaEstudiantes();
 	}
 
 	public void onListaButoon(MouseEvent event){
