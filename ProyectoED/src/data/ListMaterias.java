@@ -2,7 +2,7 @@ package data;
 
 public class ListMaterias extends DoubleLinkedList<Materia> {
 
-	String[] mat={"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
+	String[] mat={"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
 	
 	public void initMaterias() {
 		for(int i=0;i<mat.length;i++) {
