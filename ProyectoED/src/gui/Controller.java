@@ -76,6 +76,15 @@ public class Controller implements Initializable{
 	@FXML private JFXComboBox<String> BoxMaterias;
 	@FXML private JFXComboBox<String> BoxCursoNotas;
 	
+	//Buscar est
+	@FXML private AnchorPane BuscarEstudiante;
+	@FXML private JFXTextField IdField;
+	
+	//Lista notas estudiante
+	@FXML private AnchorPane EstNotas;
+	@FXML private JFXTreeTableView<MateriasN> ListaNotasEst;
+	@FXML private Label NombreEst;
+	
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
 					"1", "2", "3", "4", "5", "6", "7", "8",
@@ -1005,4 +1014,88 @@ public class Controller implements Initializable{
 				estudiantesNotas(raiz.right,Grade,ma);
 			}		
 		}
+		
+		//Definitica Materias estudiante
+		
+		public void onExitHistoriaButtonClicked(MouseEvent event) {
+			EstNotas.setVisible(false);
+			Prueba.setVisible(true);
+		}
+		
+		public void onHistoriaButtonClicked(MouseEvent event) {
+			Prueba.setVisible(false);
+			BuscarEstudiante.setVisible(true);
+		}
+		
+		public void onBuscarIdButtonClicked(MouseEvent event) {
+			int num = lst_curso.getArbol_col().Find(Integer.parseInt(IdField.getText())).data.getId_estudiante();
+			int cur = lst_curso.getArbol_col().Find(Integer.parseInt(IdField.getText())).data.getCurso();
+			String n = lst_curso.getArbol_col().Find(Integer.parseInt(IdField.getText())).data.getNombre_estudiante();
+			String a = lst_curso.getArbol_col().Find(Integer.parseInt(IdField.getText())).data.getApellido_estudiante();
+			if(num==Integer.parseInt(IdField.getText())) {
+				BuscarEstudiante.setVisible(false);
+				EstNotas.setVisible(true);
+				ListaNotasEst.setDisable(false);
+				CrearMateriasDe(cur,num);
+				NombreEst.setText(n+" "+a);
+			}else {
+				System.out.println("No existe el estudiante");
+			}
+		}
+		
+		class MateriasN extends RecursiveTreeObject<MateriasN> {
+			StringProperty Materia;
+			StringProperty Definitiva;
+			public MateriasN(String Materia, String Definitiva) {
+				this.Materia = new SimpleStringProperty(Materia);
+				this.Definitiva = new SimpleStringProperty(Definitiva);
+			}
+		}
+
+		public void CrearMateriasDe(int c, int n){
+			
+			JFXTreeTableColumn<MateriasN, String> stdMa = new JFXTreeTableColumn<>("Materia");
+			stdMa.setPrefWidth(200);
+			stdMa.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasN, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasN, String> param) {
+					return param.getValue().getValue().Materia;
+				}
+			});
+
+				JFXTreeTableColumn<MateriasN, String> stdDe = new JFXTreeTableColumn<>("Definitiva");
+				stdDe.setPrefWidth(200);
+				stdDe.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasN, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasN, String> param) {
+						return param.getValue().getValue().Definitiva;
+					}
+				});
+
+				ObservableList<MateriasN> MateriasNs = FXCollections.observableArrayList();
+
+				Curso temp_curso = lst_curso.FindCurso(c);
+				EstudianteBST temp_root = temp_curso.students_curso.Find(n);
+				estudianteMaterias(temp_root,MateriasNs);
+
+				final TreeItem<MateriasN> root = new RecursiveTreeItem<MateriasN>(MateriasNs, RecursiveTreeObject::getChildren);
+				ListaNotasEst.getColumns().setAll(stdMa,stdDe);
+				ListaNotasEst.setRoot(root);
+				ListaNotasEst.setShowRoot(false);
+
+			}
+
+			public void estudianteMaterias(EstudianteBST root, ObservableList<MateriasN> MateriasNs){
+				EstudianteBST raiz = root;
+				String[] mat={"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
+				for(int i=0; i<mat.length;i++) {
+					String mate = mat[i];
+					double pro = root.data.list_materias.getMateria(mat[i]).getPromedio();
+					String promedio = String.valueOf(pro);
+					MateriasNs.add(new MateriasN(mate,promedio));
+				}
+				
+			}
+		
+		
 }
