@@ -15,7 +15,7 @@ public class Execute {
 	
 	
 	static CursoManager lst_curso = new CursoManager();
-	static int pantalla=9;
+	static int pantalla=0;
 	static long temp_id;
 	static String temp_password="";
 	static long TInicio, TFin, tiempo;
@@ -98,7 +98,7 @@ public class Execute {
 			System.out.println("Contrasena: ");
 			temp_password = scan.nextLine();
 			//System.out.println(temp_id+"----"+temp_password);
-			if(hash_admin.ValUser(new Admin(temp_id, temp_password))==true) {
+			if(hash_admin.ValUser(new Admin(temp_id, temp_password)).getid()==temp_id) {
 				clearScreen();
 				System.out.println("Acceso garantizado");
 				pantalla=9;
