@@ -10,13 +10,19 @@ import java.util.*;
 
 public class Execute {
 	static AdminManager lst_admin = new AdminManager();
-	static EstudiantesManager lst_stud = new EstudiantesManager();
+	static HeapNota heap_prueba  = new HeapNota(100);
+	
+	
+	
+	//static EstudiantesManager lst_stud = new EstudiantesManager();
 	static CursoManager lst_curso = new CursoManager();
 	static int pantalla=9;
 	static String temp_user="",temp_password="";
 	static long TInicio, TFin, tiempo;
 	static boolean mostrar=true;
 	public static void main(String[] args) {
+		
+		
 		lst_admin.addAdminUser(new Admin("juanse","123456"));
 		lst_admin.addAdminUser(new Admin("crack yo","09786"));
 		lst_admin.addAdminUser(new Admin("babb","12345444"));
@@ -37,31 +43,14 @@ public class Execute {
 			else name="Undecimo";
 			lst_curso.addCurso(new Curso(a,name));
 		}
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(3, "s", "r", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(1, "s4", "rdfg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(5, "s3", "rdgg", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(6, "s5tg", "sdfsdfr", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.FindCurso(1).est_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
-		lst_curso.FindCurso(1).addNumStud();
-		lst_curso.listaEstudiantes();
-		lst_admin.printUsers();
-		TInicio = System.currentTimeMillis(); 
-		lst_stud.readStudents("ProyectoED/datosPrueba100.txt");
-
+	
+		lst_curso.addEstudianteBST(7, "sdf", "rdddd", 7, 7, 2007, 1);
+		
+		TInicio = System.currentTimeMillis();
+		lst_curso.readStudents("datosPrueba100.txt");
 		TFin = System.currentTimeMillis();  
 		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo); 
-		
-		TInicio = System.currentTimeMillis(); 
-		//lst_stud.searchEstudianteBST(10);
-		TFin = System.currentTimeMillis(); 
-		tiempo = TFin - TInicio;
-		System.out.println("Tiempo de ejecuci�n en mili consulta 1 dato: " + tiempo); 
-		
+		System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
 		while(mostrar) {
 			pantalla_inicio();
 		}	
@@ -95,7 +84,7 @@ public class Execute {
 		else if(pantalla==2) {
 			return;
 		}
-		else if(pantalla==3) {
+		/*else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
 			System.out.println("Escoja la accion que desea realizar: ");
 			System.out.println("1- Anadir estudiante    2- Ver lista de estudiantes   3-Modificar estudiante   4-Anadir nota estudiante   5-Historia academica estudiante");
@@ -274,14 +263,21 @@ public class Execute {
 			nothing=scan.nextLine();
 			clearScreen();
 			pantalla=3;
-		}else if(pantalla == 9){
-			int option;
-			System.out.println("Sistema BTS");
-			System.out.println("Escoja la accion que desea realizar: ");
-			System.out.println("1- Anadir estudiante    2- Ver todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
-			System.out.println("6- A�adir nota curso   7- Ver promedio por cursos");
-			option = scan.nextInt();
-			clearScreen();
+		}*/else if(pantalla == 9){
+			int option = 8;
+			
+			
+			
+			//System.out.println("Sistema BTS");
+			//System.out.println("Escoja la accion que desea realizar: ");
+			//System.out.println("1- Anadir estudiante    2- Ver todos de estudiantes   3-Ver lista por curso   4-Modificar estudiante por curso  5-Modificar estudiante por id");
+			//System.out.println("6- A�adir nota curso   7- Ver promedio por cursos  8-TestHeap");
+			//option = scan.nextInt();
+			//clearScreen();
+			
+			
+			
+			
 			if(option == 1) {
 				System.out.println("Anadir estudiante: ");
 				System.out.println("Seleccione el curso al cual va a anadir el estudiante");
@@ -303,30 +299,43 @@ public class Execute {
 				temp_month=scan.nextInt();
 				System.out.println("Ingrese el anio de nacimiento");
 				temp_year=scan.nextInt();
-				temp_curso.est_curso.addEstudianteBST(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
+				lst_curso.addEstudianteBST(temp_id, temp_nom, temp_apel, temp_day, temp_month,temp_year, int_curs);
 				lst_curso.FindCurso(int_curs).addNumStud();
 				System.out.println("Estudiante anadido ...");
 				clearScreen();
 			}else if(option == 2) {
+				TInicio = System.currentTimeMillis();
+		
 				for(int a=1; a<=11; a++) {
 					Curso temp_curso = lst_curso.FindCurso(a);
-					EstudianteBST temp_root = temp_curso.est_curso.getRoot();
-					temp_curso.est_curso.printStudentCurso(temp_root);
+					EstudianteBST temp_root = lst_curso.FindCurso(a).students_curso.getRoot();
+					//lst_curso.printStudentCurso(temp_root);
+					lst_curso.FindCurso(a).students_curso.printStudentCurso(temp_root);
 				}
+				TFin = System.currentTimeMillis();  
+				tiempo = TFin - TInicio;
+				System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
+				
 			}else if(option == 3) {
 				int int_curs = scan.nextInt();
+				TInicio = System.currentTimeMillis();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
-				temp_curso.est_curso.printStudentCurso(temp_root);
+				EstudianteBST temp_root =lst_curso.FindCurso(int_curs).students_curso.getRoot();
+				//lst_curso.printStudentCurso(temp_root);
+				lst_curso.FindCurso(int_curs).students_curso.printStudentCurso(temp_root);
+				TFin = System.currentTimeMillis();  
+				tiempo = TFin - TInicio;
+				System.out.println("Tiempo de ejecuci�n en nanosegundos carga datos: " + tiempo);
 			}else if(option == 4) {
 				int temp_option=0;
 				System.out.println("Ingrese el curso del estudiante");
 				int int_curs=scan.nextInt();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				EstudianteBST temp_root = lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				System.out.println("Ingrese el documento del estudiante");
 				int find_id = scan.nextInt();
-				EstudianteBST temp_stud=temp_curso.est_curso.searchEstudianteBST(temp_root, find_id);
+				//EstudianteBST temp_stud=lst_curso.searchEstudianteBST(temp_root, find_id, int_curs);
+				Estudiante temp_stud=lst_curso.searchEstudianteBST(temp_root, find_id, int_curs);
 				if(temp_stud == null) {
 					System.out.println("Estudiante no encontrado");
 					return ;
@@ -383,12 +392,12 @@ public class Execute {
 				int temp_option=0;
 				System.out.println("Ingrese el documento del estudiante");
 				int find_id = scan.nextInt();
-				EstudianteBST temp_est = null;
+				Estudiante temp_est = null;
 				EstudianteBST temp_root ;
 				for(int a=1; a<=11; a++) {
 					Curso temp_curso = lst_curso.FindCurso(a);
-					temp_root = temp_curso.est_curso.getRoot();
-					temp_est = temp_curso.est_curso.searchEstudianteBST(temp_root, find_id);
+					temp_root = lst_curso.FindCurso(a).students_curso.getRoot();
+					temp_est = lst_curso.searchEstudianteBST(temp_root, find_id,a);
 					if(temp_est != null) {
 						if(temp_est.getId_estudiante() == find_id)break;
 					}
@@ -449,10 +458,10 @@ public class Execute {
 				System.out.println("Seleccione el curso para anadir nota");
 				int int_curs = scan.nextInt();
 				Curso temp_curso = lst_curso.FindCurso(int_curs);
-				EstudianteBST temp_root = temp_curso.est_curso.getRoot();
+				EstudianteBST temp_root = lst_curso.FindCurso(int_curs).students_curso.getRoot();
 				System.out.println("Ingrese la decripcion de la nota: ");
 				String temp_desc = scan.next();
-				temp_curso.est_curso.addNotaCurso(temp_root, temp_desc);
+				//lst_curso.FindCurso(int_curs).students_curso.addNotaCurso(temp_root, temp_desc);
 				temp_curso.setSum_total(0);
 				temp_curso.sumaTotal(temp_root);
 				temp_curso.calcProm();
@@ -460,6 +469,44 @@ public class Execute {
 				
 			}else if(option == 7) {
 				lst_curso.listaEstudiantes();
+			}
+			else if(option == 8) {
+				int heapTest = 0;
+				System.out.println(" ");
+				System.out.println("HeapStudent Test");
+				System.out.println("1- anadir estudiante   2- Buscar estudiante    3-Ver 5 mejores promedios    4- modificar promedio estudiante   5-Mostrar estudiantes guardados ");
+				heapTest = scan.nextInt();
+				if(heapTest == 1) {
+					double temProm = 0.0;
+					int tempId;
+					System.out.println("Ingrese el documento del estudiante");
+					tempId = scan.nextInt();
+					System.out.println("Ingrese el promedio del estudiante");
+					temProm = scan.nextDouble();
+					Estudiante nuevo = new Estudiante(tempId,temProm);
+					heap_prueba.Insert(nuevo);
+				}
+				if(heapTest == 2) {
+					int tempId;
+					System.out.println("Ingrese el documento del estudiante");
+					tempId = scan.nextInt();
+					System.out.println(heap_prueba.posFind(tempId));
+				}
+				if(heapTest == 3) {
+					heap_prueba.mejProm();
+				}
+				if(heapTest == 4) {
+					int tempId;
+					double tempProm;
+					System.out.println("Inserte el documento: ");
+					tempId = scan.nextInt();
+					System.out.println("Inserte el promedio: ");
+					tempProm = scan.nextDouble();
+					heap_prueba.modProm(tempId, tempProm);
+				}
+				if(heapTest == 5) {
+					heap_prueba.printEst();
+				}
 			}
 		}else {
 			mostrar=false;

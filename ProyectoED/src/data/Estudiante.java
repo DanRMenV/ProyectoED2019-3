@@ -10,9 +10,12 @@ public class Estudiante {
 	String apellido_estudiante;
 	Calendar fecha_nacimiento;
 	Integer edad;
-	public ListNotas list_nota;
+	//public ListNotas list_nota;
+	public ListMaterias list_materias;
+	
 	int curso;
 	double promedio=0;
+	
 	public int getId_estudiante() {
 		return id_estudiante;
 	}
@@ -61,6 +64,16 @@ public class Estudiante {
 		this.promedio = promedio;
 	}
 
+	public void setDate(int dia, int mes, int year) {
+		Calendar date = new GregorianCalendar(year,mes,dia);
+		this.fecha_nacimiento = date;
+		calcEdad(date);
+	}
+	public Estudiante(int id_estudiante, double prom) {
+		super();
+		this.id_estudiante = id_estudiante;
+		this.promedio = prom;
+	}
 	public Estudiante(int id_estudiante, String nombre_estudiante, String apellido_estudiante, Calendar fecha_nacimiento, String curso) {
 		super();
 		this.id_estudiante = id_estudiante;
@@ -68,7 +81,8 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = cursoInt(curso.trim());
-		this.list_nota = new ListNotas();
+		this.list_materias =new ListMaterias();
+		this.list_materias.initMaterias();
 		calcEdad(fecha_nacimiento);
 	}
 
@@ -79,7 +93,8 @@ public class Estudiante {
 		this.apellido_estudiante = apellido_estudiante;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.curso = curso;
-		this.list_nota = new ListNotas();
+		this.list_materias =new ListMaterias();
+		this.list_materias.initMaterias();
 		calcEdad(fecha_nacimiento);
 	}
 	
@@ -95,10 +110,24 @@ public class Estudiante {
 		this.edad = diffYear;
 
 	}
-	void addNo() {
-		list_nota.PushBack(new Nota("1",1));
+	
+	
+	public void initMaterias() {
+		String[] mat={"Español","Ingles","Matemáticas","Biologia","Etica","Religion","Ed. Fisica","Filosofia","Artes","Informatica","Sociales"};
+
+		for(int i=0;i<mat.length;i++) {
+			list_materias.PushBack(new Materia(mat[i]));
+		}		
 	}
 	
+	void addNo() {
+		//list_nota.PushBack(new Nota("1",1));
+	}
+
+	public void updatePromedio(String materia) {
+		list_materias.getMateria(materia).updatePromedio();
+		this.promedio=list_materias.promedioMaterias();
+	}
 	public int cursoInt(String curso) {
 		int id=0;
 		switch(curso) {
