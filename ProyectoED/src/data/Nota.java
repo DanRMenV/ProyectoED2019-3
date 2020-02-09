@@ -1,5 +1,7 @@
 package data;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Nota {
 	String descripcion;
 	double calificacion;
@@ -14,7 +16,10 @@ public class Nota {
 	public Nota(String descripcion) {
 		super();
 		this.descripcion = descripcion;
-		this.calificacion = 0;
+		double random = ThreadLocalRandom.current().nextDouble(1.0, 5.0);
+		String te = String.valueOf(random).substring(0, 3);
+		double r = Double.parseDouble(te);
+		this.calificacion = r;
 	}
 	
 	

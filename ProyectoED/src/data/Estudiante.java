@@ -113,10 +113,11 @@ public class Estudiante {
 	
 	
 	public void initMaterias() {
-		String[] mat={"Español","Ingles","Matemáticas","Biologia","Etica","Religion","Ed. Fisica","Filosofia","Artes","Informatica","Sociales"};
+		String[] mat={"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
 
 		for(int i=0;i<mat.length;i++) {
 			list_materias.PushBack(new Materia(mat[i]));
+			list_materias.getMateria(mat[i]).list_nota.initNotas();
 		}		
 	}
 	
