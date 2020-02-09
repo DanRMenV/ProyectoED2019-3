@@ -20,6 +20,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -33,6 +34,7 @@ import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import javax.swing.*;
+import javax.swing.text.AbstractDocument.Content;
 
 public class Controller implements Initializable{
 	static AdminManager lst_admin = new AdminManager();
@@ -67,8 +69,9 @@ public class Controller implements Initializable{
 	@FXML private JFXTreeTableView<Grades> ListaNotas;
 	@FXML private AnchorPane AnadirNotas;
 	@FXML private JFXTextField buscarEst;
+	@FXML private JFXComboBox<String> BoxMaterias;
 	@FXML private JFXComboBox<String> BoxCursoNotas;
-
+	
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
 					"1", "2", "3", "4", "5", "6", "7", "8",
@@ -78,6 +81,10 @@ public class Controller implements Initializable{
 			FXCollections.observableArrayList(
 	        "Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Septimo", "Octavo", 
 	        "Noveno", "Decimo", "Once");
+	
+	ObservableList<String> ListaMaterias =
+			FXCollections.observableArrayList(
+					"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -106,6 +113,7 @@ public class Controller implements Initializable{
 		lst_curso.readStudents("datos10000.txt");
 		inCurso.setItems(comboCursos);
 		BoxCurso.setItems(ListaCursoContent);
+		BoxMaterias.setItems(ListaMaterias);
 		BoxCursoNotas.setItems(ListaCursoContent);
 	}
 	
@@ -355,17 +363,25 @@ public class Controller implements Initializable{
 		}
 
 		//Lista Grades
-
 		public void onNotaButoon(MouseEvent event){
 			Prueba.setVisible(false);
 			AnadirNotas.setVisible(true);
 		}
-
+		
+		String c;
 		public void onComboCursoNChanged(ActionEvent event){
-			ListaNotas.setDisable(false);
-			for(int i=0; i<ListaCursoContent.size(); i++){
-				if(BoxCursoNotas.getValue().equals(ListaCursoContent.get(i))){
-					CrearListaNotas(BoxCursoNotas.getValue());
+			c = BoxCursoNotas.getValue();
+		}
+		
+		public void onComboMateriaChanged(ActionEvent event){
+			if(c.equals("")) {
+				
+			}else {
+				ListaNotas.setDisable(false);
+				for(int i=0; i<ListaMaterias.size(); i++){
+					if(BoxMaterias.getValue().equals(ListaMaterias.get(i))){
+						CrearListaNotas(c,BoxMaterias.getValue());
+					}
 				}
 			}
 		}
@@ -497,7 +513,7 @@ public class Controller implements Initializable{
 			}
 		}
 
-		public void CrearListaNotas(String c){
+		public void CrearListaNotas(String c, String m){
 
 			JFXTreeTableColumn<Grades, String> stdIde = new JFXTreeTableColumn<>("Id");
 			stdIde.setPrefWidth(0);
@@ -621,7 +637,7 @@ public class Controller implements Initializable{
 
 			Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
 			EstudianteBST temp_root = temp_curso.students_curso.getRoot();
-			estudiantesNotas(temp_root,Grade);
+			estudiantesNotas(temp_root,Grade,m);
 
 			final TreeItem<Grades> root = new RecursiveTreeItem<Grades>(Grade, RecursiveTreeObject::getChildren);
 			ListaNotas.getColumns().setAll(stdName,stdSurName,stdNota1,stdNota2,stdNota3,stdNota4,stdNota5,stdNota6,stdNota7,stdNota8,stdNota9,stdNota10);
@@ -768,43 +784,42 @@ public class Controller implements Initializable{
 			});
 		}
 
-		public void estudiantesNotas(EstudianteBST root, ObservableList<Grades> Grade){
+		public void estudiantesNotas(EstudianteBST root, ObservableList<Grades> Grade, String ma){
 			EstudianteBST raiz = root;
 			if(raiz == null)return ;
 			if(raiz.left != null) {
-				estudiantesNotas(raiz.left,Grade);
+				estudiantesNotas(raiz.left,Grade,ma);
 			}
 			Estudiante temp=raiz.data;
-
 			int id = temp.getId_estudiante();
 			String ide = String.valueOf(id);
 			String name = temp.getNombre_estudiante();
 			String apellido = temp.getApellido_estudiante();
 			//double n1 = temp.list_nota.GetNota(1);
-			double n1 = temp.list_materias.getMateria("Ingles").getList().GetNota(1);
+			double n1 = temp.list_materias.getMateria(ma).getList().GetNota(1);
 			String nota1 = String.valueOf(n1);
-			double n2 = temp.list_materias.getMateria("Ingles").getList().GetNota(2);
+			double n2 = temp.list_materias.getMateria(ma).getList().GetNota(2);
 			String nota2 = String.valueOf(n2);
-			double n3 = temp.list_materias.getMateria("Ingles").getList().GetNota(3);
+			double n3 = temp.list_materias.getMateria(ma).getList().GetNota(3);
 			String nota3 = String.valueOf(n3);
-			double n4 = temp.list_materias.getMateria("Ingles").getList().GetNota(4);
+			double n4 = temp.list_materias.getMateria(ma).getList().GetNota(4);
 			String nota4 = String.valueOf(n4);
-			double n5 = temp.list_materias.getMateria("Ingles").getList().GetNota(5);
+			double n5 = temp.list_materias.getMateria(ma).getList().GetNota(5);
 			String nota5 = String.valueOf(n5);
-			double n6 = temp.list_materias.getMateria("Ingles").getList().GetNota(6);
+			double n6 = temp.list_materias.getMateria(ma).getList().GetNota(6);
 			String nota6 = String.valueOf(n6);
-			double n7 = temp.list_materias.getMateria("Ingles").getList().GetNota(7);
+			double n7 = temp.list_materias.getMateria(ma).getList().GetNota(7);
 			String nota7 = String.valueOf(n7);
-			double n8 = temp.list_materias.getMateria("Ingles").getList().GetNota(8);
+			double n8 = temp.list_materias.getMateria(ma).getList().GetNota(8);
 			String nota8 = String.valueOf(n8);
-			double n9 = temp.list_materias.getMateria("Ingles").getList().GetNota(9);
+			double n9 = temp.list_materias.getMateria(ma).getList().GetNota(9);
 			String nota9 = String.valueOf(n9);
-			double n10 = temp.list_materias.getMateria("Ingles").getList().GetNota(10);
+			double n10 = temp.list_materias.getMateria(ma).getList().GetNota(10);
 			String nota10 = String.valueOf(n10);
 			
 			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
 			if(raiz.right != null) {
-				estudiantesNotas(raiz.right,Grade);
+				estudiantesNotas(raiz.right,Grade,ma);
 			}
 			
 			
