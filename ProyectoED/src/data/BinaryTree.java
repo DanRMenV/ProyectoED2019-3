@@ -32,8 +32,6 @@ public class BinaryTree {
 		}
 	}
 	public void insert(Estudiante est) {
-		/*GregorianCalendar date = new GregorianCalendar(dia,mes,year);
-		Estudiante est=new Estudiante(id,name,surname,date,curso);*/
 		EstudianteBST estud=new EstudianteBST(est);
 
 		//EstudianteBST nuevo = new EstudianteBST(data,name,surname,dia,mes,year,curso);
