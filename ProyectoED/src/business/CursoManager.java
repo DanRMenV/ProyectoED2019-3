@@ -13,7 +13,7 @@ import data.ListCurso;
 
 public class CursoManager {
     ListCurso lista_curso;
-      
+    
     BinaryTree arbol_col; //Arbol gigante
     
 
@@ -31,6 +31,14 @@ public class CursoManager {
         return lista_curso.FindCurso(id);
     }
 
+    
+	public BinaryTree getArbol_col() {
+		return arbol_col;
+	}
+	public void setArbol_col(BinaryTree arbol_col) {
+		this.arbol_col = arbol_col;
+	}
+	
 	public void addEstudianteBST(int id, String name, String surname, int dia, int mes, int year, int curso) {
 		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
 		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);

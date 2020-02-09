@@ -24,16 +24,14 @@ public class ListMaterias extends DoubleLinkedList<Materia> {
 	
 	public double promedioMaterias() {
 		double suma=0.0;
-		int materia=0;
 		DoubleNode <Materia> p = this.head;
         while(p !=  null){
             if(p.key.getPromedio()>=1.0) {
         	suma+=p.key.getPromedio();
-        	materia++;
             }
             p = p.next;
         }
-		return suma/materia;
+		return suma/mat.length;
 		
 	}
 	

@@ -3,7 +3,8 @@ package data;
 public class HeapNota {
 	int size = 0;
 	int maxSize = 0;
-	Estudiante[] Heap;
+	public Estudiante[] Heap;
+	
 	public HeapNota(int maxSize) {
 		Heap = new Estudiante[maxSize+1];
 		this.maxSize = maxSize;
@@ -88,11 +89,12 @@ public class HeapNota {
 		SiftUp(position);
 		ExtractMax();
 	}
-	public void ChangePriority(int position, double value) {
-		double oldp = Heap[position].promedio;
-		Heap[position].promedio = value;
-		System.out.println("NewProm: "+value+"       OldProm: "+oldp+"      Position: "+position);
-		if (value > oldp)SiftUp(position);
+	
+	public void ChangePriority(int position) {	
+		double value = Heap[position].getPromedio();
+		double parent= Heap[Parent(position)].getPromedio();
+		
+		if(value > parent) SiftUp(position);
 		else SiftDown(position);
 	}
 	
@@ -112,6 +114,12 @@ public class HeapNota {
 		}
 		return 0;
 	}
+	
+	public Estudiante getEstudiante(int id) {
+		int position = posFind(id);
+		return Heap[position];		
+	}
+	
 	public void mejProm() {
 		Estudiante m1 = ExtractMax();
 		Estudiante m2 = ExtractMax();
@@ -129,12 +137,13 @@ public class HeapNota {
 		if(m4 != null)Insert(m4);
 		if(m5 != null)Insert(m5);
 	}
-	public void modProm(int id_estudiante, double prom) {
+	public void modProm(int id_estudiante) {
 		int position = posFind(id_estudiante);
+		//double prom= Heap[position].getPromedio();	
 		if(position == 0) {
 			System.out.println("Estudiante no encontrado");
 		}else {
-			ChangePriority(position,prom);
+			ChangePriority(position);
 		}
 	}
 }
