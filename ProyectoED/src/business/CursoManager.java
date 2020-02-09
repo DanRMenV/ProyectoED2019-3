@@ -14,15 +14,9 @@ import data.ListCurso;
 public class CursoManager {
     ListCurso lista_curso;
     
-    //Aqu� voy a colocar el manejo delBST grande porque no s� donde mas xd
+    BinaryTree arbol_col; //Arbol gigante
     
-    BinaryTree arbol_col;
-    
-    
-    
-    
-    
-    
+
     public CursoManager() {
         this.lista_curso = new ListCurso();
         this.arbol_col = new BinaryTree();
@@ -37,22 +31,28 @@ public class CursoManager {
         return lista_curso.FindCurso(id);
     }
 
+    
+	public BinaryTree getArbol_col() {
+		return arbol_col;
+	}
+	public void setArbol_col(BinaryTree arbol_col) {
+		this.arbol_col = arbol_col;
+	}
+	
 	public void addEstudianteBST(int id, String name, String surname, int dia, int mes, int year, int curso) {
 		GregorianCalendar date=new GregorianCalendar(year,mes,dia);
 		Estudiante nuevo=new Estudiante(id,name,surname,date,curso);
-    nuevo.initMaterias();
+		nuevo.initMaterias();
 		Curso tempCurs = this.lista_curso.FindCurso(curso);
 		tempCurs.students_curso.AVLinsert(nuevo);
 		tempCurs.num_stud = tempCurs.students_curso.getNumEst();
-		//Agregar estudiante al arbol general
-		arbol_col.AVLinsert(nuevo);
-		//En esta parte se agrega el estudiante al Heap
-		tempCurs.heap_curso.Insert(nuevo);
+		arbol_col.AVLinsert(nuevo);//Agregar estudiante al arbol general
+		tempCurs.heap_curso.Insert(nuevo);//En esta parte se agrega el estudiante al Heap
+		
 	}
 
 	public Estudiante searchEstudianteBST(EstudianteBST root, int id,int curso){
 		Estudiante e=lista_curso.FindCurso(curso).students_curso.Find(root,id).data;
-
 		return e;
 	}
 

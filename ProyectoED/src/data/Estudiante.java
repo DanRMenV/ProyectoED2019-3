@@ -111,9 +111,8 @@ public class Estudiante {
 
 	}
 	
-	
 	public void initMaterias() {
-		String[] mat={"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
+		String[] mat={"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
 
 		for(int i=0;i<mat.length;i++) {
 			list_materias.PushBack(new Materia(mat[i]));

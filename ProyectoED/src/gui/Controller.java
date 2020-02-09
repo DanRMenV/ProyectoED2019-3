@@ -86,7 +86,7 @@ public class Controller implements Initializable{
 	
 	ObservableList<String> ListaMaterias =
 			FXCollections.observableArrayList(
-					"Español","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
+					"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales");
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -686,8 +686,20 @@ public class Controller implements Initializable{
 					notaEditable1.getValue().setNota1(event1.getNewValue());
 					int k = Integer.parseInt(event1.getRowValue().getValue().Ide.toString().substring(23,33));
 					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(1,tem1);
+					
+					//BST_Curso
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 					
 				}
 			});
@@ -702,6 +714,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event2.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(2, tem2);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(2, tem2);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(2, tem2);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -715,6 +737,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(3, tem3);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(3, tem3);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(3, tem3);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -728,6 +760,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(4, tem4);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(4, tem4);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(4, tem4);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -741,6 +783,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(5, tem5);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(5, tem5);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(5, tem5);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -754,6 +806,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(6, tem6);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(6, tem6);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(6, tem6);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -767,6 +829,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(7, tem7);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(7, tem7);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(7, tem7);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -780,6 +852,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(8, tem8);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(8, tem8);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(8, tem8);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -793,6 +875,16 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(9, tem9);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(9, tem9);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(9, tem9);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -806,6 +898,17 @@ public class Controller implements Initializable{
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
 					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(10, tem10);
 					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(10, tem10);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(10, tem10);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
+					
 				}
 			});
 

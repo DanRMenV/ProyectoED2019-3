@@ -445,12 +445,9 @@ public class Execute {
 				}
 				if(heapTest == 4) {
 					int tempId;
-					double tempProm;
 					System.out.println("Inserte el documento: ");
 					tempId = scan.nextInt();
-					System.out.println("Inserte el promedio: ");
-					tempProm = scan.nextDouble();
-					heap_prueba.modProm(tempId, tempProm);
+					//heap_prueba.modProm(tempId);
 				}
 				if(heapTest == 5) {
 					heap_prueba.printEst();
