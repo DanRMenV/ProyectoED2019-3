@@ -248,8 +248,6 @@ public class Controller implements Initializable{
 			}
 		}
 	}
-	
-	
 
 
 	class Student extends RecursiveTreeObject<Student> {
@@ -399,8 +397,6 @@ public class Controller implements Initializable{
 				}
 			}
 		}
-		
-		
 
 		class Grades extends RecursiveTreeObject<Grades> {
 			StringProperty Ide;
@@ -667,8 +663,8 @@ public class Controller implements Initializable{
 					notaEditable1.getValue().setNota1(event1.getNewValue());
 					int k = Integer.parseInt(event1.getRowValue().getValue().Ide.toString().substring(23,33));
 					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(1,tem1);
-					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria("Ingles").getList().SetNota(1, tem1);
-					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio("Ingles");
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 					
 				}
 			});
@@ -681,7 +677,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable2 = ListaNotas.getTreeItem(event2.getTreeTablePosition().getRow());
 					notaEditable2.getValue().setNota2(event2.getNewValue());
 					int k = Integer.parseInt(event2.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(2,tem2);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(2, tem2);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -693,7 +690,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable3 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable3.getValue().setNota3(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(3,tem3);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(3, tem3);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -705,7 +703,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable4 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable4.getValue().setNota4(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(4,tem4);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(4, tem4);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -717,7 +716,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable5 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable5.getValue().setNota5(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(5,tem5);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(5, tem5);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -729,7 +729,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable6 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable6.getValue().setNota6(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(6,tem6);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(6, tem6);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -741,7 +742,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable7 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable7.getValue().setNota7(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(7,tem7);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(7, tem7);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -753,7 +755,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable8 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable8.getValue().setNota8(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(8,tem8);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(8, tem8);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -765,7 +768,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable9 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable9.getValue().setNota9(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(9,tem9);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(9, tem9);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -777,7 +781,8 @@ public class Controller implements Initializable{
 					TreeItem<Grades> notaEditable10 = ListaNotas.getTreeItem(event.getTreeTablePosition().getRow());
 					notaEditable10.getValue().setNota10(event.getNewValue());
 					int k = Integer.parseInt(event.getRowValue().getValue().Ide.toString().substring(23,33));
-					//temp_curso.students_curso.Find(temp_root,k).data.list_nota.SetNota(10,tem10);
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(10, tem10);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
 				}
 			});
 
@@ -836,10 +841,6 @@ public class Controller implements Initializable{
 			Grade.add(new Grades(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10));
 			if(raiz.right != null) {
 				estudiantesNotas(raiz.right,Grade,ma);
-			}
-			
-			
+			}		
 		}
-
-
 }
