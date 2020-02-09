@@ -2,6 +2,7 @@ package gui;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
@@ -26,6 +27,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
@@ -99,6 +101,7 @@ public class Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("xd");
 		//Datos
 		hash_admin.addAdminUser(new Admin(1000274,"Juanse","123456"));
 		hash_admin.addAdminUser(new Admin(1000123,"Mendivelso","654321"));
@@ -167,15 +170,40 @@ public class Controller implements Initializable{
 			PasswordField.setText("");	
 		}	
 	}*/
-  
-  public void onIngresarButtonClicked(MouseEvent event) {
+  public void OnEnterButtonPressedLogin(KeyEvent key) {
+	  if((key.getCode().toString()).equals("ENTER")) {
+		  onIngresarButtonClicked();
+	  }
+  }
+//Hola
+  //Hola
+  //Hola
+  //Hola 
+	//Hola
+  //Holaaaa
+	//Hola
+	
+	
+	
+  public void onIngresarButtonClicked() {
 		long temp_id ;
 		String temp_password="";
 		temp_id = Long.parseLong((UserField.getText()));
 		temp_password = PasswordField.getText();
-		boolean ver=hash_admin.ValUser(new Admin(temp_id,temp_password));	
-		if(ver) {
-			bienvenida.setText("Bienvenido xdxdxd falta arreglar estoooooooo "+" que desea hacer?");
+		Admin ver=hash_admin.ValUser(new Admin(temp_id,temp_password));	
+		if(ver.getid() != -1) {
+			String logTime = (java.time.LocalTime.now()).toString();  
+			long millis=System.currentTimeMillis();  
+			String date=new java.sql.Date(millis).toString();
+			
+			System.out.println(date);  
+			
+			
+			
+			bienvenida.setText(ver.getUsername());
+			
+		
+			
 			Login1.setVisible(false);
 			Login2.setVisible(false);
 			Prueba.setVisible(true);
@@ -197,6 +225,7 @@ public class Controller implements Initializable{
 		inCurso.setValue("");
 	}
 
+	
 	public int cursoInt(String curso) {
 		int id=0;
 		switch(curso) {
@@ -239,7 +268,14 @@ public class Controller implements Initializable{
 		}
 		return id;
 	}
-
+	
+	
+	
+	
+	public void OnHomeButton() {
+		AddEstudiante.setVisible(false);
+		Prueba.setVisible(true);
+	}
 	public void onIngresoEstudiante() {		
 		String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
 		

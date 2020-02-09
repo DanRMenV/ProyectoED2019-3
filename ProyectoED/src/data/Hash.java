@@ -116,18 +116,18 @@ public class Hash {
 		}
 	}
 	//Metodo que valida el usuario ...
-	public boolean ValidateUser(Admin O) {
+	public Admin ValidateUser(Admin O) {
 		int position = HFunction(O.id);
 		System.out.println("Position: "+position);
 		if(table[position] != null) {
 			Admin iter = table[position];
 			while(iter != null) {
 				if(iter.id == O.id && iter.password.equals(O.password)) {
-					return true;
+					return iter;
 				}
 				iter = iter.next;
 			}
 		}
-		return false;
+		return new Admin(-1,"AdminNull");
 	} 
 }
