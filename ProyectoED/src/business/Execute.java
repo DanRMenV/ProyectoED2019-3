@@ -48,6 +48,12 @@ public class Execute {
 		
 		Curso temp_curso = lst_curso.FindCurso(1);
 		EstudianteBST temp_root = temp_curso.students_curso.getRoot();
+		
+		temp_curso.students_curso.Find(temp_root,7).data.list_materias.getMateria("Ingles").getList().SetNota(1, 5.0);
+		temp_curso.students_curso.Find(temp_root,7).data.updatePromedio("Ingles");
+		
+		System.out.println(temp_curso.students_curso.Find(temp_root,7).data.list_materias.getMateria("Ingles").getPromedio());
+		System.out.println(temp_curso.students_curso.Find(temp_root,7).data.getPromedio());
 
 		
 		TInicio = System.currentTimeMillis();

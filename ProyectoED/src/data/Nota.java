@@ -16,10 +16,7 @@ public class Nota {
 	public Nota(String descripcion) {
 		super();
 		this.descripcion = descripcion;
-		double random = ThreadLocalRandom.current().nextDouble(1.0, 5.0);
-		String te = String.valueOf(random).substring(0, 3);
-		double r = Double.parseDouble(te);
-		this.calificacion = r;
+		this.calificacion = 0.0;
 	}
 	
 	

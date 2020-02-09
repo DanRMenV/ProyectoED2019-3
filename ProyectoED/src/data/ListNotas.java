@@ -32,6 +32,7 @@ public class ListNotas extends DoubleLinkedList<Nota>{
 	
 	public void initNotas() {
 		for(int i=0;i<10;i++) {
+			//PushBack(new Nota(Integer.toString(i)));
 			PushBack(new Nota(Integer.toString(i)));
 		}		
 	}

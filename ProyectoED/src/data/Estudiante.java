@@ -121,14 +121,11 @@ public class Estudiante {
 		}		
 	}
 	
-	void addNo() {
-		//list_nota.PushBack(new Nota("1",1));
-	}
-
 	public void updatePromedio(String materia) {
 		list_materias.getMateria(materia).updatePromedio();
 		this.promedio=list_materias.promedioMaterias();
 	}
+	
 	public int cursoInt(String curso) {
 		int id=0;
 		switch(curso) {
