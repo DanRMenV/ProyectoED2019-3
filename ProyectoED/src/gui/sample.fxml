@@ -16,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#OnEnterButtonPressedLogin" prefHeight="578.0" prefWidth="917.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
-      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;">
+      <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;" visible="false">
          <children>
             <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="353.0" layoutY="21.0" onMouseClicked="#onExitButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,7 +29,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" AnchorPane.topAnchor="156.0">
+      <AnchorPane fx:id="Login2" layoutX="224.0" layoutY="156.0" prefHeight="325.0" prefWidth="400.0" style="-fx-background-color: #001f38;" visible="false" AnchorPane.topAnchor="156.0">
          <children>
             <Label layoutX="84.0" layoutY="39.0" text="Usuario" textFill="WHITE">
                <font>
@@ -487,6 +487,97 @@
             <Text layoutX="313.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione un curso">
                <font>
                   <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ModEstudiante" layoutX="250.0" layoutY="88.0" prefHeight="341.0" prefWidth="348.0" style="-fx-background-color: #001f38;">
+         <children>
+            <JFXTextField fx:id="IdModificar" layoutX="31.0" layoutY="159.0" prefHeight="47.0" prefWidth="338.0" promptText="Id del estudiante" style="-fx-text-fill: white;" unFocusColor="#16e4e0" AnchorPane.bottomAnchor="136.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="159.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="10.0" layoutY="70.0" prefHeight="83.0" prefWidth="338.0" text="Ingrese el documento de identidad del estudiante para modificar" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="97.0" layoutY="228.0" onMouseClicked="#onBuscarModButtonClicked" prefHeight="48.0" prefWidth="157.0" style="-fx-background-color: white;" text="Buscar" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="94.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="299.0" layoutY="14.0" onMouseClicked="#onExitModEstButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons_exit.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="44.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar estudiante" textAlignment="CENTER" wrappingWidth="260.5859405994415">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ModEstForm" layoutX="234.0" layoutY="83.0" prefHeight="400.0" prefWidth="360.0" style="-fx-background-color: #001f38;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="40.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar estudiante" wrappingWidth="280.4609375">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="63.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identificación" AnchorPane.leftAnchor="45.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="IdEstMod" fill="WHITE" layoutX="150.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="49.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="inNomEstMod" focusColor="#18bfaf" layoutX="140.0" layoutY="107.0" prefHeight="25.0" prefWidth="170.0" promptText="Ingrese nombres" style="-fx-text-fill: #ffffff;" unFocusColor="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <Text fill="WHITE" layoutX="49.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="inApeEstMod" focusColor="#18bfaf" layoutX="140.0" layoutY="160.0" prefHeight="25.0" prefWidth="170.0" promptText="Ingrese apellidos" style="-fx-text-fill: #ffffff;" unFocusColor="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="180.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXTextField>
+            <Text fill="WHITE" layoutX="49.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento" wrappingWidth="83.00000202655792" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="225.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXDatePicker fx:id="inFecNacMod" defaultColor="#19bdac" layoutX="132.0" layoutY="229.0" stylesheets="@DatePicker.css" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="230.0" />
+            <Text fill="WHITE" layoutX="49.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Curso" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="280.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="105.0" layoutY="332.0" onMouseClicked="#onModEstButtonClicked" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: WHITE;" text="Modificar" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="332.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="280.0" layoutY="338.0" onMouseClicked="#onVolverModEstButtonClicked" prefHeight="29.0" prefWidth="55.0" style="-fx-background-color: WHITE;" text="Volver" />
+            <Text fx:id="IdValida1" fill="RED" layoutX="110.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite identificación valida" visible="false" />
+            <Text fx:id="inCursoMod" fill="WHITE" layoutX="150.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="15.0" />
                </font>
             </Text>
          </children>

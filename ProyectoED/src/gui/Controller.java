@@ -2,6 +2,7 @@ package gui;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -29,6 +30,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import java.util.*;
 
 public class Controller implements Initializable{
 	//static AdminManager lst_admin = new AdminManager();
@@ -107,10 +109,22 @@ public class Controller implements Initializable{
 	
 	
 	//Lista definitivas
-		@FXML private JFXTreeTableView<MateriasDef> ListaDefinitivas;
-		@FXML private AnchorPane VerDefinitivas;
-		@FXML private JFXTextField buscarEstDef;
-		@FXML private JFXComboBox<String> BoxCursoDefinitivas;
+	@FXML private JFXTreeTableView<MateriasDef> ListaDefinitivas;
+	@FXML private AnchorPane VerDefinitivas;
+	@FXML private JFXTextField buscarEstDef;
+	@FXML private JFXComboBox<String> BoxCursoDefinitivas;
+	
+		
+	//Modificar estudiante
+	@FXML private AnchorPane ModEstudiante;
+	@FXML private JFXTextField IdModificar;
+	
+	@FXML private AnchorPane ModEstForm;
+	@FXML private Text IdEstMod;
+	@FXML private JFXTextField inNomEstMod;
+	@FXML private JFXTextField inApeEstMod;
+	@FXML private JFXDatePicker inFecNacMod;
+	@FXML private Text inCursoMod;
 	
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
@@ -206,7 +220,7 @@ public class Controller implements Initializable{
 	  Estudiante[] valores=lst_curso.FindCurso(curso).heap_curso.mejProm();
 	  mejorCurso.setText(temp_curso);
 	  
-	  
+ 
 	  Mejor1.setText(valores[0].getNombre_estudiante()+" "+valores[0].getApellido_estudiante());
 	  Mejor2.setText(valores[1].getNombre_estudiante()+" "+valores[1].getApellido_estudiante());
 	  Mejor3.setText(valores[2].getNombre_estudiante()+" "+valores[2].getApellido_estudiante());
@@ -315,7 +329,22 @@ public class Controller implements Initializable{
 		return id;
 	}
 	
-	
+	public String cursoInt(int a) {
+		String name="";
+		if(a == 1)name="Primero";
+		else if(a == 2)name="Segundo";
+		else if(a == 3)name="Tercero";
+		else if(a == 4)name="Cuarto";
+		else if(a == 5)name="Quinto";
+		else if(a == 6)name="Sexto";
+		else if(a == 7)name="Septimo";
+		else if(a == 8)name="Octavo";
+		else if(a == 9)name="Noveno";
+		else if(a == 10)name="Decimo";
+		else name="Undecimo";
+		
+		return name;
+	}
 	
 	
 	public void OnHomeButton() {
@@ -1479,5 +1508,116 @@ public class Controller implements Initializable{
 				Prueba.setVisible(false);
 			}			
 			
+			public void onBuscarModButtonClicked(MouseEvent event) {
+				System.out.println(Integer.parseInt(IdModificar.getText()));
+				Estudiante est=lst_curso.getArbol_col().Find(Integer.parseInt(IdModificar.getText())).data;
+
+				int id = est.getId_estudiante();
+				int cur = est.getCurso();
+				String nom = est.getNombre_estudiante();
+				String ape = est.getApellido_estudiante();
+				
+				IdEstMod.setText(String.valueOf(id));
+				inNomEstMod.setText(nom);
+				inApeEstMod.setText(ape);
+				
+				Calendar cal = est.getFecha_nacimiento();
+				Date input = cal.getTime();
+				LocalDate da = input.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				
+				inFecNacMod.setValue(da);
+				inCursoMod.setText(cursoInt(cur));	
+				ModEstForm.setVisible(true);
+				ModEstudiante.setVisible(false);
+			}
 		
+			public void onModEstButtonClicked(MouseEvent event) {
+				int k=Integer.parseInt(IdEstMod.getText());
+				String newNom=inNomEstMod.getText();
+				String newApe=inApeEstMod.getText();
+				
+				LocalDate fecha_nac=inFecNacMod.getValue();
+				int temp_day=fecha_nac.getDayOfMonth();
+				int temp_month=fecha_nac.getMonthValue();
+				int temp_year=fecha_nac.getYear();
+				String temp_curso=inCursoMod.getText();
+				int t_curso=cursoInt(temp_curso.trim());
+				
+				
+				Curso curso = lst_curso.FindCurso(t_curso);
+				EstudianteBST temp_root = curso.students_curso.getRoot();
+				
+				lst_curso.getArbol_col().Find(k).data.modifyEstudiante(newNom, newApe, temp_day, temp_month, temp_year);
+				curso.students_curso.Find(temp_root,k).data.modifyEstudiante(newNom, newApe, temp_day, temp_month, temp_year);
+				curso.heap_curso.getEstudiante(k).modifyEstudiante(newNom, newApe, temp_day, temp_month, temp_year);
+				
+				ModEstForm.setVisible(false);
+				ModEstudiante.setVisible(true);
+			}
+			
+			public void onVolverModEstButtonClicked(MouseEvent event) {
+				ModEstForm.setVisible(false);
+				ModEstudiante.setVisible(true);
+			}
+			
+			public void onExitModEstButtonClicked(MouseEvent event) {
+				ModEstudiante.setVisible(false);
+				Prueba.setVisible(true);
+			}
+			
+			/*
+			 * 
+			 * //BST_Curso
+					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
+					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
+					
+					//HEAP
+					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
+					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
+					temp_curso.heap_curso.modProm(k);
+					temp_curso.heap_curso.mejProm();
+					
+					//ArbolGIGANTE
+					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);			
+					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
+			 * 
+			 * public void onIngresoEstudiante() {		
+				String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
+				int temp_day=0,temp_month=1,temp_year=2000;
+				
+				int id=0;
+				temp_id=inIdEst.getText();
+				id=Integer.parseInt(temp_id);
+				temp_nombres = inNomEst.getText();
+				temp_apellidos = inApeEst.getText();
+				
+				LocalDate fecha_nac=inFecNac.getValue();
+				temp_day=fecha_nac.getDayOfMonth();
+				temp_month=fecha_nac.getMonthValue();
+				temp_year=fecha_nac.getYear();
+				temp_curso=inCurso.getValue();
+
+				if(temp_id.length()==10) {
+					lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
+
+				AddEstudiante.setVisible(false);
+				Prueba.setVisible(true);
+				}else {
+					IdValida.setVisible(true);
+				}
+				
+				
+			}
+			
+			Modificar estudiante
+			@FXML private AnchorPane ModEstudiante;
+			@FXML private JFXTextField IdModificar;
+			
+			@FXML private AnchorPane ModEstForm;
+			@FXML private Text IdEstMod;
+			@FXML private JFXTextField inNomEstMod;
+			@FXML private JFXTextField inApeEstMod;
+			@FXML private JFXDatePicker inFecNacMod;
+			@FXML private Text inCursoMod;*/
+			
 }

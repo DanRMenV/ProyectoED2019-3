@@ -61,11 +61,26 @@ public class Estudiante {
 		this.promedio = promedio;
 	}
 
+	public Calendar getFecha_nacimiento() {
+		return fecha_nacimiento;
+	}
+
+	public void setFecha_nacimiento(Calendar fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
+	}
+
 	public void setDate(int dia, int mes, int year) {
 		Calendar date = new GregorianCalendar(year,mes,dia);
 		this.fecha_nacimiento = date;
 		calcEdad(date);
 	}
+	
+	public void modifyEstudiante(String nomNew, String apeNew, int dia, int mes, int ano) {
+		this.nombre_estudiante= nomNew;
+		this.apellido_estudiante= apeNew;
+		setDate(dia,mes,ano);	
+	}
+	
 	public Estudiante(int id_estudiante, double prom) {
 		super();
 		this.id_estudiante = id_estudiante;
