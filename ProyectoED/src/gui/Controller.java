@@ -51,14 +51,9 @@ public class Controller implements Initializable{
 	@FXML private AnchorPane Login2;
 	@FXML private AnchorPane Prueba;
 	@FXML private AnchorPane ChangePas;
-	
-	
-	
 
 	@FXML private JFXTextField UserField;
-	@FXML private JFXPasswordField PasswordField;
-	
-	
+	@FXML private JFXPasswordField PasswordField;		
 	
 	@FXML private JFXPasswordField pas1;
 	@FXML private JFXPasswordField pas2;
@@ -66,8 +61,6 @@ public class Controller implements Initializable{
 	@FXML private Label IngresarError;
 	@FXML private Text bienvenida;
 	@FXML private Text currentTime;
-	
-	
 	
 	@FXML private Text wrongpas;
 	@FXML private Text tid;
@@ -112,8 +105,19 @@ public class Controller implements Initializable{
 	@FXML private Text Mejor3;
 	@FXML private Text Mejor4;
 	@FXML private Text Mejor5;
+	@FXML private Text Prom1;
+	@FXML private Text Prom2;
+	@FXML private Text Prom3;
+	@FXML private Text Prom4;
+	@FXML private Text Prom5;
 	@FXML private Text mejorCurso;
 	
+	
+	//Lista definitivas
+		@FXML private JFXTreeTableView<MateriasDef> ListaDefinitivas;
+		@FXML private AnchorPane VerDefinitivas;
+		@FXML private JFXTextField buscarEstDef;
+		@FXML private JFXComboBox<String> BoxCursoDefinitivas;
 	
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
@@ -161,6 +165,7 @@ public class Controller implements Initializable{
 		BoxCurso.setItems(ListaCursoContent);
 		BoxMaterias.setItems(ListaMaterias);
 		BoxCursoNotas.setItems(ListaCursoContent);
+		BoxCursoDefinitivas.setItems(ListaCursoContent);
 		BoxCursoMejores.setItems(comboCursos);
 		
 	}
@@ -207,12 +212,19 @@ public class Controller implements Initializable{
 	  int curso = cursoInt(temp_curso.trim());  
 	  Estudiante[] valores=lst_curso.FindCurso(curso).heap_curso.mejProm();
 	  mejorCurso.setText(temp_curso);
-	  Mejor1.setText(valores[0].getNombre_estudiante()+" "+valores[0].getApellido_estudiante());
 	  
+	  
+	  Mejor1.setText(valores[0].getNombre_estudiante()+" "+valores[0].getApellido_estudiante());
 	  Mejor2.setText(valores[1].getNombre_estudiante()+" "+valores[1].getApellido_estudiante());
 	  Mejor3.setText(valores[2].getNombre_estudiante()+" "+valores[2].getApellido_estudiante());
 	  Mejor4.setText(valores[3].getNombre_estudiante()+" "+valores[3].getApellido_estudiante());
 	  Mejor5.setText(valores[4].getNombre_estudiante()+" "+valores[4].getApellido_estudiante());
+	  
+	  Prom1.setText(String.format("%.2f",valores[0].getPromedio()));
+	  Prom2.setText(String.format("%.2f",valores[1].getPromedio()));
+	  Prom3.setText(String.format("%.2f",valores[2].getPromedio()));
+	  Prom4.setText(String.format("%.2f",valores[3].getPromedio()));
+	  Prom5.setText(String.format("%.2f",valores[4].getPromedio()));	  
 	  
   }
   
@@ -1058,7 +1070,7 @@ public class Controller implements Initializable{
 			}		
 		}
 		
-		//Definitica Materias estudiante
+		//Definitiva Materias estudiante
 		
 		public void onExitHistoriaButtonClicked(MouseEvent event) {
 			EstNotas.setVisible(false);
@@ -1140,7 +1152,6 @@ public class Controller implements Initializable{
 				
 			}
 			
-			
 			//Cambiar contraseña administrados
 			public void OnChangeAdmin() {
 				Prueba.setVisible(false);
@@ -1165,6 +1176,313 @@ public class Controller implements Initializable{
 					wrongpas.setVisible(true);
 				}
 			}
+			
+			public void onComboCursoDefChanged(ActionEvent event){
+				ListaDefinitivas.setDisable(false);
+				for(int i=0; i<ListaCursoContent.size(); i++){				
+					if(BoxCursoDefinitivas.getValue().equals(ListaCursoContent.get(i))){	
+						CrearListaDefinitivas(BoxCursoDefinitivas.getValue());
+					}
+				}
+			}
+			
+			class MateriasDef extends RecursiveTreeObject<MateriasDef> {
+				StringProperty Ide;
+				StringProperty Nombre;
+				StringProperty SurName;
+				StringProperty Nota1;
+				StringProperty Nota2;
+				StringProperty Nota3;
+				StringProperty Nota4;
+				StringProperty Nota5;
+				StringProperty Nota6;
+				StringProperty Nota7;
+				StringProperty Nota8;
+				StringProperty Nota9;
+				StringProperty Nota10;
+				StringProperty Nota11;
+				public MateriasDef(String Ide, String Nombre, String SurName, String Nota1,String Nota2,String Nota3,String Nota4,String Nota5,String Nota6,String Nota7,String Nota8,String Nota9,String Nota10,String Nota11) {
+					this.Ide = new SimpleStringProperty(Ide);
+					this.Nombre = new SimpleStringProperty(Nombre);
+					this.SurName= new SimpleStringProperty(SurName);
+					this.Nota1 = new SimpleStringProperty(Nota1);
+					this.Nota2 = new SimpleStringProperty(Nota2);
+					this.Nota3 = new SimpleStringProperty(Nota3);
+					this.Nota4 = new SimpleStringProperty(Nota4);
+					this.Nota5 = new SimpleStringProperty(Nota5);
+					this.Nota6 = new SimpleStringProperty(Nota6);
+					this.Nota7 = new SimpleStringProperty(Nota7);
+					this.Nota8 = new SimpleStringProperty(Nota8);
+					this.Nota9 = new SimpleStringProperty(Nota9);
+					this.Nota10 = new SimpleStringProperty(Nota10);
+					this.Nota11 = new SimpleStringProperty(Nota11);
+				}		
+				
+				public StringProperty getnombreProperty() {
+					return Nombre;
+				}
+
+				public StringProperty getideProperty(){
+					return Ide;
+				}
+
+				public StringProperty getsurNameProperty() {
+					return SurName;
+				}
+
+				public StringProperty getnota1Property() {
+					return Nota1;
+				}
+
+				public StringProperty getnota2Property() {
+					return Nota2;
+				}
+
+				public StringProperty getnota3Property() {
+					return Nota3;
+				}
+
+				public StringProperty getnota4Property() {
+					return Nota4;
+				}
+
+				public StringProperty getnota5Property() {
+					return Nota5;
+				}
+
+				public StringProperty getnota6Property() {
+					return Nota6;
+				}
+
+				public StringProperty getnota7Property() {
+					return Nota7;
+				}
+
+				public StringProperty getnota8Property() {
+					return Nota8;
+				}
+
+				public StringProperty getnota9Property() {
+					return Nota9;
+				}
+
+				public StringProperty getnota10Property() {
+					return Nota10;
+				}
+				
+				public StringProperty getnota11Property() {
+					return Nota11;
+				}
+				
+				
+			}
+			
+			public void CrearListaDefinitivas(String c){
+
+				JFXTreeTableColumn<MateriasDef, String> stdIde = new JFXTreeTableColumn<>("Id");
+				stdIde.setPrefWidth(0);
+				stdIde.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getideProperty();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdName = new JFXTreeTableColumn<>("Nombre");
+				stdName.setPrefWidth(100);
+				stdName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnombreProperty();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdSurName = new JFXTreeTableColumn<>("Apellido");
+				stdSurName.setPrefWidth(100);
+				stdSurName.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getsurNameProperty();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota1 = new JFXTreeTableColumn<>("Castellano");
+				stdNota1.setPrefWidth(50);
+				stdNota1.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota1Property();
+					}
+				});
+
+				
+				
+				JFXTreeTableColumn<MateriasDef, String> stdNota2 = new JFXTreeTableColumn<>("Ingles");
+				stdNota2.setPrefWidth(60);
+				stdNota2.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota2Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota3 = new JFXTreeTableColumn<>("Matematicas");
+				stdNota3.setPrefWidth(60);
+				stdNota3.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota3Property();
+					}
+				});
+
+				
+				
+				JFXTreeTableColumn<MateriasDef, String> stdNota4 = new JFXTreeTableColumn<>("Biologia");
+				stdNota4.setPrefWidth(60);
+				stdNota4.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota4Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota5 = new JFXTreeTableColumn<>("Etica");
+				stdNota5.setPrefWidth(60);
+				stdNota5.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota5Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota6 = new JFXTreeTableColumn<>("Religion");
+				stdNota6.setPrefWidth(60);
+				stdNota6.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota6Property();
+					}
+				});
+
+				
+				
+				JFXTreeTableColumn<MateriasDef, String> stdNota7 = new JFXTreeTableColumn<>("Ed.Fisica");
+				stdNota7.setPrefWidth(60);
+				stdNota7.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota7Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota8 = new JFXTreeTableColumn<>("Filosofia");
+				stdNota8.setPrefWidth(60);
+				stdNota8.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota8Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota9 = new JFXTreeTableColumn<>("Artes");
+				stdNota9.setPrefWidth(60);
+				stdNota9.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota9Property();
+					}
+				});
+
+				JFXTreeTableColumn<MateriasDef, String> stdNota10 = new JFXTreeTableColumn<>("Informatica");
+				stdNota10.setPrefWidth(60);
+				stdNota10.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota10Property();
+					}
+				});
+				
+				JFXTreeTableColumn<MateriasDef, String> stdNota11 = new JFXTreeTableColumn<>("Sociales");
+				stdNota11.setPrefWidth(60);
+				stdNota11.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<MateriasDef, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<MateriasDef, String> param) {
+						return param.getValue().getValue().getnota10Property();
+					}
+				});
+
+
+				ObservableList<MateriasDef> MateriaDef = FXCollections.observableArrayList();
+
+				Curso temp_curso = lst_curso.FindCurso(Integer.parseInt(c));
+				EstudianteBST temp_root = temp_curso.students_curso.getRoot();
+				
+				estudiantesDef(temp_root,MateriaDef);
+
+				final TreeItem<MateriasDef> root = new RecursiveTreeItem<MateriasDef>(MateriaDef, RecursiveTreeObject::getChildren);
+				ListaDefinitivas.getColumns().setAll(stdName,stdSurName,stdNota1,stdNota2,stdNota3,stdNota4,stdNota5,stdNota6,stdNota7,stdNota8,stdNota9,stdNota10,stdNota11);
+
+	
+				ListaDefinitivas.setEditable(true);
+				ListaDefinitivas.setRoot(root);
+				ListaDefinitivas.setShowRoot(false);
+				
+			}
+					
+			public void estudiantesDef(EstudianteBST root, ObservableList<MateriasDef> Definitivas){
+				EstudianteBST raiz = root;
+				if(raiz == null)return ;
+				if(raiz.left != null) {
+					estudiantesDef(raiz.left,Definitivas);
+				}
+				
+				String[] mat={"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
+				
+				Estudiante temp=raiz.data;
+				int id = temp.getId_estudiante();
+				String ide = String.valueOf(id);
+				String name = temp.getNombre_estudiante();
+				String apellido = temp.getApellido_estudiante();
+				
+				double n1= temp.list_materias.getMateria("Castellano").getPromedio();
+				String nota1 = String.valueOf(n1);
+				double n2 = temp.list_materias.getMateria(mat[1]).getPromedio();
+				String nota2 = String.valueOf(n2);
+				double n3 = temp.list_materias.getMateria(mat[2]).getPromedio();
+				String nota3 = String.valueOf(n3);
+				double n4 = temp.list_materias.getMateria(mat[3]).getPromedio();
+				String nota4 = String.valueOf(n4);
+				double n5 = temp.list_materias.getMateria(mat[4]).getPromedio();
+				String nota5 = String.valueOf(n5);
+				double n6 = temp.list_materias.getMateria(mat[5]).getPromedio();
+				String nota6 = String.valueOf(n6);
+				double n7 = temp.list_materias.getMateria(mat[6]).getPromedio();
+				String nota7 = String.valueOf(n7);
+				double n8 = temp.list_materias.getMateria(mat[7]).getPromedio();
+				String nota8 = String.valueOf(n8);
+				double n9 = temp.list_materias.getMateria(mat[8]).getPromedio();
+				String nota9 = String.valueOf(n9);
+				double n10 = temp.list_materias.getMateria(mat[9]).getPromedio();
+				String nota10 = String.valueOf(n10);
 		
+				double n11 = temp.list_materias.getMateria("Sociales").getPromedio();
+				String nota11 = String.valueOf(n11);
+				
+				Definitivas.add(new MateriasDef(ide,name, apellido,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10,nota11));
+				if(raiz.right != null) {
+					estudiantesDef(raiz.right,Definitivas);
+				}		
+			}
+	
+			public void onExitDefButtonClicked(MouseEvent event) {
+				VerDefinitivas.setVisible(false);
+				Prueba.setVisible(true);
+			}
+			
+			public void onIngresarDefButtonClicked(MouseEvent event) {
+				VerDefinitivas.setVisible(true);
+				Prueba.setVisible(false);
+			}			
+			
 		
 }

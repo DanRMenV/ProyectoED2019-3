@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#OnEnterButtonPressedLogin" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#OnEnterButtonPressedLogin" prefHeight="578.0" prefWidth="917.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
    <children>
       <AnchorPane fx:id="Login1" layoutX="224.0" layoutY="81.0" prefHeight="75.0" prefWidth="400.0" style="-fx-background-color: #001d3b;">
          <children>
@@ -121,6 +121,11 @@
                   <Image url="@Images/icons_trophy.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="69.0" fitWidth="150.0" layoutX="379.0" layoutY="308.0" onMouseClicked="#onIngresarDefButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons_stats.png" />
+               </image>
+            </ImageView>
             <AnchorPane layoutY="-7.0" prefHeight="489.0" prefWidth="242.0" style="-fx-background-color: rgb(206,206,206);">
                <children>
                   <Text fx:id="bienvenida" layoutX="39.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="141.99999392032623">
@@ -157,6 +162,11 @@
                </font>
             </Text>
             <Text fill="#00f482" layoutX="266.0" layoutY="395.0" onMouseClicked="#onMejoresButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Mejores promedios" textAlignment="CENTER" wrappingWidth="82.99999570846558">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Text>
+            <Text fill="#00f482" layoutX="372.0" layoutY="394.0" onMouseClicked="#onIngresarDefButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver definitivas" textAlignment="CENTER" wrappingWidth="82.99999570846558">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
@@ -333,6 +343,11 @@
             <JFXComboBox fx:id="BoxCursoMejores" focusColor="#19bdac" layoutX="75.0" layoutY="155.0" prefHeight="32.0" prefWidth="198.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
             <AnchorPane fx:id="MejoresCurso" layoutY="59.0" prefHeight="282.0" prefWidth="348.0" style="-fx-background-color: #001f38;" visible="false">
                <children>
+                  <Text fx:id="mejorCurso" fill="WHITE" layoutX="103.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="-5.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
                   <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.topAnchor="25.0">
                      <font>
                         <Font size="18.0" />
@@ -384,9 +399,29 @@
                      </font>
                   </Text>
                   <JFXButton layoutX="137.0" layoutY="243.0" onMouseClicked="#onVolverMejoresButtonClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: WHITE;" text="Volver" />
-                  <Text fx:id="mejorCurso" fill="WHITE" layoutX="103.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="-5.0">
+                  <Text fx:id="Prom1" fill="WHITE" layoutX="310.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="25.0">
                      <font>
-                        <Font name="System Bold" size="20.0" />
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Prom2" fill="WHITE" layoutX="310.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="70.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Prom3" fill="WHITE" layoutX="309.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Prom4" fill="WHITE" layoutX="320.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="160.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Prom5" fill="WHITE" layoutX="320.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="205.0">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -431,6 +466,28 @@
                </font>
             </JFXButton>
             <Text fx:id="wrongpas" fill="#e83131" layoutX="89.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las contraseñas no coindicen" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="VerDefinitivas" layoutX="10.0" layoutY="9.0" prefHeight="561.0" prefWidth="900.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <JFXTreeTableView fx:id="ListaDefinitivas" disable="true" layoutX="32.0" layoutY="69.0" prefHeight="471.0" prefWidth="857.0" />
+            <Text layoutX="32.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtrar">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+            <JFXTextField fx:id="buscarEstDef" layoutX="112.0" layoutY="29.0" prefHeight="25.0" prefWidth="157.0" promptText="escriba aqui" />
+            <ImageView fitHeight="56.0" fitWidth="85.0" layoutX="830.0" layoutY="14.0" onMouseClicked="#onExitDefButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/salir_lista.png" />
+               </image>
+            </ImageView>
+            <JFXComboBox fx:id="BoxCursoDefinitivas" layoutX="651.0" layoutY="30.0" onAction="#onComboCursoDefChanged" prefHeight="25.0" prefWidth="164.0" promptText="Curso" />
+            <Text layoutX="313.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione un curso">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
