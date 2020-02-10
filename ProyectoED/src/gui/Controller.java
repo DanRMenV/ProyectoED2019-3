@@ -163,7 +163,7 @@ public class Controller implements Initializable{
 			else if(a == 8)name="Octavo";
 			else if(a == 9)name="Noveno";
 			else if(a == 10)name="Decimo";
-			else name="Undecimo";
+			else name="Once";
 			lst_curso.addCurso(new Curso(a,name));
 		}
 		
@@ -341,7 +341,7 @@ public class Controller implements Initializable{
 		else if(a == 8)name="Octavo";
 		else if(a == 9)name="Noveno";
 		else if(a == 10)name="Decimo";
-		else name="Undecimo";
+		else if(a==11) name="Once";
 		
 		return name;
 	}
@@ -1541,6 +1541,7 @@ public class Controller implements Initializable{
 				int temp_month=fecha_nac.getMonthValue();
 				int temp_year=fecha_nac.getYear();
 				String temp_curso=inCursoMod.getText();
+				
 				int t_curso=cursoInt(temp_curso.trim());
 				
 				
