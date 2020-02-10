@@ -56,12 +56,14 @@ public class Controller implements Initializable{
 	@FXML private Text wrongpas;
 	@FXML private Text tid;
 	@FXML private Text tname;
+	
 	//Anadir estudiante
 	@FXML private AnchorPane AddEstudiante;
 	@FXML private JFXTextField inIdEst;
 	@FXML private JFXTextField inNomEst;
 	@FXML private JFXTextField inApeEst;
 	@FXML private JFXDatePicker inFecNac;
+	@FXML private Text IdValida;
 	@FXML private JFXComboBox<String> inCurso;
 
 	//Lista Estudiantes
@@ -320,10 +322,12 @@ public class Controller implements Initializable{
 		AddEstudiante.setVisible(false);
 		ChangePas.setVisible(false);
 		Prueba.setVisible(true);
+		IdValida.setVisible(false);
 	}
 	
 	public void onIngresoEstudiante() {		
 		String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
+		int temp_day=0,temp_month=1,temp_year=2000;
 		
 		int id=0;
 		temp_id=inIdEst.getText();
@@ -332,17 +336,20 @@ public class Controller implements Initializable{
 		temp_apellidos = inApeEst.getText();
 		
 		LocalDate fecha_nac=inFecNac.getValue();
-		int temp_day=fecha_nac.getDayOfMonth();
-		int temp_month=fecha_nac.getMonthValue();
-		int temp_year=fecha_nac.getYear();
+		temp_day=fecha_nac.getDayOfMonth();
+		temp_month=fecha_nac.getMonthValue();
+		temp_year=fecha_nac.getYear();
 		temp_curso=inCurso.getValue();
 
-
-				lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
+		if(temp_id.length()==10) {
+			lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
 
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
-
+		}else {
+			IdValida.setVisible(true);
+		}
+		
 		
 	}
 

@@ -265,12 +265,13 @@
                </font>
             </Text>
             <JFXComboBox fx:id="inCurso" focusColor="#19bdac" layoutX="140.0" layoutY="263.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="280.0" />
-            <JFXButton layoutX="105.0" layoutY="331.0" onMouseClicked="#onIngresoEstudiante" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: WHITE;" text="Añadir" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="331.0">
+            <JFXButton layoutX="105.0" layoutY="346.0" onMouseClicked="#onIngresoEstudiante" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: WHITE;" text="Añadir" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="346.0">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="284.0" layoutY="337.0" onMouseClicked="#OnHomeButton" prefHeight="29.0" prefWidth="55.0" style="-fx-background-color: WHITE;" text="Volver" />
+            <JFXButton layoutX="269.0" layoutY="352.0" onMouseClicked="#OnHomeButton" prefHeight="29.0" prefWidth="55.0" style="-fx-background-color: WHITE;" text="Volver" />
+            <Text fx:id="IdValida" fill="RED" layoutX="110.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Digite identificación valida" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="VerLista" layoutX="54.0" layoutY="31.0" prefHeight="489.0" prefWidth="757.0" style="-fx-background-color: white;" visible="false">
