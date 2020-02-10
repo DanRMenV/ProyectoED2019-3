@@ -98,7 +98,7 @@
                   <Image url="@Images/List.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="638.0" layoutY="58.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="728.0" layoutY="188.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Historia.png" />
                </image>

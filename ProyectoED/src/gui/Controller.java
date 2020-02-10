@@ -54,6 +54,8 @@ public class Controller implements Initializable{
 	
 	@FXML private Label IngresarError;
 	@FXML private Text bienvenida;
+	@FXML private Text currentTime;
+	
 	
 	//Anadir estudiante
 	@FXML private AnchorPane AddEstudiante;
@@ -195,15 +197,10 @@ public class Controller implements Initializable{
 			String logTime = (java.time.LocalTime.now()).toString();  
 			long millis=System.currentTimeMillis();  
 			String date=new java.sql.Date(millis).toString();
-			
 			System.out.println(date);  
-			
-			
-			
+
+			currentTime.setText(date);
 			bienvenida.setText(ver.getUsername());
-			
-		
-			
 			Login1.setVisible(false);
 			Login2.setVisible(false);
 			Prueba.setVisible(true);
