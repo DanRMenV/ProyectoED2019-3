@@ -120,12 +120,18 @@ public class HeapNota {
 		return Heap[position];		
 	}
 	
-	public void mejProm() {
+	public Estudiante[]  mejProm() {
 		Estudiante m1 = ExtractMax();
 		Estudiante m2 = ExtractMax();
 		Estudiante m3 = ExtractMax();
 		Estudiante m4 = ExtractMax();
-		Estudiante m5 = ExtractMax();
+		Estudiante m5 = ExtractMax();		
+		Estudiante[] array= new Estudiante[5];
+		array[0]=m1;
+		array[1]=m2;
+		array[2]=m3;
+		array[3]=m4;
+		array[4]=m5;	
 		if(m1 != null) System.out.println("1: Id: "+m1.id_estudiante+" Promedio: "+m1.promedio);
 		if(m2 != null) System.out.println("2: Id: "+m2.id_estudiante+" Promedio: "+m2.promedio);
 		if(m3 != null) System.out.println("3: Id: "+m3.id_estudiante+" Promedio: "+m3.promedio);
@@ -135,7 +141,8 @@ public class HeapNota {
 		if(m2 != null)Insert(m2);
 		if(m3 != null)Insert(m3);
 		if(m4 != null)Insert(m4);
-		if(m5 != null)Insert(m5);
+		if(m5 != null)Insert(m5);	
+		return array;		
 	}
 	public void modProm(int id_estudiante) {
 		int position = posFind(id_estudiante);
