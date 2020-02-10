@@ -1565,59 +1565,10 @@ public class Controller implements Initializable{
 				Prueba.setVisible(true);
 			}
 			
-			/*
-			 * 
-			 * //BST_Curso
-					temp_curso.students_curso.Find(temp_root,k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
-					temp_curso.students_curso.Find(temp_root,k).data.updatePromedio(BoxMaterias.getValue());
-					
-					//HEAP
-					temp_curso.heap_curso.getEstudiante(k).list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);
-					temp_curso.heap_curso.getEstudiante(k).updatePromedio(BoxMaterias.getValue());				
-					temp_curso.heap_curso.modProm(k);
-					temp_curso.heap_curso.mejProm();
-					
-					//ArbolGIGANTE
-					lst_curso.getArbol_col().Find(k).data.list_materias.getMateria(BoxMaterias.getValue()).getList().SetNota(1, tem1);			
-					lst_curso.getArbol_col().Find(k).data.updatePromedio(BoxMaterias.getValue());
-			 * 
-			 * public void onIngresoEstudiante() {		
-				String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
-				int temp_day=0,temp_month=1,temp_year=2000;
-				
-				int id=0;
-				temp_id=inIdEst.getText();
-				id=Integer.parseInt(temp_id);
-				temp_nombres = inNomEst.getText();
-				temp_apellidos = inApeEst.getText();
-				
-				LocalDate fecha_nac=inFecNac.getValue();
-				temp_day=fecha_nac.getDayOfMonth();
-				temp_month=fecha_nac.getMonthValue();
-				temp_year=fecha_nac.getYear();
-				temp_curso=inCurso.getValue();
-
-				if(temp_id.length()==10) {
-					lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
-
-				AddEstudiante.setVisible(false);
-				Prueba.setVisible(true);
-				}else {
-					IdValida.setVisible(true);
-				}
-				
-				
+			public void onIngresarModEstButtonClicked(MouseEvent event) {
+				ModEstudiante.setVisible(true);
+				Prueba.setVisible(false);
 			}
-			
-			Modificar estudiante
-			@FXML private AnchorPane ModEstudiante;
-			@FXML private JFXTextField IdModificar;
-			
-			@FXML private AnchorPane ModEstForm;
-			@FXML private Text IdEstMod;
-			@FXML private JFXTextField inNomEstMod;
-			@FXML private JFXTextField inApeEstMod;
-			@FXML private JFXDatePicker inFecNacMod;
-			@FXML private Text inCursoMod;*/
+		
 			
 }
