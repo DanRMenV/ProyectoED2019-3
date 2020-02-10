@@ -11,7 +11,7 @@ public class AdminManager {
 	public void addAdminUser(Admin a) {
 		this.hash_admin.Add(a);
 	}
-	public Boolean ValUser(Admin a){
+	public Admin ValUser(Admin a){
 		return this.hash_admin.ValidateUser(a);
 	}
 	public void printUsers() {
