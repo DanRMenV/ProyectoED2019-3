@@ -120,7 +120,7 @@ public class HeapNota {
 		return Heap[position];		
 	}
 	
-	public Estudiante[]  mejProm() {
+	public Estudiante[] mejProm() {
 		Estudiante m1 = ExtractMax();
 		Estudiante m2 = ExtractMax();
 		Estudiante m3 = ExtractMax();
@@ -132,11 +132,11 @@ public class HeapNota {
 		array[2]=m3;
 		array[3]=m4;
 		array[4]=m5;	
-		if(m1 != null) System.out.println("1: Id: "+m1.id_estudiante+" Promedio: "+m1.promedio);
+		/*if(m1 != null) System.out.println("1: Id: "+m1.id_estudiante+" Promedio: "+m1.promedio);
 		if(m2 != null) System.out.println("2: Id: "+m2.id_estudiante+" Promedio: "+m2.promedio);
 		if(m3 != null) System.out.println("3: Id: "+m3.id_estudiante+" Promedio: "+m3.promedio);
 		if(m4 != null) System.out.println("4: Id: "+m4.id_estudiante+" Promedio: "+m4.promedio);
-		if(m5 != null) System.out.println("5: Id: "+m5.id_estudiante+" Promedio: "+m5.promedio);
+		if(m5 != null) System.out.println("5: Id: "+m5.id_estudiante+" Promedio: "+m5.promedio);*/
 		if(m1 != null)Insert(m1);	
 		if(m2 != null)Insert(m2);
 		if(m3 != null)Insert(m3);

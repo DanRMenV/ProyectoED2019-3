@@ -61,62 +61,67 @@
                   <Point3D />
                </rotationAxis></JFXButton>
          </children></AnchorPane>
-      <AnchorPane fx:id="Prueba" prefHeight="561.0" prefWidth="848.0" style="-fx-background-color: #001f38;" visible="false">
+      <AnchorPane fx:id="Prueba" prefHeight="480.0" prefWidth="848.0" style="-fx-background-color: #001f38;" visible="false">
          <children>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="283.0" layoutY="195.0" onMouseClicked="#onNotaButoon" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="83.0" fitWidth="89.0" layoutX="266.0" layoutY="152.0" onMouseClicked="#onNotaButoon" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Nota.png" />
                </image>
             </ImageView>
-            <Text fill="#00f482" layoutX="283.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir nota" textAlignment="CENTER" wrappingWidth="74.99997663497925">
+            <Text fill="#00f482" layoutX="266.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir nota" textAlignment="CENTER" wrappingWidth="82.99999570846558">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font>
             </Text>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="387.0" layoutY="190.0" onMouseClicked="#onAnadirIcon" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="376.0" layoutY="154.0" onMouseClicked="#onAnadirIcon" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Estudiante.png" />
                </image>
             </ImageView>
-            <Text fill="#00f482" layoutX="387.0" layoutY="282.0" onMouseClicked="#onAnadirIcon" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir estudiante" textAlignment="CENTER" wrappingWidth="74.99997663497925">
+            <Text fill="#00f482" layoutX="365.0" layoutY="246.0" onMouseClicked="#onAnadirIcon" strokeType="OUTSIDE" strokeWidth="0.0" text="Añadir estudiante" textAlignment="CENTER" wrappingWidth="97.78321981430054">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font>
             </Text>
-            <ImageView fitHeight="83.0" fitWidth="85.0" layoutX="498.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="81.0" fitWidth="83.0" layoutX="500.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Modificar.png" />
                </image>
             </ImageView>
-            <Text fill="#00f482" layoutX="502.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar estudiante" textAlignment="CENTER" wrappingWidth="74.99997663497925">
+            <Text fill="#00f482" layoutX="492.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modificar estudiante" textAlignment="CENTER" wrappingWidth="97.78321665525436">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font>
             </Text>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="618.0" layoutY="190.0" onMouseClicked="#onListaButoon" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="69.0" layoutX="626.0" layoutY="159.0" onMouseClicked="#onListaButoon" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/List.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="728.0" layoutY="188.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="740.0" layoutY="154.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Historia.png" />
                </image>
             </ImageView>
-            <Text fill="#00f482" layoutX="613.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver lista de estudiantes" textAlignment="CENTER" wrappingWidth="84.99999731779099">
+            <Text fill="#00f482" layoutX="609.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver lista de estudiantes" textAlignment="CENTER" wrappingWidth="101.99999678134918">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font></Text>
-            <Text fill="#00f482" layoutX="728.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historia academica" textAlignment="CENTER" wrappingWidth="74.99997663497925">
+            <Text fill="#00f482" layoutX="731.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historia academica" textAlignment="CENTER" wrappingWidth="92.9999942779541">
                <font>
-                  <Font name="Arial Black" size="12.0" />
+                  <Font name="Arial Black" size="14.0" />
                </font></Text>
             <ImageView fitHeight="75.0" fitWidth="63.0" layoutX="779.0" layoutY="7.0" onMouseClicked="#onExitMenuButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/exit_menu.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutY="-7.0" prefHeight="575.0" prefWidth="242.0" style="-fx-background-color: rgb(206,206,206);">
+            <ImageView fitHeight="81.0" fitWidth="75.0" layoutX="270.0" layoutY="305.0" onMouseClicked="#onMejoresButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons_trophy.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutY="-7.0" prefHeight="489.0" prefWidth="242.0" style="-fx-background-color: rgb(206,206,206);">
                <children>
                   <Text fx:id="bienvenida" layoutX="39.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="141.99999392032623">
                      <font>
@@ -135,36 +140,54 @@
                   </ImageView>
                   <Text layoutX="14.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora de acceso:">
                      <font>
-                        <Font size="16.0" />
+                        <Font size="22.0" />
                      </font>
                   </Text>
                   <Text layoutX="42.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                  <Text fx:id="currentTime" layoutX="42.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text fx:id="currentTime" layoutX="24.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Text>
                </children>
             </AnchorPane>
-            <Text fill="WHITE" layoutX="271.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la acción que desea realizar:">
+            <Text fill="WHITE" layoutX="312.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la acción que desea realizar:">
                <font>
-                  <Font name="System Bold" size="21.0" />
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+            <Text fill="#00f482" layoutX="266.0" layoutY="395.0" onMouseClicked="#onMejoresButtonClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Mejores promedios" textAlignment="CENTER" wrappingWidth="82.99999570846558">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
                </font>
             </Text>
          </children></AnchorPane>
-      <AnchorPane fx:id="BuscarEstudiante" layoutX="201.0" layoutY="78.0" prefHeight="391.0" prefWidth="463.0" style="-fx-background-color: #001f38;" visible="false">
+      <AnchorPane fx:id="BuscarEstudiante" layoutX="240.0" layoutY="78.0" prefHeight="341.0" prefWidth="348.0" style="-fx-background-color: #001f38;" visible="false">
          <children>
-            <JFXTextField fx:id="IdField" layoutX="63.0" layoutY="90.0" prefHeight="47.0" prefWidth="338.0" promptText="id del estudiante" style="-fx-text-fill: white;" unFocusColor="#4cff23">
+            <JFXTextField fx:id="IdField" layoutX="10.0" layoutY="172.0" prefHeight="47.0" prefWidth="338.0" promptText="Id del estudiante" style="-fx-text-fill: white;" unFocusColor="#16e4e0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="175.0">
                <font>
-                  <Font name="System Bold" size="22.0" />
+                  <Font size="16.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="23.0" layoutY="48.0" text="Ingrese el documento de identidad del estudiante" textFill="WHITE">
+            <Label layoutX="10.0" layoutY="70.0" prefHeight="83.0" prefWidth="338.0" text="Ingrese el documento de identidad del estudiante para ver sus notas" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="190.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="70.0">
                <font>
                   <Font size="19.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="153.0" layoutY="239.0" onMouseClicked="#onBuscarIdButtonClicked" prefHeight="48.0" prefWidth="157.0" style="-fx-background-color: #F3F080;" text="Buscar">
+            <JFXButton buttonType="RAISED" layoutX="96.0" layoutY="260.0" onMouseClicked="#onBuscarIdButtonClicked" prefHeight="48.0" prefWidth="157.0" style="-fx-background-color: white;" text="Buscar" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="95.0">
                <font>
-                  <Font size="23.0" />
+                  <Font size="16.0" />
                </font>
             </JFXButton>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="299.0" layoutY="14.0" onMouseClicked="#onExitHistorialNotasButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons_exit.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="44.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historial Academico" textAlignment="CENTER" wrappingWidth="260.5859405994415">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="EstNotas" layoutX="224.0" layoutY="90.0" prefHeight="391.0" prefWidth="400.0" style="-fx-background-color: #001f38;" visible="false">
@@ -231,12 +254,12 @@
                </font>
             </Text>
             <JFXComboBox fx:id="inCurso" focusColor="#19bdac" layoutX="140.0" layoutY="263.0" prefHeight="25.0" prefWidth="171.0" style="-fx-background-color: white;" unFocusColor="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="280.0" />
-            <JFXButton layoutX="175.0" layoutY="329.0" onMouseClicked="#onIngresoEstudiante" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: WHITE;" text="Añadir" AnchorPane.bottomAnchor="31.0" AnchorPane.topAnchor="329.0">
+            <JFXButton layoutX="105.0" layoutY="331.0" onMouseClicked="#onIngresoEstudiante" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: WHITE;" text="Añadir" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="331.0">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="43.0" layoutY="334.0" onMouseClicked="#OnHomeButton" style="-fx-background-color: WHITE;" text="Volver" />
+            <JFXButton layoutX="284.0" layoutY="337.0" onMouseClicked="#OnHomeButton" prefHeight="29.0" prefWidth="55.0" style="-fx-background-color: WHITE;" text="Volver" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="VerLista" layoutX="54.0" layoutY="31.0" prefHeight="489.0" prefWidth="757.0" style="-fx-background-color: white;" visible="false">
@@ -282,6 +305,91 @@
                </font>
             </Text>
             <JFXComboBox fx:id="BoxMaterias" layoutX="636.0" layoutY="30.0" onAction="#onComboMateriaChanged" prefHeight="25.0" prefWidth="128.0" promptText="Materia" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="MejoresPromedios" layoutX="250.0" layoutY="88.0" prefHeight="341.0" prefWidth="348.0" style="-fx-background-color: #001f38;" visible="false">
+         <children>
+            <Label layoutX="5.0" layoutY="63.0" prefHeight="83.0" prefWidth="338.0" text="Seleccione curso para ver mejores promedios" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="63.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="96.0" layoutY="256.0" onMouseClicked="#onVerMejoresButtonClicked" prefHeight="48.0" prefWidth="157.0" style="-fx-background-color: white;" text="Ver" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="95.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="38.0" fitWidth="38.0" layoutX="299.0" layoutY="14.0" onMouseClicked="#onExitMejoresButtonClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Images/icons_exit.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="44.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mejores Promedios" textAlignment="CENTER" wrappingWidth="260.5859405994415">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <JFXComboBox fx:id="BoxCursoMejores" focusColor="#19bdac" layoutX="75.0" layoutY="155.0" prefHeight="32.0" prefWidth="198.0" style="-fx-background-color: white;" unFocusColor="WHITE" />
+            <AnchorPane fx:id="MejoresCurso" layoutY="59.0" prefHeight="282.0" prefWidth="348.0" style="-fx-background-color: #001f38;" visible="false">
+               <children>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1." AnchorPane.topAnchor="25.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2." AnchorPane.topAnchor="70.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3." AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4." AnchorPane.topAnchor="160.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="14.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5." AnchorPane.topAnchor="205.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Mejor1" fill="WHITE" layoutX="37.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="25.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Mejor2" fill="WHITE" layoutX="37.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="70.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Mejor3" fill="WHITE" layoutX="36.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Mejor4" fill="WHITE" layoutX="47.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="160.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Mejor5" fill="WHITE" layoutX="47.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="205.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <JFXButton layoutX="137.0" layoutY="243.0" onMouseClicked="#onVolverMejoresButtonClicked" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: WHITE;" text="Volver" />
+                  <Text fx:id="mejorCurso" fill="WHITE" layoutX="103.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="130.0" AnchorPane.topAnchor="-5.0">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
