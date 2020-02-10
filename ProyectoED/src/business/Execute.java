@@ -1,15 +1,9 @@
 package business;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.Scanner;
-import data.*;
-
-import java.io.File;
-import java.util.*;
+/*import java.util.Scanner;
+import data.*;*/
 
 public class Execute {
-	static AdminManager hash_admin = new AdminManager();
+	/*static AdminManager hash_admin = new AdminManager();
 	static HeapNota heap_prueba  = new HeapNota(100);
 	
 	
@@ -20,12 +14,12 @@ public class Execute {
 	static String temp_password="";
 	static long TInicio, TFin, tiempo;
 	static boolean mostrar=true;
-	static BinaryTree gen_stud = new BinaryTree();
+	static BinaryTree gen_stud = new BinaryTree();*/
 	
 	
 	public static void main(String[] args) {
 	
-		heap_prueba.Insert(new Estudiante(1,4.1));
+		/*heap_prueba.Insert(new Estudiante(1,4.1));
 		heap_prueba.Insert(new Estudiante(2,1.0));
 		heap_prueba.Insert(new Estudiante(3,3.9));
 		heap_prueba.Insert(new Estudiante(4,4.8));
@@ -109,7 +103,7 @@ public class Execute {
 			}
 		}
 		else if(pantalla==2) {
-			return;
+
 		}
 		/*else if(pantalla==3) {
 			System.out.println("Bienvenido: "+temp_user);
@@ -290,7 +284,7 @@ public class Execute {
 			nothing=scan.nextLine();
 			clearScreen();
 			pantalla=3;
-		}*/else if(pantalla == 9){
+		}else if(pantalla == 9){
 			int option = 0;
 			
 			
@@ -309,7 +303,7 @@ public class Execute {
 				System.out.println("Anadir estudiante: ");
 				System.out.println("Seleccione el curso al cual va a anadir el estudiante");
 				int int_curs = scan.nextInt();
-				Curso temp_curso = lst_curso.FindCurso(int_curs);
+				//Curso temp_curso = lst_curso.FindCurso(int_curs);
 				String temp_nom,temp_apel;
 				
 				int temp_id,temp_day,temp_month,temp_year;
@@ -346,7 +340,7 @@ public class Execute {
 				System.out.println("Ingrese el documento del estudiante");
 				int find_id = scan.nextInt();
 				Estudiante temp_est = null;
-				EstudianteBST temp_root ;
+				//EstudianteBST temp_root ;
 				temp_est = lst_curso.arbol_col.Find(find_id).data;
 				if(temp_est == null) {
 					System.out.println("Estudiante no encontrado");
@@ -469,13 +463,12 @@ public class Execute {
 		}else {
 			mostrar=false;
 		}
+		scan.close();
 	}
   
 	public static void clearScreen() {  
 		for (int i = 0; i < 50; ++i) System.out.println();
 	}
-	
-	
-	
-
+}*/
+}
 }
