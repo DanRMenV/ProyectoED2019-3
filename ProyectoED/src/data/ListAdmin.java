@@ -17,11 +17,9 @@ public class ListAdmin extends DoubleLinkedList<Admin> {
         return dn.key;
     }
 	public Boolean ValidateUser(Admin a){
-        DoubleNode<Admin> dn = null;
         DoubleNode<Admin> p = this.head;
         while(p != null){
             if(p.key.username.equals(a.username)&&p.key.password.equals(a.password)){
-                dn = p;
                 return true;
             }
             p = p.next;

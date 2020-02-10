@@ -1,6 +1,5 @@
 package data;
 
-import business.EstudiantesBSTManager;
 
 public class Curso {
 	int id_curso;

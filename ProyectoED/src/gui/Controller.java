@@ -2,10 +2,7 @@ package gui;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import com.jfoenix.controls.*;
@@ -13,7 +10,6 @@ import business.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import data.*;
 import javafx.application.Platform;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -22,11 +18,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -35,9 +29,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
-
-import javax.swing.*;
-import javax.swing.text.AbstractDocument.Content;
 
 public class Controller implements Initializable{
 	//static AdminManager lst_admin = new AdminManager();
@@ -347,10 +338,7 @@ public class Controller implements Initializable{
 		temp_curso=inCurso.getValue();
 
 
-		Calendar fecha=new GregorianCalendar(temp_year,temp_month,temp_day);
-		Estudiante tmpNew=new Estudiante(id,temp_nombres,temp_apellidos,fecha,temp_curso);
-		//lst_stud.addEstudiante(tmpNew);
-		lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
+				lst_curso.addEstudianteBST(id,temp_nombres,temp_apellidos,temp_day,temp_month,temp_year,cursoInt(temp_curso.trim()));
 
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
@@ -1141,7 +1129,7 @@ public class Controller implements Initializable{
 			}
 
 			public void estudianteMaterias(EstudianteBST root, ObservableList<MateriasN> MateriasNs){
-				EstudianteBST raiz = root;
+				//EstudianteBST raiz = root;
 				String[] mat={"Castellano","Ingles","Matematicas","Biologia","Etica","Religion","Ed.Fisica","Filosofia","Artes","Informatica","Sociales"};
 				for(int i=0; i<mat.length;i++) {
 					String mate = mat[i];

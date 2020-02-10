@@ -6,7 +6,7 @@ public class DoubleLinkedList <T>{
     int c_elementos=0;
     //Método PushFront()
     public void PushFront(T key) {
-        DoubleNode<T> node2 = new DoubleNode(key);
+        DoubleNode<T> node2 = new DoubleNode<T>(key);
         if (this.head == null) {
             this.tail = node2;
             this.head = tail;
@@ -23,7 +23,7 @@ public class DoubleLinkedList <T>{
     }
     //Método PushBack()
     public void PushBack(T key){
-        DoubleNode<T> node2 = new DoubleNode(key);
+        DoubleNode<T> node2 = new DoubleNode<T>(key);
         node2.next = null;
         node2.prev = tail;
         if(this.head == null){
@@ -55,7 +55,7 @@ public class DoubleLinkedList <T>{
         }
     }
     //Método FindByKey(Key)
-    public DoubleNode FindByKey(T key){
+    public DoubleNode<T> FindByKey(T key){
         DoubleNode<T> dn = null;
         DoubleNode<T> p = this.head;
         while(p != null){
@@ -111,7 +111,7 @@ public class DoubleLinkedList <T>{
         }
     }
     //Método AddAfter(Node, key)
-    public void AddAfter(DoubleNode node, int key){
+    public void AddAfter(DoubleNode<T> node, int key){
         DoubleNode<T> node2 = new DoubleNode(key);
         node2.next = node.next;
         node.next = node2;
@@ -125,7 +125,7 @@ public class DoubleLinkedList <T>{
         c_elementos++;
     }
     //Método AddBefore(Node, Key);
-    public void AddBefore(DoubleNode node, int key){
+    public void AddBefore(DoubleNode<T> node, int key){
         DoubleNode<T> node2 = new DoubleNode(key);
         node2.next=node;
         node2.prev=node.prev;

@@ -1,7 +1,5 @@
 package data;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Nota {
 	String descripcion;
 	double calificacion;

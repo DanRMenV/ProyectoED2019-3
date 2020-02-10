@@ -65,7 +65,7 @@ public class CursoManager {
 	}
 
     public void readStudents(String fileName) {
-		int i=1000000000;
+		//int i=1000000000;
 		try {
 			Scanner reader = new Scanner(new File(fileName));
 			while(reader.hasNextLine()) {
@@ -79,7 +79,7 @@ public class CursoManager {
 		}
 	}
 	
-	private void createEstudiante(String text,int id) {
+	/*private void createEstudiante(String text,int id) {
 		Scanner sc = new Scanner(text);
 		sc.useDelimiter(",");
 		String name = sc.next();
@@ -90,7 +90,7 @@ public class CursoManager {
         int mes = (int) (Math.random() * 12) + 1;
         int ano = (int) (Math.random() * 2018) + 2000;
         addEstudianteBST(id,name,surname,dia,mes,ano,curso);
-	}
+	}*/
     
     private void createEstudiante(String text) {
 		Scanner sc = new Scanner(text);
