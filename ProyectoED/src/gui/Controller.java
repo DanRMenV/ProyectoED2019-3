@@ -82,10 +82,23 @@ public class Controller implements Initializable{
 	@FXML private AnchorPane BuscarEstudiante;
 	@FXML private JFXTextField IdField;
 	
+	
 	//Lista notas estudiante
 	@FXML private AnchorPane EstNotas;
 	@FXML private JFXTreeTableView<MateriasN> ListaNotasEst;
 	@FXML private Label NombreEst;
+	
+	//Mejores promedios
+	@FXML private AnchorPane MejoresPromedios;
+	@FXML private AnchorPane MejoresCurso;
+	@FXML private JFXComboBox<String> BoxCursoMejores;
+	@FXML private Text Mejor1;
+	@FXML private Text Mejor2;
+	@FXML private Text Mejor3;
+	@FXML private Text Mejor4;
+	@FXML private Text Mejor5;
+	@FXML private Text mejorCurso;
+	
 	
 	ObservableList<String> ListaCursoContent =
 			FXCollections.observableArrayList(
@@ -132,6 +145,8 @@ public class Controller implements Initializable{
 		BoxCurso.setItems(ListaCursoContent);
 		BoxMaterias.setItems(ListaMaterias);
 		BoxCursoNotas.setItems(ListaCursoContent);
+		BoxCursoMejores.setItems(comboCursos);
+		
 	}
 	
 	public void onExitButtonClicked(MouseEvent event) {
@@ -154,39 +169,48 @@ public class Controller implements Initializable{
 		Prueba.setVisible(true);
 	}
 	
-	/*public void onIngresarButtonClicked(MouseEvent event) {
-		String temp_user="",temp_password="";
-		temp_user = UserField.getText();
-		temp_password = PasswordField.getText();
-		boolean ver=lst_admin.ValUser(new Admin(temp_user,temp_password));	
-		if(ver) {
-			bienvenida.setText("Bienvenido "+temp_user+" que desea hacer?");
-      
-			Login1.setVisible(false);
-			Login2.setVisible(false);
-			Prueba.setVisible(true);
-			
-		}else {
-			IngresarError.setVisible(true);
-			UserField.setText("");
-			PasswordField.setText("");	
-		}	
-	}*/
+	public void onExitHistorialNotasButtonClicked(MouseEvent event) {
+		BuscarEstudiante.setVisible(false);
+		Prueba.setVisible(true);
+	}
+	
   public void OnEnterButtonPressedLogin(KeyEvent key) {
 	  if((key.getCode().toString()).equals("ENTER")) {
 		  onIngresarButtonClicked();
 	  }
+  }	
+	
+  public void onMejoresButtonClicked() {
+	  Prueba.setVisible(false);
+	  MejoresPromedios.setVisible(true);
   }
-//Hola
-  //Hola
-  //Hola
-  //Hola 
-	//Hola
-  //Holaaaa
-	//Hola
-	
-	
-	
+  
+  public void onVerMejoresButtonClicked() {
+	  MejoresCurso.setVisible(true); 
+	  String temp_curso=BoxCursoMejores.getValue();
+	  int curso = cursoInt(temp_curso.trim());  
+	  Estudiante[] valores=lst_curso.FindCurso(curso).heap_curso.mejProm();
+	  mejorCurso.setText(temp_curso);
+	  Mejor1.setText(valores[0].getNombre_estudiante()+" "+valores[0].getApellido_estudiante());
+	  
+	  Mejor2.setText(valores[1].getNombre_estudiante()+" "+valores[1].getApellido_estudiante());
+	  Mejor3.setText(valores[2].getNombre_estudiante()+" "+valores[2].getApellido_estudiante());
+	  Mejor4.setText(valores[3].getNombre_estudiante()+" "+valores[3].getApellido_estudiante());
+	  Mejor5.setText(valores[4].getNombre_estudiante()+" "+valores[4].getApellido_estudiante());
+	  
+  }
+  
+  public void onVolverMejoresButtonClicked() {
+	  MejoresCurso.setVisible(false);
+  }
+  
+  public void onExitMejoresButtonClicked() {
+	  
+	  MejoresCurso.setVisible(false);
+	  Prueba.setVisible(true);
+	  MejoresPromedios.setVisible(false);  
+  }
+  
   public void onIngresarButtonClicked() {
 		long temp_id ;
 		String temp_password="";
@@ -277,6 +301,7 @@ public class Controller implements Initializable{
 		AddEstudiante.setVisible(false);
 		Prueba.setVisible(true);
 	}
+	
 	public void onIngresoEstudiante() {		
 		String temp_id="",temp_nombres="",temp_apellidos="",temp_curso="";
 		
