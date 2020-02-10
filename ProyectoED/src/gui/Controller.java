@@ -44,19 +44,34 @@ public class Controller implements Initializable{
   
   static AdminManager hash_admin = new AdminManager();
 	static CursoManager lst_curso = new CursoManager();
+	static Admin general;
 	
 	//Login bienvenida
 	@FXML private AnchorPane Login1;
 	@FXML private AnchorPane Login2;
 	@FXML private AnchorPane Prueba;
+	@FXML private AnchorPane ChangePas;
+	
+	
+	
 
 	@FXML private JFXTextField UserField;
 	@FXML private JFXPasswordField PasswordField;
 	
+	
+	
+	@FXML private JFXPasswordField pas1;
+	@FXML private JFXPasswordField pas2;
+	
 	@FXML private Label IngresarError;
 	@FXML private Text bienvenida;
 	@FXML private Text currentTime;
-
+	
+	
+	
+	@FXML private Text wrongpas;
+	@FXML private Text tid;
+	@FXML private Text tname;
 	//Anadir estudiante
 	@FXML private AnchorPane AddEstudiante;
 	@FXML private JFXTextField inIdEst;
@@ -116,6 +131,7 @@ public class Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		general = new Admin(-1,"TestUSER");
 		System.out.println("xd");
 		//Datos
 		hash_admin.addAdminUser(new Admin(1000274,"Juanse","123456"));
@@ -175,7 +191,7 @@ public class Controller implements Initializable{
 	}
 	
   public void OnEnterButtonPressedLogin(KeyEvent key) {
-	  if((key.getCode().toString()).equals("ENTER")) {
+	  if((key.getCode().toString()).equals("ENTER") && Login1.isVisible()==true) {
 		  onIngresarButtonClicked();
 	  }
   }	
@@ -217,7 +233,7 @@ public class Controller implements Initializable{
 		temp_id = Long.parseLong((UserField.getText()));
 		temp_password = PasswordField.getText();
 		Admin ver=hash_admin.ValUser(new Admin(temp_id,temp_password));	
-		
+		general = ver;
 		
 		
 		if(ver.getid() != -1) {
@@ -299,6 +315,7 @@ public class Controller implements Initializable{
 	
 	public void OnHomeButton() {
 		AddEstudiante.setVisible(false);
+		ChangePas.setVisible(false);
 		Prueba.setVisible(true);
 	}
 	
@@ -1121,6 +1138,32 @@ public class Controller implements Initializable{
 					MateriasNs.add(new MateriasN(mate,promedio));
 				}
 				
+			}
+			
+			
+			//Cambiar contraseña administrados
+			public void OnChangeAdmin() {
+				Prueba.setVisible(false);
+				ChangePas.setVisible(true);
+				tid.setText(Long.toString(general.getid()));
+				tname.setText(general.getUsername());
+				
+			}
+			public void OnButtonChange() {
+				String p1 = pas1.getText();
+				String p2 = pas2.getText();
+				if(p1.equals(p2)) {
+					general.setPassword(p1);
+					wrongpas.setVisible(false);
+					Prueba.setVisible(true);
+					ChangePas.setVisible(false);
+					pas1.setText("");
+					pas2.setText("");
+				}else {
+					pas1.setText("");
+					pas2.setText("");
+					wrongpas.setVisible(true);
+				}
 			}
 		
 		
