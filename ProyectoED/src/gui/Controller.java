@@ -3,6 +3,7 @@ package gui;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
@@ -55,8 +56,7 @@ public class Controller implements Initializable{
 	@FXML private Label IngresarError;
 	@FXML private Text bienvenida;
 	@FXML private Text currentTime;
-	
-	
+
 	//Anadir estudiante
 	@FXML private AnchorPane AddEstudiante;
 	@FXML private JFXTextField inIdEst;
@@ -193,14 +193,18 @@ public class Controller implements Initializable{
 		temp_id = Long.parseLong((UserField.getText()));
 		temp_password = PasswordField.getText();
 		Admin ver=hash_admin.ValUser(new Admin(temp_id,temp_password));	
+		
+		
+		
 		if(ver.getid() != -1) {
-			String logTime = (java.time.LocalTime.now()).toString();  
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+			String logTime = (java.time.LocalTime.now().format(dtf)).toString();  
 			long millis=System.currentTimeMillis();  
 			String date=new java.sql.Date(millis).toString();
 			System.out.println(date);  
+			currentTime.setText(date+" "+logTime);
 
-			currentTime.setText(date);
-			bienvenida.setText(ver.getUsername());
+      bienvenida.setText(ver.getUsername());
 			Login1.setVisible(false);
 			Login2.setVisible(false);
 			Prueba.setVisible(true);
