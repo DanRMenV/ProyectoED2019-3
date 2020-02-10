@@ -98,7 +98,7 @@
                   <Image url="@Images/List.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="638.0" layoutY="58.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="75.0" fitWidth="107.0" layoutX="728.0" layoutY="188.0" onMouseClicked="#onHistoriaButtonClicked" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@Images/Historia.png" />
                </image>
@@ -148,7 +148,7 @@
                </font>
             </Text>
          </children></AnchorPane>
-      <AnchorPane fx:id="BuscarEstudiante" layoutX="201.0" layoutY="78.0" prefHeight="391.0" prefWidth="463.0" style="-fx-background-color: #001f38;">
+      <AnchorPane fx:id="BuscarEstudiante" layoutX="201.0" layoutY="78.0" prefHeight="391.0" prefWidth="463.0" style="-fx-background-color: #001f38;" visible="false">
          <children>
             <JFXTextField fx:id="IdField" layoutX="63.0" layoutY="90.0" prefHeight="47.0" prefWidth="338.0" promptText="id del estudiante" style="-fx-text-fill: white;" unFocusColor="#4cff23">
                <font>
