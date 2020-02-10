@@ -148,6 +148,7 @@
                      <font>
                         <Font size="20.0" />
                      </font></Text>
+                  <JFXButton layoutX="34.0" layoutY="425.0" onMouseClicked="#OnChangeAdmin" prefHeight="31.0" prefWidth="175.0" style="-fx-background-color: #001f38;" text="Cambiar contraseña" textAlignment="CENTER" textFill="WHITE" />
                </children>
             </AnchorPane>
             <Text fill="WHITE" layoutX="312.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la acción que desea realizar:">
@@ -390,6 +391,46 @@
                   </Text>
                </children>
             </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ChangePas" layoutX="234.0" layoutY="83.0" prefHeight="400.0" prefWidth="360.0" style="-fx-background-color: #001f38;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="75.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cambiar contraseña">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="45.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Identificación:" AnchorPane.leftAnchor="45.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="48.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:" AnchorPane.leftAnchor="48.0" AnchorPane.topAnchor="146.8134765625">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <JFXButton layoutX="34.0" layoutY="337.0" onMouseClicked="#OnHomeButton" prefHeight="31.0" prefWidth="75.0" style="-fx-background-color: WHITE;" text="Volver" />
+            <Text fill="WHITE" layoutX="48.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña: ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="48.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmación:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="tid" fill="WHITE" layoutX="152.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="157.00000154972076" />
+            <Text fx:id="tname" fill="WHITE" layoutX="152.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="157.00000154972076" />
+            <JFXPasswordField fx:id="pas1" focusColor="WHITE" layoutX="152.0" layoutY="185.0" promptText="Ingrese su contraseña" style="-fx-text-fill: WHITE;" unFocusColor="WHITE" />
+            <JFXPasswordField fx:id="pas2" focusColor="WHITE" layoutX="152.0" layoutY="230.0" promptText="Repita su contraseña" style="-fx-text-fill: WHITE;" unFocusColor="WHITE" />
+            <JFXButton layoutX="186.0" layoutY="309.0" onMouseClicked="#OnButtonChange" prefHeight="56.0" prefWidth="135.0" style="-fx-background-color: WHITE;" text="Cambiar">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </JFXButton>
+            <Text fx:id="wrongpas" fill="#e83131" layoutX="89.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Las contraseñas no coindicen" visible="false" />
          </children>
       </AnchorPane>
    </children>
