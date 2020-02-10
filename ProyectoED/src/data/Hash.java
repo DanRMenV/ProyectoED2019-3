@@ -1,7 +1,6 @@
 package data;
 
 public class Hash {
-	//It's going to be used a Set
 	long n = 0; //Number of elements
 	long m = 0; //Cardinality of the function
 	double Lf = 0; //Load factor defined as n/m
@@ -10,6 +9,7 @@ public class Hash {
 	long a = (long)(Math.random() * (((p-1) - 1) + 1)) + 1;
 	long b = (long)(Math.random() * (((p-1) - 1)));
 	Admin[] table;
+	
 	public Hash(int m) {
 		table = new Admin[m];
 		this.m = m;
